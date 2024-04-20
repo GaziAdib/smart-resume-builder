@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  username    String    @unique
+  email       String    @unique
+  password    String
+  dob         String?
+  phone       String?
+  website     String?
+  linkedin    String?
+  github      String?
+  resumes     Resume[]
+  role        Role       @default(USER)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Resume {
+  id                             String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId                         String    @db.ObjectId
+  user                           User      @relation(fields: [userId], references: [id])
+  careerObjective                String
+  summary                        String?
+  workExperiences                Experience[]
+  references                     Reference[]
+  educationalQualifications      EducationalQualification[]
+  skills                         Skill[]
+  languageProficiencies          String[]
+  interests                      String[]
+  personalDetail                 Json
+  declaration                    String?
+  mySignature                    String
+  createdAt                      DateTime     @default(now())
+  updatedAt                      DateTime     @updatedAt
+}
+
+model Experience {
+  id                  String    @id @default(auto()) @map("_id") @db.ObjectId
+  resumeId            String    @db.ObjectId
+  resume              Resume    @relation(fields: [resumeId], references: [id])
+  companyName         String
+  jobTitle            String
+  jobResposibilities  String[]
+  startDate           DateTime?
+  endDate             DateTime?
+  description         String?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+}
+
+model Reference {
+  id                String      @id @default(auto()) @map("_id") @db.ObjectId
+  resumeId          String      @db.ObjectId
+  resume            Resume      @relation(fields: [resumeId], references: [id])
+  name              String
+  position          String
+  company           String?
+  phone             String
+  relationship      String?
+  email             String      @unique
+  address           String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model EducationalQualification {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  resumeId       String       @db.ObjectId
+  resume         Resume       @relation(fields: [resumeId], references: [id])
+  institution    String
+  subject        String?
+  degree         String?
+  fieldOfStudy   String?
+  startDate      DateTime
+  endDate        DateTime?
+  GPA           Float?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Skill {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  resumeId       String    @db.ObjectId
+  resume         Resume    @relation(fields: [resumeId], references: [id])
+  name           String
+  proficiency    String?   // Can be enum or any other type indicating proficiency level
+  experience     String?   // Description of relevant experience with the skill
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+
+enum Role {
+  ADMIN
+  USER
+}
