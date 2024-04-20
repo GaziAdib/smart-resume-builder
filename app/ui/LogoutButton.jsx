@@ -1,14 +1,23 @@
 "use client";
 
-import { signOut } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
 const LogoutButton = ({ label, color }) => {
 
+    const router = useRouter();
+
+    const {data: session} = useSession();
+
     const handleLogout = async () => {
         await signOut();
-        return redirect('/auth/login')
     }
+
+    if (!session) {
+        router.push('/auth/login');
+    }
+
+
     return (
         <button
             style={{ color: color }}
