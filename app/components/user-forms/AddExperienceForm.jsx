@@ -117,7 +117,7 @@ const AddExperienceForm = () => {
     
       {/* Add more input fields for other fields in the schema */}
       <div className="mb-4">
-        <Button color={'orange'} label={'Add Work Experience'} />
+        <Button label="Add Experience" color="white" bgColor="black" />
       </div>
     </form>
   )

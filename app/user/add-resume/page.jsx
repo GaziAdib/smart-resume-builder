@@ -8,15 +8,18 @@ import AddSkillForm from "@/app/components/user-forms/AddSkillForm"
 import { useState } from "react";
 
 const AddResumePage = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
+
+  console.log('current step', step);
 
   const nextStep = () => {
-    setStep(step + 1);
+    setStep((prevStep) => Math.min(prevStep + 1, 5));
   };
 
   const prevStep = () => {
-    setStep(step - 1);
+    setStep((prevStep) => Math.max(prevStep - 1, 1));
   };
+
 
   const renderStep = () => {
     switch (step) {
@@ -55,21 +58,45 @@ const AddResumePage = () => {
     }
   };
 
+  const progress = ((step - 1) / 4) * 100; // Calculate progress percentage
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <div className="text-center mt-5 py-5 font-extrabold">
+   
+    <div className="flex flex-col my-8 justify-center items-center">
+      {/* Progress Bar */}
+      <div className="w-3/4 h-3 bg-gray-200 rounded-full mb-4 mt-8 relative">
+        <div className="h-full rounded-2xl bg-green-500" style={{ width: `${progress}%` }}></div>
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center text-white font-bold">
+          {/* {Math.floor(progress)}% Completed */}
+        </div>
+      </div>
+      {/* Timeline View */}
+      <div className="relative w-3/4 flex justify-between items-center">
+        {[1, 2, 3, 4, 5].map((index) => (
+          <div key={index}>
+            <div className={`w-6 h-6 flex  justify-center items-center rounded-full bg-gray-200 border-gray-200 ${index === step ? 'bg-green-500 border-green-500' : index < step ? 'bg-blue-500 border-blue-500' : ''}`}>
+              {index}
+            </div>
+            {index < 5 && <div className={`w-10 bg-gray-300 ${index < step ? 'bg-blue-500' : ''}`}></div>}
+          </div>
+        ))}
+      </div>
+      {/* Step Title */}
+      <div className="text-center text-xl mt-4 py-4 font-semibold">
         Step {step}: {renderStepTitle(step)}
       </div>
-      <section className="container py-5 my-5 justify-center">
+      {/* Step Content */}
+      <section className="container py-3 my-3 justify-center">
         {renderStep()}
       </section>
+      {/* Navigation Buttons */}
       <div className="flex justify-center space-x-4">
-        {!isFirstStep && <button onClick={prevStep}>Previous</button>}
-        {!isLastStep && <button onClick={nextStep}>Next</button>}
+        {step !== 1 && <button className="bg-gray-100 hover:bg-gray-600 hover:text-gray-100 text-gray-600 rounded-xl px-4 py-0.5 shadow-sm font-semibold border-2 border-gray-300"  onClick={prevStep}>Previous</button>}
+        {step !== 5 && <button className="bg-gray-100 hover:bg-gray-600 hover:text-gray-100 text-gray-600 rounded-xl px-4 py-0.5 shadow-sm font-semibold border-2 border-gray-300" onClick={nextStep}>Next</button>}
       </div>
     </div>
+  
+    
   );
 };
-
 
 export default AddResumePage;

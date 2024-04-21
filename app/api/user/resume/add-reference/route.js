@@ -10,8 +10,7 @@ export async function POST(req) {
 
     const session = await getServerSession(authOptions);
 
-    const {  name, position, company, phone, email, relationship, address }  =  await req.json();
-
+    const { name, company, position, phone, email, address, relationship  }  =  await req.json();
     
     try {
         if (session?.user?.role === 'USER') {
@@ -23,8 +22,8 @@ export async function POST(req) {
                     company: company ? company : '',
                     phone,
                     email,
-                    relationship: relationship ? relationship : '',
                     address,
+                    relationship: relationship ? relationship : '',
                     user: {connect: {id: session?.user?.id}},
                 }
             })

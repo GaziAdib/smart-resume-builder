@@ -78,7 +78,7 @@ const AddEducationForm = () => {
     
       {/* Add more input fields for other fields in the schema */}
       <div className="mb-4">
-        <Button color={'orange'} label={'Add Education'} />
+      <Button label="Add Education" color="white" bgColor="black" />
       </div>
     </form>
   )

@@ -1,8 +1,92 @@
 "use client";
 
+import Button from "@/app/ui/Button";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+
 const AddReferenceForm = () => {
+
+  const { register, handleSubmit, reset, formState: {errors}} = useForm();
+  
+  const onSubmit = async (data) => {
+    try {
+          const res = await fetch('/api/user/resume/add-reference', {
+              method: 'POST',
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)
+          })
+
+          if (!res.ok) {
+              console.log('There is some problem in getting response');
+          }
+
+          if (res.ok) {
+              toast.success('New Reference Added', {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+              });
+              reset();
+              router.push('/user/add-resume')
+          }
+      
+    } catch (error) {
+        console.log('error', error)
+    }
+
+
+  };
+
   return (
-    <div>AddReferenceForm</div>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h2 className="text-xl font-semibold mb-6">Add References</h2>
+      <div className="mb-4">
+        <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name*</label>
+        <input type="text" id="name" name="name" {...register('name', {required: true})} placeholder="Reference Name (Person)" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="company" className="block text-gray-700 font-semibold mb-2">Company</label>
+        <input type="text" id="company" name="company" {...register('company')} placeholder="Uniliver, Robi, Bkash, Bank" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="position" className="block text-gray-500 font-semibold mb-2">Position*</label>
+        <input type="text" id="position" name="position" {...register('position', {required: true})} placeholder="HR, Manager, Director..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="email" className="block text-gray-500 font-semibold mb-2">Email*</label>
+        <input type="email" id="email" name="email" {...register('email', {required: true})} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+
+
+      <div className="mb-4">
+        <label htmlFor="phone" className="block text-gray-500 font-semibold mb-2">Phone Number*</label>
+        <input type="phone" id="phone" name="phone" {...register('phone', {required: true})} placeholder="+880-10101010" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="address" className="block text-gray-500 font-semibold mb-2">Address*</label>
+        <input type="text" id="address" name="address" {...register('address', {required: true})} placeholder="561, West Wood Road, Dhaka-2021" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+
+      <div className="mb-4">
+        <label htmlFor="relationship" className="block text-gray-500 font-semibold mb-2">Relationship*</label>
+        <input type="text" id="relationship" name="relationship" {...register('relationship', {required: true})} placeholder="uncle, relatives, brother, sister..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      </div>
+
+  
+    {/* Add more input fields for other fields in the schema */}
+      <div className="mb-4">
+      <Button label="Add Reference" color="white" bgColor="black" />
+      </div>
+    </form>
   )
 }
 
