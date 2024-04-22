@@ -5,10 +5,21 @@ import { Controller, useForm } from "react-hook-form";
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css';
 import { toast } from "react-toastify";
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod';
+
+const schema = z.object({
+  jobTitle: z.string().trim().min(5, {message: 'Please enter for Job Title with atleast 5 characters'}),
+  companyName: z.string().trim().min(3, {message: 'Please enter for Institute Name with atleast 3 characters'}),
+  startDate: z.string().trim().min(3, {message: 'Please enter Date'})
+});
+
 
 const AddExperienceForm = () => {
 
-  const { register, handleSubmit, reset, formState: {errors}, control} = useForm();
+  const { register, handleSubmit, reset, formState: {errors}, control} = useForm({
+    resolver: zodResolver(schema)
+  });
   
   const onSubmit = async (data) => {
     console.log(data);
@@ -52,61 +63,65 @@ const AddExperienceForm = () => {
       <div className="mb-4">
         <label htmlFor="jobTitle" className="block text-gray-700 font-semibold mb-2">Job Title*</label>
         <input type="text" id="jobTitle" name="jobTitle" {...register('jobTitle', {required: true})} placeholder="ie. Project Manager..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+        {errors?.jobTitle && <p className="text-red-500">{errors?.jobTitle.message}</p>}
       </div>
+
       <div className="mb-4">
         <label htmlFor="companyName" className="block text-gray-700 font-semibold mb-2">Company Name*</label>
         <input type="text" id="companyName" name="companyName" {...register('companyName', {required: true})} placeholder="Google, Amazon, Apple..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+        {errors?.companyName && <p className="text-red-500">{errors?.companyName.message}</p>}
       </div>
+
+    <div className="mb-4">
+      <label htmlFor="jobResposibilities" className="block text-sm mt-2 p-1 font-medium text-gray-600">
+        Job Responsibilities (UI Design, Testing, Coding) *
+      </label>
+
+        <Controller
+          name="jobResposibilities"
+          control={control}
+          defaultValue={[]}
+          render={({ field }) => (
+            <div className="my-3 py-2">
+              <ul className="list-disc list-inside">
+                {field?.value?.map((responsibility, index) => (
+                  <li key={index} className="bg-gray-200 text-gray-600 mb-1 px-2 py-1 rounded-md">
+                    {responsibility}
+                  </li>
+                ))}
+              </ul>
+              <TagsInput
+                type="text"
+                {...field}
+                placeholder="Add job Responsibilities"
+                className="py-2 my-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
+              />
+            </div>
+          )}
+        />
+    </div>
+
 
       <div className="mb-4">
-    <label htmlFor="jobResposibilities" className="block text-sm mt-2 p-1 font-medium text-gray-600">
-      Job Responsibilities (UI Design, Testing, Coding) *
-    </label>
-
-  <Controller
-    name="jobResposibilities"
-    control={control}
-    defaultValue={[]}
-    render={({ field }) => (
-      <div className="my-3 py-2">
-        <ul className="list-disc list-inside">
-          {field?.value?.map((responsibility, index) => (
-            <li key={index} className="bg-gray-200 text-gray-600 mb-1 px-2 py-1 rounded-md">
-              {responsibility}
-            </li>
-          ))}
-        </ul>
-        <TagsInput
-          type="text"
-          {...field}
-          placeholder="Add job Responsibilities"
-          className="py-2 my-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
-        />
-      </div>
-    )}
-  />
-      </div>
-
-
-        <div className="mb-4">
-              <label htmlFor="description" className="block text-sm font-medium text-gray-600">
-                  Description (optional)
-              </label>
-            <textarea
-                  type="text"
-                  id="description"
-                  rows={4}
-                  name="description"
-                  {...register('description')}
-                  className="mt-2 p-2 w-full border text-gray-600 rounded-md"
-                  placeholder="Enter description"
+          <label htmlFor="description" className="block text-sm font-medium text-gray-600">
+              Description (optional)
+          </label>
+          <textarea
+              type="text"
+              id="description"
+              rows={4}
+              name="description"
+              {...register('description')}
+              className="mt-2 p-2 w-full border text-gray-600 rounded-md"
+              placeholder="Enter description"
             />
-        </div>  
+      </div>  
       
     <div className="flex flex-col lg:flex-row md:flex-row justify-between items-center py-2">
         <div className="mb-4">
             <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2">Start Date*</label>
             <input type="date" id="startDate" name="startDate" {...register('startDate', {required: true})} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+            {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
         </div>
 
         <div className="mb-4">
