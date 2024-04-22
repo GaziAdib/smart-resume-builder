@@ -10,7 +10,7 @@ export async function POST(req) {
 
     const session = await getServerSession(authOptions);
 
-    const { careerObjective, personalDetail, interests, summary, declaration, mySignature   }  =  await req.json();
+    const { careerObjective, personalDetail, interests, languageProficiencies, summary, declaration, mySignature, profileImage   }  =  await req.json();
     
     try {
         if (session?.user?.role === 'USER') {
@@ -19,11 +19,11 @@ export async function POST(req) {
                 data: {
                     profileImage: profileImage ? profileImage : '',
                     careerObjective,
-                    personalDetail,
+                    personalDetail: personalDetail ? personalDetail : {},
                     interests,
                     languageProficiencies,
                     summary: summary ? summary: '',
-                    declaration,
+                    declaration: declaration ? declaration : '',
                     mySignature,
                     user: {connect: {id: session?.user?.id}},
                 }

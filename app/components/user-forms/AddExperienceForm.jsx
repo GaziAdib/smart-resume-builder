@@ -59,9 +59,9 @@ const AddExperienceForm = () => {
       </div>
 
       <div className="mb-4">
-  <label htmlFor="jobResposibilities" className="block text-sm mt-2 p-1 font-medium text-gray-600">
-    Job Responsibilities (UI Design, Testing, Coding) *
-  </label>
+    <label htmlFor="jobResposibilities" className="block text-sm mt-2 p-1 font-medium text-gray-600">
+      Job Responsibilities (UI Design, Testing, Coding) *
+    </label>
 
   <Controller
     name="jobResposibilities"
@@ -85,7 +85,7 @@ const AddExperienceForm = () => {
       </div>
     )}
   />
-</div>
+      </div>
 
 
         <div className="mb-4">

@@ -12,6 +12,7 @@ const AddResumePage = () => {
 
   console.log('current step', step);
 
+
   const nextStep = () => {
     setStep((prevStep) => Math.min(prevStep + 1, 5));
   };
