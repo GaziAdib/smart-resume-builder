@@ -106,10 +106,9 @@ const AddReferenceForm = () => {
         {errors?.relationship && <p className="text-red-500">{errors?.relationship.message}</p>}
       </div>
 
-  
-    {/* Add more input fields for other fields in the schema */}
+
       <div className="mb-4">
-      <Button label="Add Reference" color="white" bgColor="black" />
+        <Button label="Add Reference" color="white" bgColor="black" />
       </div>
     </form>
   )
