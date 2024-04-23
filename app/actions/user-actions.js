@@ -6,6 +6,26 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 
 const prisma = new PrismaClient();
 
+export const fetchCurrentUser = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const user = await prisma.user.findFirst({
+                where: {
+                    id: session?.user?.id
+                }
+            })
+            return user
+        }
+    } catch (error) {
+        console.log('error in fetching Current user', error);
+    }
+    
+}
+
+
+
+
 export const fetchResume = async () => {
     const session = await getServerSession(authOptions);
     try {
