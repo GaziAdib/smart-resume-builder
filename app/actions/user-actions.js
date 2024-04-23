@@ -6,6 +6,23 @@ import { authOptions } from "../api/auth/[...nextauth]/route";
 
 const prisma = new PrismaClient();
 
+export const fetchResume = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const resume = await prisma.resume.findFirst({
+                where: {
+                    userId: session?.user?.id
+                }
+            })
+            return resume
+        }
+    } catch (error) {
+        console.log('error in fetching skills', error);
+    }
+    
+}
+
 export const fetchSkills = async () => {
     const session = await getServerSession(authOptions);
     try {

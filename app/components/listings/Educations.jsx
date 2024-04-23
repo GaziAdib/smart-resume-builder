@@ -1,6 +1,12 @@
-const Educations = () => {
+import EducationCard from "../cards/EducationCard"
+
+const Educations = ({educations}) => {
   return (
-    <div>Educations</div>
+    <>
+    {educations?.map((education) => {
+      return <EducationCard key={education.id} education={education}  />
+    })}</>
+    
   )
 }
 
