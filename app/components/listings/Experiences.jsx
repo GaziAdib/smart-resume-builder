@@ -1,6 +1,12 @@
-const Experiences = () => {
+import ExperienceCard from "../cards/ExperienceCard"
+
+const Experiences = ({experiences}) => {
   return (
-    <div>Experiences</div>
+    <>
+    {experiences?.map((experience) => {
+      return <ExperienceCard key={experience?.id} experience={experience} />
+    })}
+    </>
   )
 }
 

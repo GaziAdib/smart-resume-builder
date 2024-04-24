@@ -1,6 +1,8 @@
-const CareerObjectiveCard = () => {
+const CareerObjectiveCard = ({careerObjective}) => {
   return (
-    <div>CareerObjective</div>
+    <div>
+      <p className="text-lg text-justify font-serif">{careerObjective}</p> 
+    </div>
   )
 }
 
