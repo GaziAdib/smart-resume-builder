@@ -16,8 +16,8 @@ const ExperienceCard = ({experience}) => {
           <span className="font-semibold">Duration:</span> {moment(startDate).format("DD MMM, YYYY")} - {endDate ? moment(endDate).format("DD MMM, YYYY") : 'Present'}
         </p>
       </div>
-
       <div>
+        
       <p className="text-gray-600 mb-1 font-semibold">Responsibilities:</p>
       <ul className="list-disc ml-6">
         {jobResposibilities?.map((responsibility, index) => (

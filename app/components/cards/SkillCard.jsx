@@ -1,6 +1,6 @@
-const SkillCard = () => {
+const SkillCard = ({skill}) => {
   return (
-    <div>SkillCard</div>
+    <div>{skill.name}</div>
   )
 }
 

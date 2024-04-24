@@ -1,6 +1,10 @@
-const LanguageProficiencies = () => {
+const LanguageProficiencies = ({languageProficiencies}) => {
   return (
-    <div>LanguageProficiencies</div>
+    <ul className="list-disc ml-8">
+    {languageProficiencies?.map((languageProficiency, index) => (
+      <li key={index} className="text-gray-600">{languageProficiency}</li>
+    ))}
+  </ul>
   )
 }
 

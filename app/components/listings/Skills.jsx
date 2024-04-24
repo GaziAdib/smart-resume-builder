@@ -1,6 +1,11 @@
-const Skills = () => {
+const Skills = ({skills}) => {
   return (
-    <div>Skills</div>
+    <ul className="list-disc ml-8">
+      {skills?.map((skill, index) => (
+        <li key={index} className="text-gray-600 py-1 my-2">{skill?.name}</li>
+      ))}
+  </ul>
+    
   )
 }
 
