@@ -11,7 +11,8 @@ const schema = z.object({
   institution: z.string().trim().min(3, {message: 'Please enter at least 3 words for Institute Name'}),
   degree: z.string().trim().min(2, {message: 'Please enter your degree'}),
   GPA: z.string().trim().min(2, {message: 'Please enter your GPA'}),
-  startDate: z.string().trim().min(3, {message: 'Please enter Date'})
+  startDate: z.string().trim().min(3, {message: 'Please enter Date'}),
+  endDate: z.string().trim().min(3, {message: 'Please enter Date'}),
 });
 
 
@@ -23,6 +24,7 @@ const AddEducationForm = () => {
   });
   
   const onSubmit = async (data) => {
+    console.log(data);
     try {
           const res = await fetch('/api/user/resume/add-education', {
               method: 'POST',
@@ -48,7 +50,7 @@ const AddEducationForm = () => {
                   theme: "light",
               });
               reset();
-              router.push('/user/add-resume')
+              //router.push('/user/add-resume')
           }
       
     } catch (error) {
@@ -95,6 +97,7 @@ const AddEducationForm = () => {
         <div className="mb-4">
             <label htmlFor="endDate" className="block text-gray-500 font-semibold mb-2">End Date (optional)</label>
             <input type="date" id="endDate" name="endDate" {...register('endDate')} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+            {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
         </div>
     </div>    
     

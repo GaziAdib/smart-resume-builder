@@ -2,6 +2,7 @@ const HeroSection = ({profileImage,currentUserInfo}) => {
 
    const {username, phone, email} = currentUserInfo || {};
 
+
   return (
     <div className="container items-center justify-center lg:justify-between md:justify-between  flex flex-col md:flex-row lg:flex-row mt-2 py-2 rounded-sm shadow-sm">
       {/* Profile Image */}

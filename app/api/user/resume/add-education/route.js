@@ -24,7 +24,7 @@ export async function POST(req) {
                     GPA: GPA ? parseFloat(GPA) : null,
                     user: {connect: {id: session?.user?.id}},
                     startDate: new Date(startDate).toISOString(),
-                    endDate: endDate ? new Date(endDate).toISOString() : ''
+                    endDate:  new Date(endDate).toISOString(),
                 }
             })
 
