@@ -1,4 +1,5 @@
 import { fetchCurrentUser, fetchEducationalQualifications, fetchResume, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import TestResume from "@/app/components/TestResume/TestResume";
 import MyResume from "@/app/components/resume-detail/MyResume";
 
 const MyResumePage = async () => {
@@ -9,7 +10,7 @@ const MyResumePage = async () => {
   const currentUserInfo = await fetchCurrentUser()
   return (
     <>
-      <MyResume
+      <TestResume
         currentUserInfo={currentUserInfo}
         resumeInfo={resumeInfo}
         educations={educations}
