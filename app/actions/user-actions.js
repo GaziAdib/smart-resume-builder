@@ -113,3 +113,20 @@ export const fetchMyReferences = async () => {
     }
     
 }
+
+export const fetchSetting = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const setting = await prisma.setting.findFirst({
+                where: {
+                    userId: session?.user?.id
+                }
+            })
+            return setting
+        }
+    } catch (error) {
+        console.log('error in fetching settgins', error);
+    }
+    
+}

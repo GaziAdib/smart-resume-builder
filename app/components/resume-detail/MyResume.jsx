@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 import TestResume from "../TestResume/TestResume";
 
 
-const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills}) => {
+const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, setting}) => {
 
   
     const resumeContentRef = useRef(null);
@@ -54,7 +54,7 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills}
     <div id="resume-content"  ref={resumeContentRef}>
     <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
       <div className="main-wrapper mx-2 px-2 py-3 my-3">
-        <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} />
+        <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} setting={setting} />
       </div>
     </div>
 

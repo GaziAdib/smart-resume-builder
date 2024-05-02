@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
 import Skills from '../listings/Skills';
 import Experiences from '../listings/Experiences';
 import Educations from '../listings/Educations';
@@ -9,17 +9,20 @@ import LanguageProficiencies from '../listings/LanguageProficiencies';
 import CareerObjectiveCard from '../cards/CareerObjectiveCard';
 import HeroSection from '../cards/HeroSection';
 
-const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills }) => {
+const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills, setting }) => {
+
+  //const {showPersonalDetail,showWorkExperience, showEducation } = setting || {};
+    
 
   const initialSections = [
     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />, prev: null, next: 'careerObjective' },
     { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
-    { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} />, prev: 'careerObjective', next: 'skill' },
+    { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} setting={setting} />, prev: 'careerObjective', next: 'skill' },
     { id: 'skill', title: 'Skill', content: <Skills skills={skills} />, prev: 'experience', next: 'education' },
-    { id: 'education', title: 'Education', content: <Educations educations={educations} />, prev: 'skill', next: 'interests' },
+    { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
-    { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} />, prev: 'languageProficiencies', next: null },
+    { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
   ];
 
   const [sections, setSections] = useState(initialSections);
