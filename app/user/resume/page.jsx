@@ -10,12 +10,19 @@ const MyResumePage = async () => {
   const currentUserInfo = await fetchCurrentUser()
   return (
     <>
-      <TestResume
+      {/* <TestResume
         currentUserInfo={currentUserInfo}
         resumeInfo={resumeInfo}
         educations={educations}
         experiences={experiences}
-        skills={skills} />
+        skills={skills} /> */}
+
+        <MyResume  
+          currentUserInfo={currentUserInfo}
+          resumeInfo={resumeInfo}
+          educations={educations}
+          experiences={experiences}
+          skills={skills} />
     </>
   )
 }

@@ -30,7 +30,23 @@ model User {
   experiences Experience[]
   skills      Skill[]
   educatiionalQualifications EducationalQualification[]
-  references Reference[]
+  references  Reference[]
+  settings    Setting[]
+}
+
+model Setting {
+  id                    String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId                String?    @db.ObjectId
+  user                  User?      @relation(fields: [userId], references: [id])
+  showPersonalDetail    Boolean    @default(false)
+  showEducation         Boolean    @default(false)
+  showWorkExperience    Boolean    @default(false)
+  showCareerObjective   Boolean    @default(true)
+  showProfilePicture    Boolean?   @default(true)
+  showReference         Boolean?   @default(false)
+  createdAt             DateTime   @default(now())
+  updatedAt             DateTime   @updatedAt
+ 
 }
 
 model Resume {
