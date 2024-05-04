@@ -20,7 +20,7 @@ const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skil
     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} setting={setting} />, prev: 'careerObjective', next: 'skill' },
     { id: 'skill', title: 'Skill', content: <Skills skills={skills} />, prev: 'experience', next: 'education' },
     { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
-    { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} />, prev: 'education', next: 'languageProficiencies' },
+    { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
   ];
