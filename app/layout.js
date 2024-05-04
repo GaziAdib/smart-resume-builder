@@ -1,9 +1,16 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+
+import { Poppins } from 'next/font/google';
 import { Providers } from "./providers";
 import ToastComponent from "./components/ToastComponent";
 import DndProviders from "./components/DndProvider";
 
+const poppins_init = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '300', '500'],
+  variable: '--font-poppins',
+})
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins_init.variable}>
         <Providers>
           <DndProviders>
             {children}
@@ -26,3 +33,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+{/* <body className={inter.className}></body> */}

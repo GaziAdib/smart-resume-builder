@@ -8,8 +8,9 @@ import Interests from '../listings/Interests';
 import LanguageProficiencies from '../listings/LanguageProficiencies';
 import CareerObjectiveCard from '../cards/CareerObjectiveCard';
 import HeroSection from '../cards/HeroSection';
+import References from '../listings/References';
 
-const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills, setting }) => {
+const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills, references, setting }) => {
 
   //const {showPersonalDetail,showWorkExperience, showEducation } = setting || {};
     
@@ -23,6 +24,8 @@ const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skil
     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
+    {id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />}
+
   ];
 
   const [sections, setSections] = useState(initialSections);
