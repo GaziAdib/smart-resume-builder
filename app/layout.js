@@ -6,11 +6,12 @@ import { Providers } from "./providers";
 import ToastComponent from "./components/ToastComponent";
 import DndProviders from "./components/DndProvider";
 
-const poppins_init = Poppins({
+const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['100', '300', '500'],
+  display: 'swap',
   variable: '--font-poppins',
-})
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={poppins_init.variable}>
+    <html lang="en" className={`${poppins.variable}`}>
+      <body>
         <Providers>
           <DndProviders>
             {children}

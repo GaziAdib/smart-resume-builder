@@ -4,6 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
+:root {
+  --font-poppins: 'Poppins', 'Roboto';
+  --font-serif: 'Serif', serif;
+  --font-roboto: 'Roboto', serif;
+  --font-custom: var(--user-selected-font), sans-serif; /* Default to sans-serif */
+}
+
+.custom-font {
+  font-family: var(--font-custom);
+}
+
 .poppins-extralight {
   font-family: "Poppins", sans-serif;
   font-weight: 200;
