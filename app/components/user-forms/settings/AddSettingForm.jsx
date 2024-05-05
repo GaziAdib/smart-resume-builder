@@ -1,17 +1,14 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const UpdateSettingForm = ({setting}) => {
 
-const [showEducationSection, setShowEducationSection] = useState(setting?.showEducation);
-const [showWorkExperienceSection, setShowWorkExperienceSection] = useState(setting.showWorkExperience);
-const [showPersonalDetailSection, setShowPersonalDetailSection] = useState(setting.showPersonalDetail);
+const AddSettingForm = () => {
 
-
-const router = useRouter();
+const [showEducationSection, setShowEducationSection] = useState(false);
+const [showWorkExperienceSection, setShowWorkExperienceSection] = useState(false);
+const [showPersonalDetailSection, setShowPersonalDetailSection] = useState(false);
 
 
 const handleToggleEducationSection = () => {
@@ -26,7 +23,7 @@ const handleToggleEducationSection = () => {
     setShowPersonalDetailSection(prevState => !prevState);
   }
 
-  const handleUpdateSettings = async () => {
+  const handleAddSettings = async () => {
     // Handle saving settings here
 
     try {
@@ -37,8 +34,8 @@ const handleToggleEducationSection = () => {
             showPersonalDetailSection
         }
 
-        const res = await fetch(`/api/user/settings/update/${setting.id}`, {
-            method: 'PUT',
+        const res = await fetch('/api/user/settings', {
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -50,7 +47,7 @@ const handleToggleEducationSection = () => {
         }
 
         if (res.ok) {
-            toast.success('Settings Updated succesfully', {
+            toast.success('New Settings Added succesfully', {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -60,18 +57,15 @@ const handleToggleEducationSection = () => {
                 progress: undefined,
                 theme: "light",
             });
-
-            router.push('/user/resume')
         }
     
   } catch (error) {
       console.log('error', error)
   }
   };
-
   return (
     <div className="max-w-md mx-auto mt-8 p-4">
-      <h1 className="text-xl font-semibold mb-4">Settings</h1>
+      <h1 className="text-xl font-semibold mb-4">Add Settings</h1>
      
       <div className="flex items-center justify-between mb-4">
         <p className="text-base">Show Education Section</p>
@@ -82,7 +76,6 @@ const handleToggleEducationSection = () => {
             id="toggleEducationSection"
             className={`toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-300 ${showEducationSection ? 'bg-green-500 border-green-700 transform translate-x-full' : 'bg-gray-300 border-gray-400'}`}
             checked={showEducationSection ? showEducationSection : false}
-            defaultChecked={setting.showEducation}
             onChange={handleToggleEducationSection}
           />
           <label htmlFor="toggleEducationSection" className={`toggle-label block overflow-hidden h-6 rounded-full ${showEducationSection ? 'bg-green-300' : 'bg-gray-300'} cursor-pointer`}></label>
@@ -97,7 +90,6 @@ const handleToggleEducationSection = () => {
             id="togglePersonalDetailSection"
             className={`toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-300 ${showPersonalDetailSection ? 'bg-green-500 border-green-700 transform translate-x-full' : 'bg-gray-300 border-gray-400'}`}
             checked={showPersonalDetailSection ? showPersonalDetailSection : false}
-            defaultChecked={setting.showPersonalDetail}
             onChange={handleTogglePersonalDetailSection}
           />
           <label htmlFor="togglePersonalDetailSection" className={`toggle-label block overflow-hidden h-6 rounded-full ${showPersonalDetailSection ? 'bg-green-300' : 'bg-gray-300'} cursor-pointer`}></label>
@@ -112,17 +104,16 @@ const handleToggleEducationSection = () => {
             id="toggleWorkExperienceSection"
             className={`toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer transition-transform duration-300 ${showWorkExperienceSection ? 'bg-green-500 border-green-700 transform translate-x-full' : 'bg-gray-300 border-gray-400'}`}
             checked={showWorkExperienceSection ? showWorkExperienceSection : false}
-            defaultChecked={setting.showWorkExperience}
             onChange={handleToggleWorkExperienceSection}
           />
           <label htmlFor="toggleWorkExperienceSection" className={`toggle-label block overflow-hidden h-6 rounded-full ${showWorkExperienceSection ? 'bg-green-300' : 'bg-gray-300'} cursor-pointer`}></label>
         </div>
       </div>
-      <button onClick={handleUpdateSettings} className="w-full bg-blue-500 text-white py-2 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-        Update Setting
+      <button onClick={handleAddSettings} className="w-full bg-blue-500 text-white py-2 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+        Add Setting
       </button>
     </div>
-  );
+  )
 }
 
-export default UpdateSettingForm
+export default AddSettingForm

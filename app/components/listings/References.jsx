@@ -35,6 +35,8 @@ const References = ({ references, setting }) => {
           </button>
         </div>
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {view === 'card' ? (
         references?.map((reference, index) => (
           <ReferenceCard key={reference.id} index={index} reference={reference} />
@@ -42,6 +44,8 @@ const References = ({ references, setting }) => {
       ) : (
         <ReferenceTable references={references} />
       )}
+      </div>
+      
     </div>
     </>
    )

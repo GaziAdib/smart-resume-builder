@@ -1,8 +1,13 @@
+import { fetchSetting } from "@/app/actions/user-actions";
+import AddSettingForm from "@/app/components/user-forms/settings/AddSettingForm";
 import UpdateSettingForm from "@/app/components/user-forms/settings/UpdateSettingForm";
 
-const SettingsPage = () => {
+const SettingsPage = async () => {
+
+  const setting = await fetchSetting();
+
   return (
-    <UpdateSettingForm  />
+    setting ?  <UpdateSettingForm setting={setting}  /> : <AddSettingForm />
   );
 }
 

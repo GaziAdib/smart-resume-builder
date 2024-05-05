@@ -12,8 +12,6 @@ import References from '../listings/References';
 
 const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills, references, setting }) => {
 
-  //const {showPersonalDetail,showWorkExperience, showEducation } = setting || {};
-    
 
   const initialSections = [
     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />, prev: null, next: 'careerObjective' },
@@ -24,13 +22,12 @@ const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skil
     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
-    {id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />}
+    {id:  'reference', title: 'Reference', content: <References references={references} setting={setting} />}
 
   ];
 
   const [sections, setSections] = useState(initialSections);
   
-  //const [sections, setSections] = useState(() => {
   //   const storedSections = localStorage.getItem('sections');
   //   console.log('Stored Sections:', storedSections);
   
@@ -127,8 +124,7 @@ const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skil
 
     return (
         <div>
-        <h1>Test Resume</h1>
-  
+        
         {sections?.map(section => (
           <div
             key={section?.id}
