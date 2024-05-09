@@ -14,7 +14,6 @@ export async function PUT(req, {params}) {
 
     const {  name }  =  await req.json();
 
-    console.log('skill name', name);
 
     
     try {
