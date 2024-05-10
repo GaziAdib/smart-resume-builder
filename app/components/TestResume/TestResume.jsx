@@ -1,5 +1,6 @@
 "use client";
-import {useState } from 'react';
+
+import { useState } from 'react';
 import Skills from '../listings/Skills';
 import Experiences from '../listings/Experiences';
 import Educations from '../listings/Educations';
@@ -22,7 +23,7 @@ const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skil
     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
-    {id:  'reference', title: 'Reference', content: <References references={references} setting={setting} />}
+    { id:  'reference', title: 'Reference', content: <References references={references} setting={setting} />}
 
   ];
 

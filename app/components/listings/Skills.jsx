@@ -83,7 +83,7 @@ const Skills = ({ skills }) => {
   };
 
   return (
-    <div className="container rounded-md py-2 my-2 mx-auto justify-center items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div className="container  rounded-md py-2 my-2 mx-auto justify-center items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div className={`bg-blue-300 text-gray-900 my-2 py-2 px-2 shadow-sm border-2 border-l-gray-900 flex justify-between items-center`} style={{ backgroundColor: headerBgColor }}>
         <p className="text-xl font-semibold">My Skills</p>
         <div className={isHovered ? 'block' : 'hidden'}>
@@ -97,7 +97,7 @@ const Skills = ({ skills }) => {
       {view === 'card' ? (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
           {skills?.map((skill, index) => (
-            <div key={index} className="bg-gray-50 p-2 rounded-md" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
+            <div key={index} className="bg-gray-50 dark:bg-gray-800 p-2 rounded-md" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
               {editedSkillIndex === index ? (
                 <input
                   type="text"
@@ -109,7 +109,7 @@ const Skills = ({ skills }) => {
                   autoFocus
                 />
               ) : (
-                <p className="text-gray-700 font-semibold text-center">{skill.name}</p>
+                <p className="text-gray-700 dark:text-gray-200 font-semibold text-center">{skill.name}</p>
               )}
             </div>
           ))}
@@ -117,7 +117,7 @@ const Skills = ({ skills }) => {
       ) : (
         <ul className="list-disc ml-8">
           {skills?.map((skill, index) => (
-            <li key={index} className="text-gray-600 py-0.5" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
+            <li key={index} className="text-gray-700 dark:text-gray-200 py-0.5" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
               {editedSkillIndex === index ? (
                 <input
                   type="text"
@@ -125,11 +125,11 @@ const Skills = ({ skills }) => {
                   onChange={handleSkillChange}
                   onKeyPress={(event) => handleKeyPress(event, index)}
                   onBlur={() => handleSkillEdit(index)}
-                  className="text-gray-700 font-semibold outline-none"
+                  className="text-gray-700 dark:text-gray-200 font-semibold outline-none"
                   autoFocus
                 />
               ) : (
-                skill.name
+               <p>{skill.name}</p> 
               )}
             </li>
           ))}

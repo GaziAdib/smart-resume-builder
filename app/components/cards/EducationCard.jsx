@@ -62,10 +62,10 @@ const EducationCard = ({ education }) => {
 
   return (
     <div
-      className="bg-white border-l-2 border-l-gray-200 rounded-md py-2 px-3 mt-2"
+      className="bg-white dark:bg-gray-800 border-l-2 border-l-gray-200 dark:border-l-gray-600  rounded-md py-2 px-3 mt-2"
       onDoubleClick={handleDoubleClick}
     >
-      <h2 className="text-xl font-semibold">
+      <h3 className="text-xl font-semibold">
         {isEditing ? (
           <input
             type="text"
@@ -78,11 +78,11 @@ const EducationCard = ({ education }) => {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          editedEducation.subject?.toUpperCase()
+          <h3 className="text-lg text-gray-800 dark:text-gray-300">{editedEducation.subject?.toUpperCase()}</h3>
         )}
-      </h2>
-      <p className="text-gray-600 mb-1">
-        <span className="font-semibold">Institution/College:</span>{" "}
+      </h3>
+      <p className="text-gray-600">
+        <span className="font-semibold dark:text-gray-300">Institution/College:</span>{" "}
         {isEditing ? (
           <input
             type="text"
@@ -93,11 +93,11 @@ const EducationCard = ({ education }) => {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          editedEducation.institution
+          <span className="text-lg text-gray-800 dark:text-gray-300">{editedEducation.institution}</span>
         )}
       </p>
-      <p className="text-gray-600 mb-1">
-        <span className="font-semibold">Degree:</span>{" "}
+      <p className="text-gray-600">
+        <span className="font-semibold dark:text-gray-300">Degree:</span>{" "}
         {isEditing ? (
           <input
             type="text"
@@ -108,11 +108,12 @@ const EducationCard = ({ education }) => {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          editedEducation?.degree
+        
+          <span className="text-xl text-gray-800 dark:text-gray-300">{editedEducation?.degree}</span>
         )}
       </p>
-      <p className="text-gray-600 mb-1">
-        <span className="font-semibold">GPA:</span>{" "}
+      <p className="text-gray-600">
+        <span className="font-semibold dark:text-gray-300">GPA:</span>{" "}
         {isEditing ? (
           <input
             type="text"
@@ -123,12 +124,14 @@ const EducationCard = ({ education }) => {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          editedEducation.GPA
+          
+          <span className="text-xl text-gray-800 dark:text-gray-300">{editedEducation.GPA}</span>
+          
         )}
       </p>
       <div className="flex flex-col sm:flex-row justify-between">
-        <p className="text-gray-600 mb-1">
-          <span className="font-semibold">Start Date:</span>{" "}
+        <p className="text-gray-600">
+          <span className="font-semibold dark:text-gray-300">Start Date:</span>{" "}
           {isEditing ? (
             <input
               type="date"
@@ -138,11 +141,11 @@ const EducationCard = ({ education }) => {
               onKeyDown={handleKeyDown}
             />
           ) : (
-            moment(editedEducation?.startDate).format("MMM YYYY")
+            <p className="text-xl text-gray-800 dark:text-gray-300">{moment(editedEducation?.startDate).format("MMM YYYY")}</p>
           )}
         </p>
-        <p className="text-gray-600 mb-1">
-          <span className="font-semibold">End Date:</span>{" "}
+        <p className="text-gray-600">
+          <span className="font-semibold dark:text-gray-300">End Date:</span>{" "}
           {isEditing ? (
             <input
               type="date"
@@ -157,7 +160,7 @@ const EducationCard = ({ education }) => {
             />
           ) : (
             editedEducation.endDate
-              ? moment(editedEducation.endDate).format("MMM YYYY")
+              ? <span className="text-xl text-gray-800 dark:text-gray-300">{moment(editedEducation?.endDate).format("MMM YYYY")}</span>
               : "Present"
           )}
         </p>
