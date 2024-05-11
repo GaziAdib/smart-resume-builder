@@ -30,39 +30,39 @@ const PersonalDetailCard = ({ personalDetail, setting }) => {
           )}
         </div>
   
-        <div className="bg-white rounded-md p-6">
+        <div className="bg-white dark:bg-gray-900 rounded-md p-6">
           <table className="w-full text-left">
             <tbody>
               <tr>
-                <th className="pb-2 text-gray-600">Father's Name:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Father's Name:</th>
                 <td className="pb-2">{fatherName}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Mother's Name:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Mother's Name:</th>
                 <td className="pb-2">{motherName}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Date of Birth:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Date of Birth:</th>
                 <td className="pb-2">{dob}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Religion:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Religion:</th>
                 <td className="pb-2">{religion}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Nationality:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Nationality:</th>
                 <td className="pb-2">{nationality}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Marital Status:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Marital Status:</th>
                 <td className="pb-2">{maritalStatus}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Blood Group:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Blood Group:</th>
                 <td className="pb-2">{bloodGroup}</td>
               </tr>
               <tr>
-                <th className="pb-2 text-gray-600">Height:</th>
+                <th className="pb-2 text-gray-600 dark:text-gray-300">Height:</th>
                 <td className="pb-2">{height}</td>
               </tr>
             </tbody>

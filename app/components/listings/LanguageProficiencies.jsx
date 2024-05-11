@@ -30,14 +30,14 @@ const LanguageProficiencies = ({ languageProficiencies }) => {
       {view === 'card' ? (
         <ul className="list-disc ml-8">
           {languageProficiencies?.map((languageProficiency, index) => (
-            <li key={index} className="text-gray-600 py-0.5">{languageProficiency}</li>
+            <li key={index} className="text-gray-600 dark:text-gray-200 py-0.5">{languageProficiency}</li>
           ))}
         </ul>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {languageProficiencies?.map((languageProficiency, index) => (
-            <div key={index} className="rounded-lg bg-gray-100 p-4 text-center">
-              <p className="text-gray-700 font-semibold">{languageProficiency}</p>
+            <div key={index} className="rounded-lg bg-gray-100 dark:bg-gray-800  p-4 text-center">
+              <p className="text-gray-700 font-semibold dark:text-gray-200">{languageProficiency}</p>
             </div>
           ))}
         </div>

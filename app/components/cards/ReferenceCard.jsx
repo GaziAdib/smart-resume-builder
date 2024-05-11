@@ -61,10 +61,10 @@ const ReferenceCard = ({ index, reference}) => {
 
   return (
     <div
-      className="bg-white border-2 my-2 py-4 rounded-lg p-4"
+      className="bg-white dark:bg-gray-900 border-2 dark:border-gray-600 my-2 py-4 rounded-lg p-4"
       onDoubleClick={handleDoubleClick}
     >
-      <h3 className="text-lg font-medium mb-2">
+      <h3 className="text-lg font-medium mb-2 dark:text-gray-200">
         {isEditing ? (
           <input
             type="text"
@@ -78,13 +78,13 @@ const ReferenceCard = ({ index, reference}) => {
           editedReference.name
         )}
       </h3>
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Position:{" "}
         {isEditing ? (
           <input
             type="text"
             name="position"
-            className="w-full px-2 py-1 rounded-md mb-2"
+            className="w-full px-2 py-1 rounded-md mb-2 dark:text-gray-300"
             value={editedReference.position}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -93,13 +93,13 @@ const ReferenceCard = ({ index, reference}) => {
           editedReference.position
         )}
       </p>
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Company:{" "}
         {isEditing ? (
           <input
             type="text"
             name="company"
-            className="w-full px-2 py-1 rounded-md mb-2"
+            className="w-full px-2 py-1 rounded-md mb-2 dark:text-gray-300"
             value={editedReference.company}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -109,7 +109,7 @@ const ReferenceCard = ({ index, reference}) => {
         )}
       </p>
 
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Relationship:{" "}
         {isEditing ? (
           <input
@@ -124,7 +124,7 @@ const ReferenceCard = ({ index, reference}) => {
           editedReference.relationship
         )}
       </p>
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Address:{" "}
         {isEditing ? (
           <input
@@ -140,7 +140,7 @@ const ReferenceCard = ({ index, reference}) => {
         )}
       </p>
 
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Email:{" "}
         {isEditing ? (
           <input
@@ -156,7 +156,7 @@ const ReferenceCard = ({ index, reference}) => {
         )}
       </p>
 
-      <p className="text-gray-600 font-semibold">
+      <p className="text-gray-600 font-semibold dark:text-gray-300">
         Phone:{" "}
         {isEditing ? (
           <input

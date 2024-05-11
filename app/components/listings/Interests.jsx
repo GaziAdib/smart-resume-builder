@@ -96,7 +96,7 @@ const Interests = ({ interests, resumeId }) => {
   };
 
   return (
-    <div className="container rounded-md my-4 mx-auto bg-white">
+    <div className="container rounded-md my-4 mx-auto bg-white dark:bg-gray-900">
       <div className={`bg-blue-300 text-gray-900 py-2 px-4 border-b border-l-gray-900 flex justify-between items-center`} style={{ backgroundColor: headerBgColor }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <p className="text-lg font-semibold">My Interests</p>
         <div className={isHovered ? 'block' : 'hidden'}>
@@ -111,7 +111,7 @@ const Interests = ({ interests, resumeId }) => {
         {view === 'card' ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {interests?.map((interest, index) => (
-              <div key={index} className="rounded-lg bg-gray-50 p-4 text-center" onDoubleClick={() => handleInterestClick(index, interest)}>
+              <div key={index} className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center" onDoubleClick={() => handleInterestClick(index, interest)}>
                 {editedInterestIndex === index ? (
                   <input
                     type="text"
@@ -119,11 +119,11 @@ const Interests = ({ interests, resumeId }) => {
                     onChange={handleInterestChange}
                     onKeyPress={(event) => handleKeyPress(event, index)}
                     onBlur={() => handleInterestEdit(index)}
-                    className="text-gray-700 font-semibold outline-none"
+                    className="text-gray-700 dark:text-gray-200 font-semibold outline-none"
                     autoFocus
                   />
                 ) : (
-                  <p className="text-gray-700 font-semibold">{interest}</p>
+                  <p className="text-gray-700 font-semibold dark:text-gray-200">{interest}</p>
                 )}
               </div>
             ))}
@@ -131,7 +131,7 @@ const Interests = ({ interests, resumeId }) => {
         ) : (
           <ul className="list-disc ml-8">
             {interests?.map((interest, index) => (
-              <li key={index} className="text-gray-600 py-2" onDoubleClick={() => handleInterestClick(index, interest)}>
+              <li key={index} className="text-gray-600 py-2 dark:text-gray-200" onDoubleClick={() => handleInterestClick(index, interest)}>
                 {editedInterestIndex === index ? (
                   <input
                     type="text"
