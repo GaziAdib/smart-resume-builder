@@ -3,8 +3,8 @@ import moment from "moment";
 const EducationTable = ({ educations }) => {
     return (
       <div className="overflow-x-auto">
-        <table className="w-full bg-white border-collapse border rounded-lg">
-          <thead className="bg-gray-100 text-gray-800">
+        <table className="w-full bg-white dark:bg-gray-800  border-collapse border rounded-lg">
+          <thead className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 text-gray-800">
             <tr>
               <th className="px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Subject</th>
               <th className="px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Institution</th>
@@ -14,7 +14,7 @@ const EducationTable = ({ educations }) => {
             </tr>
             
           </thead>
-          <tbody className="text-gray-700">
+          <tbody className="text-gray-700 dark:text-gray-300">
             {educations?.map((education) => (
               <tr key={education.id} className="border-b">
                 <td className="px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{education.subject.toUpperCase()}</td>

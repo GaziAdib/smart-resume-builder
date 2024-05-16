@@ -82,8 +82,11 @@ const Skills = ({ skills }) => {
     }
   };
 
+
   return (
-    <div className="container  rounded-md py-2 my-2 mx-auto justify-center items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <>
+<div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
+<div className="container  rounded-md py-2 my-2 mx-auto justify-center items-center" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div className={`bg-blue-300 text-gray-900 my-2 py-2 px-2 shadow-sm border-2 border-l-gray-900 flex justify-between items-center`} style={{ backgroundColor: headerBgColor }}>
         <p className="text-xl font-semibold">My Skills</p>
         <div className={isHovered ? 'block' : 'hidden'}>
@@ -97,7 +100,7 @@ const Skills = ({ skills }) => {
       {view === 'card' ? (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-2">
           {skills?.map((skill, index) => (
-            <div key={index} className="bg-gray-50 dark:bg-gray-800 p-2 rounded-md" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
+            <div key={index} className="bg-gray-50 mt-2 dark:bg-gray-800 p-2 rounded-md" onDoubleClick={() => handleSkillClick(index, skill.name, skill.id)}>
               {editedSkillIndex === index ? (
                 <input
                   type="text"
@@ -136,6 +139,10 @@ const Skills = ({ skills }) => {
         </ul>
       )}
     </div>
+
+    <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
+    </>
+   
   );
 };
 

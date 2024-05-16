@@ -29,6 +29,8 @@ const Experiences = ({ experiences, setting }) => {
         </div>
       )}
     </div>
+
+    <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
 </>
     
   );

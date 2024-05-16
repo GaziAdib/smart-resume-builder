@@ -33,6 +33,21 @@
   font-style: normal;
 }
 
+
+.avoid-break {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.page-break {
+  page-break-before: always;
+  margin-top: 20px;
+}
+
+.test {
+  background-color: aquamarine;
+}
+
 /* :root {
 
   --foreground-rgb: 0, 0, 0;

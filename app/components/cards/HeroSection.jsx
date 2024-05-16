@@ -1,6 +1,11 @@
+"use client";
+
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGlobe } from 'react-icons/fa';
+
+
 const HeroSection = ({profileImage,currentUserInfo}) => {
 
-   const {username, phone, email} = currentUserInfo || {};
+   const {username, phone, email, website} = currentUserInfo || {};
 
   return (
 
@@ -18,11 +23,26 @@ const HeroSection = ({profileImage,currentUserInfo}) => {
             </div>
 
             {/* User Information */}
-            <div className="md:order-1 lg:order-1">
-              <p className="text-lg font-semibold mt-2 mx-2 px-2 py-2">{username.toUpperCase()}</p>
-              <p className="text-md mx-2 px-2">521, East Jurain, Dhaka-1204</p>
-              <p className="text-md mx-2 px-2">{email}</p>
-              <p className="text-md mx-2 px-2">{phone}</p>
+            <div className="md:order-1 w-1/2 lg:order-1 shadow-sm rounded-lg p-4">
+              <p className="text-lg font-semibold mt-2 mb-4 mx-2 flex items-center">
+                <span className="mr-2">{username.toUpperCase()}</span>
+              </p>
+              <p className="text-md mx-2 my-2 flex items-center">
+                <FaMapMarkerAlt className="text-gray-600 mr-2" />
+                <span>521, East Jurain, Dhaka-1204</span>
+              </p>
+              <p className="text-md mx-2 my-2 flex items-center">
+                <FaEnvelope className="text-gray-600 mr-2" />
+                <span>{email}</span>
+              </p>
+              <p className="text-md mx-2 my-2 flex items-center">
+                <FaPhone className="text-gray-600 mr-2" />
+                <span>{phone}</span>
+              </p>
+              <p className="text-md mx-2 my-2 flex items-center">
+                <FaGlobe className="text-gray-600 mr-2" />
+                <span>{website ?? 'Not Provided'}</span>
+              </p>
             </div>
           </div>
     </div>

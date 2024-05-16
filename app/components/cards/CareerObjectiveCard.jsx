@@ -5,7 +5,7 @@ const CareerObjectiveCard = ({careerObjective}) => {
           <p className="text-xl font-semibold">Career Objective</p>
       </div>
     <div>
-        <p className="text-lg text-justify font-serif">{careerObjective}</p> 
+        <p className="text-lg text-justify">{careerObjective}</p> 
     </div>
 </div>
     

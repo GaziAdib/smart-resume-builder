@@ -6,13 +6,9 @@ import jsPDF from 'jspdf';
 import TestResume from "../TestResume/TestResume";
 
 
+
 const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, setting}) => {
 
-  // const [selectedFontFamily, setSelectedFontFamily] = useState('');
-
-  // const handleFontFamilyChange = (e) => {
-  //   setSelectedFontFamily(e.target.value);
-  // };
 
   const [selectedFont, setSelectedFont] = useState('');
 
@@ -34,8 +30,23 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
 
     const handleGeneratePDF = async () => {
       const input = resumeContentRef?.current;
+
+      //Ensure the image is fully loaded before capturing the canvas
+        const images = input.getElementsByTagName('img');
+        const promises = Array.from(images).map(img => {
+          return new Promise((resolve, reject) => {
+            if (img.complete) {
+              resolve();
+            } else {
+              img.onload = resolve;
+              img.onerror = reject;
+            }
+          });
+        });
+
+        await Promise.all(promises);
   
-      html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
+      html2canvas(input, { scrollY: -window.scrollY, useCORS:true }).then((canvas) => {
         const imgData = canvas.toDataURL('image/png');
   
         let pdfWidth, pdfHeight;
@@ -61,7 +72,7 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
           // Add a div element that only appears on the second page and onwards
           if (position < 0) {
             const div = document.createElement('div');
-            div.style.height = '12px';
+            div.style.height = '20px';
             input.appendChild(div);
           }
   
@@ -78,45 +89,53 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
   
         pdf.save('my_resume.pdf');
       });
+  
+       
     };
 
+
     // const handleGeneratePDF = async () => {
+    //   const input = resumeContentRef?.current;
 
-
-    //     const input = resumeContentRef?.current;
-    
-    //     html2canvas(input, { scrollY: -window.scrollY }).then((canvas) => {
-    //         const imgData = canvas.toDataURL('image/png');
-    //         const pdf = new jsPDF('p', 'mm', 'a4');
-    //         const imgWidth = 210;
-    //         const pageHeight = 295;
-    //         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-    //         let heightLeft = imgHeight;
-    //         let position = 0;
-      
-    //         while (heightLeft >= 0) {
-    //           position = heightLeft - imgHeight;
-      
-    //           // Add a div element that only appears on the second page and onwards
-    //           if (position < 0) {
-    //             const div = document.createElement('div');
-    //             div.style.height = '12px';
-    //             input.appendChild(div);
-    //           }
-      
-    //           pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      
-    //           // Add new page if there's remaining content
-    //           if (heightLeft > 0) {
-    //             pdf.addPage();
-    //           }
-      
-    //           // Move to the next page
-    //           heightLeft -= pageHeight;
+    //   // Ensure the image is fully loaded before capturing the canvas
+    //     const images = input.getElementsByTagName('img');
+    //     const promises = Array.from(images).map(img => {
+    //       return new Promise((resolve, reject) => {
+    //         if (img.complete) {
+    //           resolve();
+    //         } else {
+    //           img.onload = resolve;
+    //           img.onerror = reject;
     //         }
-      
-    //         pdf.save('my_resume.pdf');
     //       });
+    //     });
+
+    //     await Promise.all(promises);
+  
+    //   const canvas = await html2canvas(input, { scrollY: -window.scrollY, useCORS:true });
+    //   const imgData = canvas.toDataURL('image/png');
+  
+    //   const pdfWidth = selectedFormat === 'A4' ? 210 : 148; // A5 width is 148 mm
+    //   const pdfHeight = selectedFormat === 'A4' ? 297 : 210; // A5 height is 210 mm
+    //   const pdf = new jsPDF('p', 'mm', selectedFormat);
+      
+    //   const imgWidth = pdfWidth;
+    //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+    //   let heightLeft = imgHeight;
+    //   let position = 0;
+  
+    //   while (heightLeft > 0) {
+    //     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    //     heightLeft -= pdfHeight;
+    //     position -= pdfHeight;
+  
+    //     if (heightLeft > 0) {
+    //       pdf.addPage();
+    //     }
+    //   }
+  
+    //   pdf.save('my_resume.pdf');
     // };
 
   return (
@@ -126,7 +145,9 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     <div className="bg-gray-50 dark:bg-gray-900" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
     <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
       <div className="main-wrapper  mx-2 px-2 py-3 my-3 custom-font">
-        <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} setting={setting} />
+      <div className="avoid-break">
+            <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} setting={setting} profileImage={resumeInfo?.profileImage} />
+        </div>
       </div>
     </div>
 
