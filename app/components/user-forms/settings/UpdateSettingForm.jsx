@@ -70,10 +70,10 @@ const handleToggleEducationSection = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4">
-      <h1 className="text-xl font-semibold mb-4">Settings</h1>
-     
-      <div className="flex items-center justify-between mb-4">
+    <div className="max-w-md mx-auto my-14 p-8">
+      <h1 className="text-xl font-semibold mb-4 mt-4">Update Settings</h1>
+      <hr className=""/>
+      <div className="flex items-center justify-between mt-8 mb-4">
         <p className="text-base">Show Education Section</p>
         <div className="relative inline-block w-10 align-middle select-none">
           <input
@@ -118,7 +118,7 @@ const handleToggleEducationSection = () => {
           <label htmlFor="toggleWorkExperienceSection" className={`toggle-label block overflow-hidden h-6 rounded-full ${showWorkExperienceSection ? 'bg-green-300' : 'bg-gray-300'} cursor-pointer`}></label>
         </div>
       </div>
-      <button onClick={handleUpdateSettings} className="w-full bg-blue-500 text-white py-2 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+      <button onClick={handleUpdateSettings} className="w-full bg-blue-500 dark:text-gray-200 dark:bg-gray-700 border-2 text-white py-2 my-8 rounded-md shadow-md hover:bg-blue-600 dark:hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
         Update Setting
       </button>
     </div>

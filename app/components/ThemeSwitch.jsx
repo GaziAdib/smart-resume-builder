@@ -30,7 +30,7 @@ const ThemeSwitch = () => {
     return (
         <button
           onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-          className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-full p-2 shadow-md fixed top-4 right-4 z-10"
+          className="bg-white dark:bg-gray-800  text-gray-800 dark:text-white rounded-full p-2 shadow-md fixed top-4 right-4 z-20 mt-14"
         >
           {resolvedTheme === 'dark' ? (
             <FiSun />
@@ -40,16 +40,7 @@ const ThemeSwitch = () => {
         </button>
       );
 
-    
-
-    // if (resolvedTheme === 'dark') {
-    //     return <FiSun onClick={() => setTheme('light')} />
-    //   }
-    
-    //   if (resolvedTheme === 'light') {
-    //     return <FiMoon onClick={() => setTheme('dark')} />
-    //   }
-
+  
 
 }
 

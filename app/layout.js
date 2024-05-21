@@ -7,6 +7,7 @@ import ToastComponent from "./components/ToastComponent";
 import DndProviders from "./components/DndProvider";
 import MyThemeProvider from "./MyThemeProvider";
 import ThemeSwitch from "./components/ThemeSwitch";
+import Navbar from "./components/navbar/Navbar";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -32,7 +33,8 @@ export default function RootLayout({ children }) {
           <MyThemeProvider>
             <ThemeSwitch />
             <DndProviders>
-              {children}
+              <Navbar />
+                {children}
             <ToastComponent />
             </DndProviders>
           </MyThemeProvider>
