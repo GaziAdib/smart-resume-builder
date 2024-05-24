@@ -10,9 +10,7 @@ export async function POST(req, {params}) {
 
     const session = await getServerSession(authOptions);
 
-    const resumeId = params?.resumeId || '';
    
-
     const { name, company, position, phone, email, address, relationship  }  =  await req.json();
     
     try {
@@ -28,7 +26,6 @@ export async function POST(req, {params}) {
                     address,
                     relationship: relationship ? relationship : '',
                     user: {connect: {id: session?.user?.id}},
-                    resume: {connect: {id: resumeId}},
                 }
             })
 

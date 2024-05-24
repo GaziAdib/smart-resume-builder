@@ -10,28 +10,29 @@ export async function POST(req, {params}) {
 
     const session = await getServerSession(authOptions);
 
-
-    const {  name, proficiency, experience }  =  await req.json();
+    const {  projectTitle, projectLiveLink, projectGitLink, projectAchievements, startDate, endDate }  =  await req.json();
 
     
     try {
         if (session?.user?.role === 'USER') {
 
-            const skill = await prisma.skill.create({
+            const project = await prisma.project.create({
                 data: {
-                    name,
-                    proficiency: proficiency ? proficiency : '',
-                    experience: experience ? experience : '',
+                    projectTitle,
+                    projectGitLink: projectGitLink,
+                    projectLiveLink: projectLiveLink,
+                    projectAchievements: projectAchievements,
                     user: {connect: {id: session?.user?.id}},
+                    startDate: new Date(startDate).toISOString(),
+                    endDate:  new Date(endDate).toISOString(),
                 }
             })
 
             revalidatePath('/user/add-resume')
-
-            return NextResponse.json({ message: 'Skills Added Successfully!' }, { status: 201 })
+            return NextResponse.json({ message: 'Project Added Successfully!' }, { status: 201 })
             
         } else {
-            return NextResponse.json({ message: 'You Must Be a Auth User to Added Skills!' }, { status: 403 })
+            return NextResponse.json({ message: 'You Must Be a Auth User to Add Project To Resume!' }, { status: 403 })
         }
 
     } catch (error) {
@@ -40,5 +41,6 @@ export async function POST(req, {params}) {
     }
 
 }
+
 
 

@@ -161,7 +161,7 @@ model Certificate {
   certificateTitle          String
   certificateFrom           String
   certificateLink           String
-  certiticateAchievements   String[]
+  certificateAchievements   String[]
   startDate                 DateTime
   endDate                   DateTime?
   createdAt      DateTime   @default(now())
