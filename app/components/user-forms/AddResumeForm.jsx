@@ -1,16 +1,12 @@
 "use client";
 
 
-
-
-
 import Button from "@/app/ui/Button";
 import { Controller, useForm } from "react-hook-form";
 import TagsInput from "react-tagsinput";
 import { toast } from "react-toastify";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod';
-import { useResumeContext } from "@/app/contexts/ResumeContext";
 
 
 
@@ -43,7 +39,6 @@ const schema = z.object({
 
 const AddResumeForm = () => {
 
-  const { setResumeId } = useResumeContext();
 
   const { register, handleSubmit, reset, formState: {errors}, control} = useForm({
     resolver: zodResolver(schema)

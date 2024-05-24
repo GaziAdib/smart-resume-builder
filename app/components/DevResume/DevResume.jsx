@@ -10,8 +10,10 @@ import LanguageProficiencies from '../listings/LanguageProficiencies';
 import CareerObjectiveCard from '../cards/CareerObjectiveCard';
 import HeroSection from '../cards/HeroSection';
 import References from '../listings/References';
+import Projects from '../listings/Projects';
+import Certificates from '../listings/Certificates';
 
-const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, setting }) => {
+const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, projects, certificates, setting }) => {
 
 
   const initialSections = [
@@ -23,37 +25,14 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
-    { id:  'reference', title: 'Reference', content: <References references={references} setting={setting} />}
+    { id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />},
+    { id: 'project', title: 'Project', content: <Projects projects={projects} setting={setting} />},
+    { id: 'certificate', title: 'Certificate', content: <Certificates certificates={certificates} setting={setting} />}
 
   ];
 
   const [sections, setSections] = useState(initialSections);
   
-  //   const storedSections = localStorage.getItem('sections');
-  //   console.log('Stored Sections:', storedSections);
-  
-  //   return storedSections ? JSON.parse(storedSections) : [
-  //     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />},
-  //     { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard careerObjective={resumeInfo?.careerObjective} />},
-  //     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} /> },
-  //     { id: 'skill', title: 'Skill', content: <Skills skills={skills} /> },
-  //     { id: 'education', title: 'Education', content: <Educations educations={educations} /> },
-  //     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} /> },
-  //     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} /> },
-  //     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} />}
-  //   ]
-  // });
-  
-  // useEffect(() => {
-  //   // Extract data from each section object
-  //   const sectionsData = sections?.map(section => ({
-  //     id: section?.id,
-  //     title: section?.title
-  //   }));
-    
-  //   // Store the extracted data in localStorage
-  //   localStorage.setItem('sections', JSON.stringify(sectionsData));
-  // }, [sections]);
   
   const handleDragStart = (event, section) => {
     event.dataTransfer.setData('sectionId', section.id);
@@ -86,42 +65,6 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
     setSections(updatedSections);
   };
 
-  // const handleDrop = (event, targetSection) => {
-  //   const sectionId = event.dataTransfer.getData('sectionId');
-  //   const draggedSectionIndex = sections.findIndex(section => section.id === sectionId);
-  //   const targetSectionIndex = sections.findIndex(section => section.id === targetSection.id);
-  
-  //   const updatedSections = [...sections];
-  //   const draggedSection = updatedSections.splice(draggedSectionIndex, 1)[0];
-  //   updatedSections.splice(targetSectionIndex, 0, draggedSection);
-  //   setSections(updatedSections);
-
-  // };
-
-  // useEffect(() => {
-  //   localStorage.setItem('sections', JSON.stringify(sections));
-  // }, [sections]);
-  
-  //   const handleDragStart = (event, section) => {
-  //     event.dataTransfer.setData('sectionId', section.id);
-  //   };
-  
-  //   const handleDragOver = (event) => {
-  //     event.preventDefault();
-  //   };
-  
-  //   const handleDrop = (event, targetSection) => {
-  //     const sectionId = event.dataTransfer.getData('sectionId');
-  //     const draggedSectionIndex = sections.findIndex(section => section.id === sectionId);
-  //     const targetSectionIndex = sections.findIndex(section => section.id === targetSection.id);
-  
-  //     const updatedSections = [...sections];
-  //     const draggedSection = updatedSections.splice(draggedSectionIndex, 1)[0];
-  //     updatedSections.splice(targetSectionIndex, 0, draggedSection);
-  
-  //     setSections(updatedSections);
-  //   };
-
 
     return (
         <div>
@@ -145,4 +88,4 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
     );
   };
   
-  export default TestResume;
+  export default DevResume;

@@ -93,7 +93,6 @@ export const fetchWorkExperiences = async () => {
 }
 
 
-
 export const fetchEducationalQualifications = async () => {
     const session = await getServerSession(authOptions);
     try {
@@ -125,6 +124,40 @@ export const fetchMyReferences = async () => {
         }
     } catch (error) {
         console.log('error in fetching references', error);
+    }
+    
+}
+
+export const fetchMyProjects = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const projects = await prisma.project.findMany({
+                where: {
+                    userId: session?.user?.id
+                }
+            })
+            return projects
+        }
+    } catch (error) {
+        console.log('error in fetching Projects', error);
+    }
+    
+}
+
+export const fetchMyCertificates = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const certificates = await prisma.certificate.findMany({
+                where: {
+                    userId: session?.user?.id
+                }
+            })
+            return certificates
+        }
+    } catch (error) {
+        console.log('error in fetching Certificates', error);
     }
     
 }
@@ -289,3 +322,60 @@ export const deleteFullResumeInfo = async (resumeId) => {
     }
     
 }
+
+// DELETE Project by id
+
+export const deleteProject = async (projectId) => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+
+            const myProject = await prisma.project.findFirst({
+                where: {
+                    id: projectId
+                }
+            })
+            
+            if (session?.user?.id === myProject.userId) {
+                await prisma.project.delete({
+                    where: {
+                        id: projectId
+                    }
+                })
+            }
+    
+        }
+    } catch (error) {
+        console.log('error in Deleting Project', error);
+    }
+    
+}
+
+// DELETE Certificate by id
+
+export const deleteCertificate = async (certificateId) => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+
+            const myCertificate = await prisma.certificate.findFirst({
+                where: {
+                    id: certificateId
+                }
+            })
+            
+            if (session?.user?.id === myCertificate.userId) {
+                await prisma.certificate.delete({
+                    where: {
+                        id: certificateId
+                    }
+                })
+            }
+    
+        }
+    } catch (error) {
+        console.log('error in Deleting Certificate', error);
+    }
+    
+}
+

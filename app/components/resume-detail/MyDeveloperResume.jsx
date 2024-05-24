@@ -3,9 +3,11 @@
 import { useRef, useState } from "react";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import TestResume from "../TestResume/TestResume";
+import DevResume from "../DevResume/DevResume";
 
-const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, setting}) => {
+
+const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, projects, certificates, setting}) => {
+
 
   const [selectedFont, setSelectedFont] = useState('');
 
@@ -91,49 +93,6 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     };
 
 
-    // const handleGeneratePDF = async () => {
-    //   const input = resumeContentRef?.current;
-
-    //   // Ensure the image is fully loaded before capturing the canvas
-    //     const images = input.getElementsByTagName('img');
-    //     const promises = Array.from(images).map(img => {
-    //       return new Promise((resolve, reject) => {
-    //         if (img.complete) {
-    //           resolve();
-    //         } else {
-    //           img.onload = resolve;
-    //           img.onerror = reject;
-    //         }
-    //       });
-    //     });
-
-    //     await Promise.all(promises);
-  
-    //   const canvas = await html2canvas(input, { scrollY: -window.scrollY, useCORS:true });
-    //   const imgData = canvas.toDataURL('image/png');
-  
-    //   const pdfWidth = selectedFormat === 'A4' ? 210 : 148; // A5 width is 148 mm
-    //   const pdfHeight = selectedFormat === 'A4' ? 297 : 210; // A5 height is 210 mm
-    //   const pdf = new jsPDF('p', 'mm', selectedFormat);
-      
-    //   const imgWidth = pdfWidth;
-    //   const imgHeight = (canvas.height * imgWidth) / canvas.width;
-  
-    //   let heightLeft = imgHeight;
-    //   let position = 0;
-  
-    //   while (heightLeft > 0) {
-    //     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-    //     heightLeft -= pdfHeight;
-    //     position -= pdfHeight;
-  
-    //     if (heightLeft > 0) {
-    //       pdf.addPage();
-    //     }
-    //   }
-  
-    //   pdf.save('my_resume.pdf');
-    // };
 
   return (
     <>
@@ -143,7 +102,7 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
       <div className="main-wrapper  mx-2 px-2 py-3 my-3 custom-font">
       <div className="avoid-break">
-            <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} setting={setting} profileImage={resumeInfo?.profileImage} />
+            <DevResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} projects={projects} certificates={certificates} setting={setting} profileImage={resumeInfo?.profileImage} />
         </div>
       </div>
     </div>
@@ -172,4 +131,4 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
   )
 }
 
-export default MyResume
+export default MyDeveloperResume
