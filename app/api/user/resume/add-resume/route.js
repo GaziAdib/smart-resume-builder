@@ -30,7 +30,7 @@ export async function POST(req) {
             })
 
             revalidatePath('/user/add-resume')
-            return NextResponse.json({ message: 'My Resume Added Successfully!' }, { status: 201 })
+            return NextResponse.json({ message: 'My Resume Added Successfully!', resumeId: resume.id }, { status: 201 })
             
         } else {
             return NextResponse.json({ message: 'You Must Be a Auth User to Add Resume!' }, { status: 403 })

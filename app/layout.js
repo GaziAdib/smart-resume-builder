@@ -9,13 +9,13 @@ import MyThemeProvider from "./MyThemeProvider";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Navbar from "./components/navbar/Navbar";
 
+
 const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-poppins',
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 });
-
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-gray-50 dark:bg-slate-900">
+        
         <Providers>
           <MyThemeProvider>
             <ThemeSwitch />
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
             </DndProviders>
           </MyThemeProvider>
         </Providers>
+        
       </body>
     </html>
   );

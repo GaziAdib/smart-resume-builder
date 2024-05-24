@@ -17,7 +17,8 @@ const schema = z.object({
 
 
 
-const AddEducationForm = () => {
+const AddEducationForm = ({resumeId}) => {
+
 
   const { register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(schema)

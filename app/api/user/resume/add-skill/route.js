@@ -6,10 +6,12 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function POST(req) {
+export async function POST(req, {params}) {
 
     const session = await getServerSession(authOptions);
 
+    const resumeId = params?.resumeId || '';
+  
     const {  name, proficiency, experience }  =  await req.json();
 
     
@@ -22,6 +24,7 @@ export async function POST(req) {
                     proficiency: proficiency ? proficiency : '',
                     experience: experience ? experience : '',
                     user: {connect: {id: session?.user?.id}},
+                    resume: {connect: {id: resumeId}}
                 }
             })
 

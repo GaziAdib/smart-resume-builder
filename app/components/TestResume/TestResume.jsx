@@ -11,7 +11,7 @@ import CareerObjectiveCard from '../cards/CareerObjectiveCard';
 import HeroSection from '../cards/HeroSection';
 import References from '../listings/References';
 
-const TestResume = ({ currentUserInfo, resumeInfo, educations, experiences, skills, references, setting }) => {
+const TestResume = ({resumeId, currentUserInfo, resumeInfo, educations, experiences, skills, references, setting }) => {
 
 
   const initialSections = [

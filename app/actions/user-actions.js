@@ -24,7 +24,22 @@ export const fetchCurrentUser = async () => {
 }
 
 
-
+export const fetchAllResumes = async () => {
+    const session = await getServerSession(authOptions);
+    try {
+        if(session?.user?.role ==='USER') {
+            const resumes = await prisma.resume.findMany({
+                where: {
+                    userId: session?.user?.id
+                }
+            })
+            return resumes
+        }
+    } catch (error) {
+        console.log('error in fetching Resumes', error);
+    }
+    
+}
 
 export const fetchResume = async () => {
     const session = await getServerSession(authOptions);

@@ -19,7 +19,8 @@ const Navbar = () => {
           </div>
           <div className="hidden mt-2 sm:ml-6 sm:flex sm:space-x-8">
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Home</Link>
-            <Link href="/user/resume" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Resume</Link>
+            <Link href="/user/dashboard" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Dashboard</Link>
+            <Link href="/user/resume/regular" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Regular</Link>
             <Link href="/user/settings" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 px-3 py-2 rounded-md text-sm font-medium">Settings</Link>
           </div>
           <div className="-mr-2 flex sm:hidden">
@@ -45,7 +46,8 @@ const Navbar = () => {
         <div className="sm:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link href="/" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Home</Link>
-            <Link href="/user/resume" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Resume</Link>
+            <Link href="/user/dashboard" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Dashboard</Link>
+            <Link href="/user/resume/regular" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Regular</Link>
             <Link href="/user/settings" className="text-gray-800 dark:text-gray-200 hover:text-gray-600 block px-3 py-2 rounded-md text-base font-medium">Setting</Link>
           </div>
         </div>

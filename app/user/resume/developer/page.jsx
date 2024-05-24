@@ -1,18 +1,19 @@
 import { fetchCurrentUser, fetchEducationalQualifications, fetchMyReferences, fetchResume, fetchSetting, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
 import MyResume from "@/app/components/resume-detail/MyResume";
 
-const MyResumePage = async () => {
+const MyDeveloperrResumePage = async () => {
+
+  const resumeInfo = await fetchResume();
   const educations = await fetchEducationalQualifications();
   const experiences = await fetchWorkExperiences()
-  const resumeInfo = await fetchResume();
   const skills = await fetchSkills();
   const references = await fetchMyReferences();
   const currentUserInfo = await fetchCurrentUser()
   const setting = await fetchSetting();
+
   return (
     <>
-  
-        <MyResume  
+        <MyResume
           currentUserInfo={currentUserInfo}
           resumeInfo={resumeInfo}
           educations={educations}
@@ -20,9 +21,9 @@ const MyResumePage = async () => {
           skills={skills}
           references={references}
           setting={setting}
-          />
+        />
     </>
   )
 }
 
-export default MyResumePage
+export default MyDeveloperrResumePage

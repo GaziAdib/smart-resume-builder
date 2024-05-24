@@ -6,9 +6,11 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function POST(req) {
+export async function POST(req, {params}) {
 
     const session = await getServerSession(authOptions);
+
+    const resumeId = params?.resumeId || '';
 
     const {  subject, institution, degree, GPA, startDate,  endDate }  =  await req.json();
 
@@ -23,6 +25,7 @@ export async function POST(req) {
                     degree: degree ? degree : '',
                     GPA: GPA ? parseFloat(GPA) : null,
                     user: {connect: {id: session?.user?.id}},
+                    resume: {connect: {id: resumeId}},
                     startDate: new Date(startDate).toISOString(),
                     endDate:  new Date(endDate).toISOString(),
                 }
