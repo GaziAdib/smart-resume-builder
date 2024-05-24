@@ -62,7 +62,7 @@ const EducationCard = ({ education }) => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 border-l-2 border-l-gray-200 dark:border-l-gray-600  rounded-md py-2 px-3 mt-2"
+      className="bg-white dark:bg-gray-800 border-l-2 border-l-gray-200 dark:border-l-gray-600  rounded-md py-4 px-3 my-2"
       onDoubleClick={handleDoubleClick}
     >
       <h3 className="text-xl font-semibold">

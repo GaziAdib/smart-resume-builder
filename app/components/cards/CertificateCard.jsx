@@ -10,7 +10,7 @@ const CertificateCard = ({certificate}) => {
               <div className="flex items-center space-x-2">
                 <h2 className="text-xl font-semibold">{certificateTitle?.toUpperCase()} ({certificateFrom})</h2>
                 <a href={certificateLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-400 dark:text-blue-300">
-                  LIVE |
+                  CERTIFICATE |
                 </a>
               </div>
               <p className="text-gray-600 mb-1 dark:text-gray-300">

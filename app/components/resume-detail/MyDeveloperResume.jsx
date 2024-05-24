@@ -45,8 +45,8 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
 
         await Promise.all(promises);
   
-      html2canvas(input, { scrollY: -window.scrollY, useCORS:true }).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
+      html2canvas(input, { scrollY: -window.scrollY, useCORS:true, scale: 2 }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/jpeg', 1.0);
   
         let pdfWidth, pdfHeight;
   
@@ -75,8 +75,10 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
             input.appendChild(div);
           }
   
-          pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-  
+          // pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+
+          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+
           // Add new page if there's remaining content
           if (heightLeft > 0) {
             pdf.addPage();
