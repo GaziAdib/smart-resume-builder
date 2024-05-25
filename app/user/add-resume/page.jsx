@@ -7,6 +7,7 @@ import AddExperienceForm from "@/app/components/user-forms/AddExperienceForm"
 import AddProjectForm from "@/app/components/user-forms/AddProjectForm";
 import AddReferenceForm from "@/app/components/user-forms/AddReferenceForm"
 import AddResumeForm from "@/app/components/user-forms/AddResumeForm"
+import AddRootSkillForm from "@/app/components/user-forms/AddRootSkillForm";
 import AddSkillForm from "@/app/components/user-forms/AddSkillForm"
 import { useState } from "react";
 
@@ -33,7 +34,7 @@ const AddResumePage = () => {
       case 3:
         return <AddExperienceForm nextStep={nextStep} prevStep={prevStep}  />;
       case 4:
-        return <AddSkillForm nextStep={nextStep} prevStep={prevStep} />;
+        return <AddRootSkillForm nextStep={nextStep} prevStep={prevStep} />;
       case 5:
         return <AddReferenceForm nextStep={nextStep} prevStep={prevStep} />;
       case 6:

@@ -93,16 +93,3 @@ const AddSkillForm = () => {
 }
 
 export default AddSkillForm
-
-// model Skill {
-//   id             String    @id @default(auto()) @map("_id") @db.ObjectId
-//   resumeId       String?    @db.ObjectId
-//   resume         Resume?    @relation(fields: [resumeId], references: [id])
-//   userId         String?    @db.ObjectId
-//   user           User?      @relation(fields: [userId], references: [id])
-//   name           String
-//   proficiency    String?   // Can be enum or any other type indicating proficiency level
-//   experience     String?   // Description of relevant experience with the skill
-//   createdAt      DateTime  @default(now())
-//   updatedAt      DateTime  @updatedAt
-// }
