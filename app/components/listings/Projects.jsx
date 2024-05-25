@@ -15,12 +15,13 @@ const Projects = ({ projects, setting }) => {
 <>
 <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} className="container rounded-md py-2 my-2 mx-auto justify-center items-center relative group"></div>
 <div className="container rounded-md py-2 my-2 mx-auto justify-center items-center relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <div className={`bg-blue-300 text-gray-900 my-4 py-2 px-2 shadow-sm border-2 border-l-gray-900`} style={{ backgroundColor: headerBgColor }}>
-        <p className="text-xl font-semibold">My Projects</p>
+      <div className={` text-gray-900 my-4 py-2 px-2  border-l-gray-900`} style={{ backgroundColor: headerBgColor }}>
+        <p className="text-xl font-semibold text-center">My Projects</p>
         {isHovered && (
           <input type="color" value={headerBgColor} onChange={handleColorChange} className="absolute right-4 top-4 cursor-pointer" />
         )}
       </div>
+      <hr className='w-1/2 mx-auto' />
       {setting?.showWorkExperience && (
         <div>
           {projects?.map((project) => (

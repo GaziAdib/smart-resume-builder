@@ -12,22 +12,22 @@ import HeroSection from '../cards/HeroSection';
 import References from '../listings/References';
 import Projects from '../listings/Projects';
 import Certificates from '../listings/Certificates';
+import DevSkills from '../listings/DevSkills';
 
-const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, projects, certificates, setting }) => {
+const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, devSkills, references, projects, certificates, setting }) => {
 
 
   const initialSections = [
     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />, prev: null, next: 'careerObjective' },
     { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} setting={setting} />, prev: 'careerObjective', next: 'skill' },
-    { id: 'skill', title: 'Skill', content: <Skills skills={skills} />, prev: 'experience', next: 'education' },
-    { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
-    { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} resumeId={resumeInfo?.id} />, prev: 'education', next: 'languageProficiencies' },
-    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
-    { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} setting={setting} />, prev: 'languageProficiencies', next: null },
-    { id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />},
     { id: 'project', title: 'Project', content: <Projects projects={projects} setting={setting} />},
-    { id: 'certificate', title: 'Certificate', content: <Certificates certificates={certificates} setting={setting} />}
+    { id: 'devSkill', title: 'Dev Skill', content: <DevSkills devSkills={devSkills} setting={setting} />},
+    { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
+    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
+    { id: 'certificate', title: 'Certificate', content: <Certificates certificates={certificates} setting={setting} />},
+    { id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />},
+   
 
   ];
 

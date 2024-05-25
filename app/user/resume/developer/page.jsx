@@ -1,4 +1,4 @@
-import { fetchCurrentUser, fetchEducationalQualifications, fetchMyCertificates, fetchMyProjects, fetchMyReferences, fetchResume, fetchSetting, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { fetchCurrentUser, fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkills, fetchMyProjects, fetchMyReferences, fetchResume, fetchSetting, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
 import MyDeveloperResume from "@/app/components/resume-detail/MyDeveloperResume";
 
 const MyDeveloperResumePage = async () => {
@@ -10,8 +10,11 @@ const MyDeveloperResumePage = async () => {
   const references = await fetchMyReferences();
   const projects = await fetchMyProjects();
   const certificates = await fetchMyCertificates();
+  const devSkills = await fetchMyDevSkills();
   const currentUserInfo = await fetchCurrentUser()
   const setting = await fetchSetting();
+
+  
 
   return (
     <>
@@ -24,6 +27,7 @@ const MyDeveloperResumePage = async () => {
           references={references}
           projects={projects}
           certificates={certificates}
+          devSkills={devSkills}
           setting={setting}
         />
     </>

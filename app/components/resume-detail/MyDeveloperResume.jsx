@@ -6,7 +6,7 @@ import jsPDF from 'jspdf';
 import DevResume from "../DevResume/DevResume";
 
 
-const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, projects, certificates, setting}) => {
+const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, devSkills, references, projects, certificates, setting}) => {
 
 
   const [selectedFont, setSelectedFont] = useState('');
@@ -104,7 +104,7 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
     <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
       <div className="main-wrapper  mx-2 px-2 py-3 my-3 custom-font">
       <div className="avoid-break">
-            <DevResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} projects={projects} certificates={certificates} setting={setting} profileImage={resumeInfo?.profileImage} />
+            <DevResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} devSkills={devSkills} references={references} projects={projects} certificates={certificates} setting={setting} profileImage={resumeInfo?.profileImage} />
         </div>
       </div>
     </div>
