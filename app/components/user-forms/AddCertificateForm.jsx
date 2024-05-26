@@ -70,77 +70,71 @@ const AddCertificateForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-xl font-semibold mb-6">Add Certificate 🎓</h2>
-      <div className="mb-4">
-        <label htmlFor="certificateTitle" className="block text-gray-700 font-semibold mb-2">Certificate Title *</label>
-        <input type="text" id="certificateTitle" name="certificateTitle" {...register('certificateTitle', {required: true})} placeholder="Certificate Title" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-        {errors?.certificateTitle && <p className="text-red-500">{errors?.certificateTitle.message}</p>}
-      </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto p-6 shadow-md rounded-lg bg-white dark:bg-gray-800">
+  <h2 className="text-xl font-semibold mb-6">Add Certificate 🎓</h2>
+  
+  <div className="mb-4">
+    <label htmlFor="certificateTitle" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Certificate Title *</label>
+    <input type="text" id="certificateTitle" name="certificateTitle" {...register('certificateTitle', {required: true})} placeholder="Certificate Title" className="w-full px-4 py-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500" />
+    {errors?.certificateTitle && <p className="text-red-500">{errors?.certificateTitle.message}</p>}
+  </div>
 
-      <div className="mb-4">
-        <label htmlFor="certificateFrom" className="block text-gray-700 font-semibold mb-2">Certificate From *</label>
-        <input type="text" id="certificateTitle" name="certificateFrom" {...register('certificateFrom', {required: true})} placeholder="Certificate From" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-        {errors?.certificateFrom && <p className="text-red-500">{errors?.certificateFrom.message}</p>}
-      </div>
+  <div className="mb-4">
+    <label htmlFor="certificateFrom" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Certificate From *</label>
+    <input type="text" id="certificateFrom" name="certificateFrom" {...register('certificateFrom', {required: true})} placeholder="Certificate From" className="w-full px-4 py-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500" />
+    {errors?.certificateFrom && <p className="text-red-500">{errors?.certificateFrom.message}</p>}
+  </div>
 
-      <div className="mb-4">
-        <label htmlFor="certificateLink" className="block text-gray-700 font-semibold mb-2">Certificate Link *</label>
-        <input type="text" id="certificateLink" name="certificateLink" {...register('certificateLink', {required: true})} placeholder="Enter Certiticate Link" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-        {errors?.certificateLink && <p className="text-red-500">{errors?.certificateLink.message}</p>}
-      </div>
+  <div className="mb-4">
+    <label htmlFor="certificateLink" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Certificate Link *</label>
+    <input type="text" id="certificateLink" name="certificateLink" {...register('certificateLink', {required: true})} placeholder="Enter Certificate Link" className="w-full px-4 py-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500" />
+    {errors?.certificateLink && <p className="text-red-500">{errors?.certificateLink.message}</p>}
+  </div>
 
-    
-      <div className="mb-4">
-      <label htmlFor="certificateAchievements" className="block text-sm mt-2 p-1 font-medium text-gray-600">
-        Certificate Achievements *
-      </label>
+  <div className="mb-4">
+    <label htmlFor="certificateAchievements" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Certificate Achievements *</label>
+    <Controller
+      name="certificateAchievements"
+      control={control}
+      defaultValue={[]}
+      render={({ field }) => (
+        <div className="my-3 py-2">
+          <ul className="list-disc list-inside">
+            {field?.value?.map((certificateAchievement, index) => (
+              <li key={index} className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-200 mb-1 px-2 py-1 rounded-md">
+                {certificateAchievement}
+              </li>
+            ))}
+          </ul>
+          <TagsInput
+            type="text"
+            {...field}
+            placeholder="Add Certificate Achievements"
+            className="w-full py-2 my-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500"
+          />
+        </div>
+      )}
+    />
+    {errors?.certificateAchievements && <p className="text-red-500">{errors?.certificateAchievements.message}</p>}
+  </div>
 
-        <Controller
-          name="certificateAchievements"
-          control={control}
-          defaultValue={[]}
-          render={({ field }) => (
-            <div className="my-3 py-2">
-              <ul className="list-disc list-inside">
-                {field?.value?.map((certificateAchievement, index) => (
-                  <li key={index} className="bg-gray-200 text-gray-600 mb-1 px-2 py-1 rounded-md">
-                    {certificateAchievement}
-                  </li>
-                ))}
-              </ul>
-              <TagsInput
-                type="text"
-                {...field}
-                placeholder="Add Certificate Achievemnts"
-                className="py-2 my-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
-              />
-            </div>
-          )}
-        />
-        {errors?.certificateAchievements && <p className="text-red-500">{errors?.certificateAchievements.message}</p>}
+  <div className="flex flex-col lg:flex-row md:flex-row justify-between items-center py-2">
+    <div className="mb-4">
+      <label htmlFor="startDate" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Start Date *</label>
+      <input type="date" id="startDate" name="startDate" {...register('startDate', {required: true})} placeholder="August 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500" />
+      {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
     </div>
 
-    <div className="flex flex-col lg:flex-row md:flex-row justify-between items-center py-2">
-        <div className="mb-4">
-            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2">Start Date*</label>
-            <input type="date" id="startDate" name="startDate" {...register('startDate', {required: true})} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-            {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
-        </div>
+    <div className="mb-4">
+      <label htmlFor="endDate" className="block text-gray-500 dark:text-gray-300 font-semibold mb-2">End Date (optional)</label>
+      <input type="date" id="endDate" name="endDate" {...register('endDate')} placeholder="August 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:border-blue-500" />
+    </div>
+  </div>
 
-        <div className="mb-4">
-            <label htmlFor="endDate" className="block text-gray-500 font-semibold mb-2">End Date (optional)</label>
-            <input type="date" id="endDate" name="endDate" {...register('endDate')} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-        </div>
-    </div>    
-
-     
-    
-
-      <div className="mb-4">
-        <Button label="Add Certificate" color="white" bgColor="black" />
-      </div>
-    </form>
+  <div className="mb-4">
+    <Button label="Add Certificate" color="white" bgColor="black" />
+  </div>
+</form>
   )
 }
 
