@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function POST(req,{params}) {
+export async function POST(req) {
 
     const session = await getServerSession(authOptions);
   
@@ -27,8 +27,9 @@ export async function POST(req,{params}) {
                     endDate: endDate ? new Date(endDate).toISOString() : ''
                 }
             })
-
-            revalidatePath('/user/add-resume')
+            revalidatePath('/user/manage-resume');
+            
+            //revalidatePath('/user/add-resume');
             return NextResponse.json({ message: 'Work Experience Added Successfully!' }, { status: 201 })
             
         } else {

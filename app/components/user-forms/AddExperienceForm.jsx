@@ -7,28 +7,33 @@ import 'react-tagsinput/react-tagsinput.css';
 import { toast } from "react-toastify";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod';
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   jobTitle: z.string().trim().min(5, {message: 'Please enter for Job Title with atleast 5 characters'}),
   companyName: z.string().trim().min(3, {message: 'Please enter for Institute Name with atleast 3 characters'}),
-  startDate: z.string().trim().min(3, {message: 'Please enter Date'})
+  jobResposibilities: z.array(z.string()).nonempty('Please Enter atleast 1 Job Resposibilities'),
+  startDate: z.string().trim().min(3, {message: 'Please enter Date'}),
+  endDate: z.string().trim().min(3, {message: 'Please enter Date'}),
 });
 
 
-const AddExperienceForm = ({resumeId}) => {
+const AddExperienceForm = () => {
+
+  const router = useRouter();
 
   const { register, handleSubmit, reset, formState: {errors}, control} = useForm({
     resolver: zodResolver(schema)
   });
   
   const onSubmit = async (data) => {
-    console.log(data);
     try {
-          const res = await fetch('/api/user/resume/add-experience', {
+          const res = await fetch('/api/user/resume/add-experience',  {
               method: 'POST',
               headers: {
                   "Content-Type": "application/json"
               },
+              cache: 'no-store',
               body: JSON.stringify(data)
           })
 
@@ -48,7 +53,7 @@ const AddExperienceForm = ({resumeId}) => {
                   theme: "light",
               });
               reset();
-              //router.push('/user/add-resume')
+              router.refresh();
           }
       
     } catch (error) {
@@ -58,7 +63,7 @@ const AddExperienceForm = ({resumeId}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-xl font-semibold mb-6">Add Work Experience</h2>
       <div className="mb-4">
         <label htmlFor="jobTitle" className="block text-gray-700 font-semibold mb-2">Job Title*</label>
@@ -99,6 +104,8 @@ const AddExperienceForm = ({resumeId}) => {
             </div>
           )}
         />
+
+  {errors?.jobResposibilities && <p className="text-red-500">{errors?.jobResposibilities.message}</p>}
     </div>
 
 
@@ -117,18 +124,18 @@ const AddExperienceForm = ({resumeId}) => {
             />
       </div>  
       
-    <div className="flex flex-col lg:flex-row md:flex-row justify-between items-center py-2">
-        <div className="mb-4">
-            <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2">Start Date*</label>
-            <input type="date" id="startDate" name="startDate" {...register('startDate', {required: true})} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-            {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
-        </div>
+      <div className="flex flex-col lg:flex-row md:flex-row justify-between items-center py-2">
+          <div className="mb-4">
+              <label htmlFor="startDate" className="block text-gray-700 font-semibold mb-2">Start Date*</label>
+              <input type="date" id="startDate" name="startDate" {...register('startDate', {required: true})} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+              {errors?.startDate && <p className="text-red-500">{errors?.startDate.message}</p>}
+          </div>
 
-        <div className="mb-4">
-            <label htmlFor="endDate" className="block text-gray-500 font-semibold mb-2">End Date (optional)</label>
-            <input type="date" id="endDate" name="endDate" {...register('endDate')} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
-        </div>
-    </div>    
+          <div className="mb-4">
+              <label htmlFor="endDate" className="block text-gray-500 font-semibold mb-2">End Date (optional)</label>
+              <input type="date" id="endDate" name="endDate" {...register('endDate')} placeholder="august 5, 2023" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+          </div>
+      </div>    
     
       {/* Add more input fields for other fields in the schema */}
       <div className="mb-4">

@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod';
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css';
+import { useRouter } from "next/navigation";
 
 const isValidURL = (value) => {
     return value.startsWith('https://');
@@ -28,6 +29,9 @@ const schema = z.object({
 
 
 const AddCertificateForm = () => {
+
+
+  const router = useRouter();
 
   const { register, handleSubmit, reset, control, formState: {errors}} = useForm({
     resolver: zodResolver(schema)
@@ -59,7 +63,7 @@ const AddCertificateForm = () => {
                   theme: "light",
               });
               reset();
-              router.push('/user/add-resume')
+              router.refresh();
           }
       
     } catch (error) {
