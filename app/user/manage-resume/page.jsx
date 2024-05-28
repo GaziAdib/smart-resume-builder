@@ -2,6 +2,7 @@ import { fetchEducationalQualifications, fetchMyCertificates, fetchMyProjects, f
 import CertificateManageTable from "@/app/components/tables/CertificateManageTable";
 import EducationManageTable from "@/app/components/tables/EducationManageTable";
 import ProjectManageTable from "@/app/components/tables/ProjectManageTable";
+import ReferenceManageTable from "@/app/components/tables/ReferenceManageTable";
 import WorkExperienceManageTable from "@/app/components/tables/WorkExperienceManageTable";
 
 const ManageResumeContent = async () => {
@@ -37,6 +38,10 @@ const skills = await fetchSkills();
 
         <div className="container mx-auto py-4 my-4">
             {educations?.length > 0 && <EducationManageTable educations={educations}   />} 
+        </div>
+
+        <div className="container mx-auto py-4 my-4">
+            {references?.length > 0 && <ReferenceManageTable references={references}   />} 
         </div>
 
     </div>

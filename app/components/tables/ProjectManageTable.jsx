@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import AddCertificateModal from "../modals/AddCertificateModal";
 import { useState } from "react";
+import AddProjectModal from "../modals/AddProjectModal";
 
 const ProjectManageTable = ({ projects }) => {
 
@@ -106,7 +107,7 @@ const ProjectManageTable = ({ projects }) => {
   </tbody>
 </table>
 
-    <AddCertificateModal isOpen={isModalOpen} onClose={closeModal} />
+    <AddProjectModal isOpen={isModalOpen} onClose={closeModal} />
   </div>
 
   )
