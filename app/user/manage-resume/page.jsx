@@ -1,4 +1,4 @@
-import { fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkill, fetchMyProjects, fetchMyReferences, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkills, fetchMyProjects, fetchMyReferences, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
 import CertificateManageTable from "@/app/components/tables/CertificateManageTable";
 import DevSkillManageTable from "@/app/components/tables/DevSkillManageTable";
 import EducationManageTable from "@/app/components/tables/EducationManageTable";
@@ -20,7 +20,7 @@ const educations = await fetchEducationalQualifications();
 const references = await fetchMyReferences();
 
 // single dev skill only
-const devSkill = await fetchMyDevSkill()
+const devSkills = await fetchMyDevSkills()
 
 // skills 
 
@@ -52,7 +52,7 @@ const skills = await fetchSkills();
         </div>
 
         <div className="container mx-auto py-4 my-4">
-            {devSkill && <DevSkillManageTable devSkill={devSkill}   />} 
+            {devSkills.length > 0 && <DevSkillManageTable devSkills={devSkills}   />} 
         </div>
 
         <div className="container mx-auto py-4 my-4">

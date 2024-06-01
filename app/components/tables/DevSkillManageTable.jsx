@@ -4,7 +4,9 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import AddDevSkillModal from "../modals/AddDevSkillModal";
 
-const DevSkillManageTable = ({ devSkill }) => {
+const DevSkillManageTable = ({ devSkills }) => {
+
+    const devSkill = devSkills[0];
 
     const router = useRouter();
 

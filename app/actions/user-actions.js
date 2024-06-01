@@ -162,16 +162,16 @@ export const fetchMyCertificates = async () => {
     
 }
 
-export const fetchMyDevSkill = async () => {
+export const fetchMyDevSkills = async () => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role === 'USER') {
-            const devSkill = await prisma.developerSkill.findFirst({
+            const devSkills = await prisma.developerSkill.findMany({
                 where: {
                     userId: session?.user?.id
                 }
             })
-            return devSkill
+            return devSkills
         }
     } catch (error) {
         console.log('error in fetching dev skills', error);

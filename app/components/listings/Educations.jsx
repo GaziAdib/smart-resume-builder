@@ -4,8 +4,20 @@ import { FiGrid, FiList, FiArrowUp, FiArrowDown } from 'react-icons/fi';
 import { useEffect, useState } from "react";
 import EducationCard from "../cards/EducationCard";
 import EducationTable from "../tables/EducationTable";
+import { usePathname } from 'next/navigation';
+
 
 const Educations = ({ educations, setting }) => {
+
+  
+  // get path name developer as for developer the view might be little different
+
+  let fullpath = usePathname();
+
+  fullpath = fullpath.split('/')[3];
+
+
+
   const [view, setView] = useState('card');
   const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
   const [isHovered, setIsHovered] = useState(false);
@@ -54,7 +66,8 @@ const Educations = ({ educations, setting }) => {
           className={`bg-blue-300 text-gray-900 my-4 py-2 px-2 shadow-sm border-2 border-l-gray-900 group-hover:flex justify-between`}
           style={{ backgroundColor: headerBgColor }}
         >
-          <p className="text-xl font-semibold">Educational Qualifications</p>
+          <p className={`text-xl font-semibold ${fullpath === 'developer' ? 'text-center' : ''}`}>Educational Qualifications</p>
+          
           <div className="absolute right-0 top-0 mt-2 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center">
             <input
               type="color"
@@ -79,7 +92,11 @@ const Educations = ({ educations, setting }) => {
               <FiArrowDown className="inline-block mr-1" /> Desc
             </button>
           </div>
+
+          
         </div>
+        <hr className='w-1/2 mx-auto' />
+
         {view === 'card' ? (
           sortedEducations.map((education) => (
             <EducationCard key={education.id} education={education} />

@@ -19,7 +19,7 @@ const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, devSki
 
   const initialSections = [
     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />, prev: null, next: 'careerObjective' },
-    { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
+    { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard resumeId={resumeInfo?.id} careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} setting={setting} />, prev: 'careerObjective', next: 'skill' },
     { id: 'project', title: 'Project', content: <Projects projects={projects} setting={setting} />},
     { id: 'devSkill', title: 'Dev Skill', content: <DevSkills devSkills={devSkills} setting={setting} />},

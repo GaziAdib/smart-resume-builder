@@ -18,7 +18,8 @@ const MyDeveloperResumePage = async () => {
 
   return (
     <>
-        <MyDeveloperResume
+      
+      <MyDeveloperResume
           currentUserInfo={currentUserInfo}
           resumeInfo={resumeInfo}
           educations={educations}
@@ -30,6 +31,7 @@ const MyDeveloperResumePage = async () => {
           devSkills={devSkills}
           setting={setting}
         />
+
     </>
   )
 }

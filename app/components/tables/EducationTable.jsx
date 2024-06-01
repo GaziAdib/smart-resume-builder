@@ -2,7 +2,7 @@ import moment from "moment";
 
 const EducationTable = ({ educations }) => {
     return (
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto mt-3">
         <table className="w-full bg-white dark:bg-gray-800  border-collapse border rounded-lg">
           <thead className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 text-gray-800">
             <tr>

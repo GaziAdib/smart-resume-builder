@@ -20,7 +20,7 @@ const handleColorChange = (event) => {
             <input type="color" value={headerBgColor} onChange={handleColorChange} className="absolute right-4 top-4 cursor-pointer" />
           )}
       </div>
-        <hr className='w-1/2 mx-auto' />
+      <hr className='w-1/2 mx-auto' />
 
   {/* Programming Languages */}
   <div className="mb-4 mt-4">

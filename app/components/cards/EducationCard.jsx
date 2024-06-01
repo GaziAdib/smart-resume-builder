@@ -62,7 +62,7 @@ const EducationCard = ({ education }) => {
 
   return (
     <div
-      className="bg-white dark:bg-gray-800 border-l-2 border-l-gray-200 dark:border-l-gray-600  rounded-md py-4 px-3 my-2"
+      className="bg-white dark:bg-gray-800 border-l-2 mt-3 border-l-gray-200 dark:border-l-gray-600  rounded-md py-4 px-3 my-2"
       onDoubleClick={handleDoubleClick}
     >
       <h3 className="text-xl font-semibold">
@@ -78,7 +78,7 @@ const EducationCard = ({ education }) => {
             onKeyDown={handleKeyDown}
           />
         ) : (
-          <h3 className="text-lg text-gray-800 dark:text-gray-300">{editedEducation.subject?.toUpperCase()}</h3>
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{editedEducation.subject?.toUpperCase()}</h3>
         )}
       </h3>
       <p className="text-gray-600">
