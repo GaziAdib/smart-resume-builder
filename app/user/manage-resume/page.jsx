@@ -1,8 +1,10 @@
-import { fetchEducationalQualifications, fetchMyCertificates, fetchMyProjects, fetchMyReferences, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkill, fetchMyProjects, fetchMyReferences, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
 import CertificateManageTable from "@/app/components/tables/CertificateManageTable";
+import DevSkillManageTable from "@/app/components/tables/DevSkillManageTable";
 import EducationManageTable from "@/app/components/tables/EducationManageTable";
 import ProjectManageTable from "@/app/components/tables/ProjectManageTable";
 import ReferenceManageTable from "@/app/components/tables/ReferenceManageTable";
+import SkillsManageTable from "@/app/components/tables/SkillsManageTable";
 import WorkExperienceManageTable from "@/app/components/tables/WorkExperienceManageTable";
 
 const ManageResumeContent = async () => {
@@ -16,6 +18,11 @@ const experiences = await fetchWorkExperiences();
 const educations = await fetchEducationalQualifications();
 
 const references = await fetchMyReferences();
+
+// single dev skill only
+const devSkill = await fetchMyDevSkill()
+
+// skills 
 
 const skills = await fetchSkills();
 
@@ -42,6 +49,14 @@ const skills = await fetchSkills();
 
         <div className="container mx-auto py-4 my-4">
             {references?.length > 0 && <ReferenceManageTable references={references}   />} 
+        </div>
+
+        <div className="container mx-auto py-4 my-4">
+            {devSkill && <DevSkillManageTable devSkill={devSkill}   />} 
+        </div>
+
+        <div className="container mx-auto py-4 my-4">
+            {skills?.length > 0 && <SkillsManageTable skills={skills}   />} 
         </div>
 
     </div>

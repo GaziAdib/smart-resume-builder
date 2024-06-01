@@ -2,6 +2,7 @@
 
 import Button from '@/app/ui/Button';
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { z } from 'zod';
@@ -14,6 +15,8 @@ const schema = z.object({
 
 
 const AddSkillForm = () => {
+
+  const router = useRouter();
 
   const { register, handleSubmit, reset, formState: {errors}} = useForm({
     resolver: zodResolver(schema)
@@ -34,6 +37,7 @@ const AddSkillForm = () => {
           }
 
           if (res.ok) {
+            router.refresh();
               toast.success('New Skills added!', {
                   position: "top-right",
                   autoClose: 3000,
@@ -69,9 +73,9 @@ const AddSkillForm = () => {
     <div className="mb-4">
       <label htmlFor="proficiency" className="block text-gray-700 font-semibold mb-2">Proficiency*</label>
       <select id="proficiency" name="proficiency" {...register('proficiency')} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
-        <option value="Expert">Expert</option>
-        <option value="Intermediate">Intermediate</option>
         <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Expert">Expert</option>
       </select>
       {errors?.proficiency && <p className="text-red-500">{errors?.proficiency.message}</p>}
     </div>
