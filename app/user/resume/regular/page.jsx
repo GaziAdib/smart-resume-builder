@@ -1,5 +1,8 @@
 import { fetchCurrentUser, fetchEducationalQualifications, fetchMyReferences, fetchResume, fetchSetting, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import MyResume from "@/app/components/resume-detail/MyResume";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 const MyRegularResumePage = async () => {
 
@@ -10,6 +13,16 @@ const MyRegularResumePage = async () => {
   const references = await fetchMyReferences();
   const currentUserInfo = await fetchCurrentUser()
   const setting = await fetchSetting();
+
+  const session = await getServerSession(authOptions);
+
+  if(!session) {
+    return redirect('/auth/login');
+  }
+
+  if (session?.user?.role !== 'USER') {
+    return;
+  }
 
   return (
     <>

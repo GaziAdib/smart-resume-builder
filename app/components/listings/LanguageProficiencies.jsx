@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { FiGrid, FiList } from 'react-icons/fi'; // Importing icons from React Icons
+import { toast } from 'react-toastify';
 
 const LanguageProficiencies = ({ languageProficiencies, resumeId }) => {
   const [view, setView] = useState('card');
@@ -29,6 +30,22 @@ const LanguageProficiencies = ({ languageProficiencies, resumeId }) => {
 
  const handleUpdateLanguageProficies = async (index) => {
 
+  
+  if (editableValue === '') {
+    toast.error('You Must Add Some Data To Update!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+  });
+    setEditableIndex(null);
+    setEditableValue("");
+    return;
+}
 
   try {
     const updatedProficiencies = [...languageProficiencies];
@@ -56,10 +73,12 @@ const LanguageProficiencies = ({ languageProficiencies, resumeId }) => {
   }
  };
 
-  const handleKeyPress = (event, index) => {
+
+
+  const handleKeyPress = async (event, index) => {
     if (event.key === 'Enter') {
       event.preventDefault();  // Prevents new line creation on Enter
-      handleUpdateLanguageProficies(index);
+     await handleUpdateLanguageProficies(index);
     }
   };
 

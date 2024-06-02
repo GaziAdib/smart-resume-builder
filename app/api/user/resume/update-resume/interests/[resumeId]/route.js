@@ -8,57 +8,48 @@ const prisma = new PrismaClient();
 
 export async function PUT(req, {params}) {
 
-    const resumeId = params?.resumeId|| '';
 
-    const session = await getServerSession(authOptions);
+  const resumeId = params?.resumeId || '';
 
-    const {  newInterestName, oldInterestName }  =  await req.json();
-   
+  const session = await getServerSession(authOptions);
 
-    try {
-        if (session?.user?.role === 'USER') {
+  if (!session || session.user.role !== 'USER') {
+    return NextResponse.json({ message: 'You must be an authenticated user to update Interests!' }, { status: 403 });
+  }
 
-           // Retrieve the resume from the database
-                const resume = await prisma.resume.findUnique({
-                where: {
-                    id: resumeId,
-                },
-                });
+  const { interests } = await req.json();
 
-            if (!resume) {
-                return res.status(404).json({ message: 'Resume not found' });
-                }
-            
-           // Update the interest in the interests array
+  try {
+    // Retrieve resume info
+    const resume = await prisma.resume.findFirst({
+      where: {
+        id: resumeId,
+        userId: session?.user?.id
+      },
+    });
 
-
-
-           const updatedInterests = resume?.interests?.map(interest => {
-            return interest === oldInterestName ? newInterestName : interest;
-          });
-      
-          // Update the resume with the new interests array
-          const updatedResume = await prisma.resume.update({
-            where: {
-              id: resumeId,
-            },
-            data: {
-              interests: updatedInterests,
-            },
-          });
-
-            revalidatePath('/user/resume')
-      
-            return NextResponse.json({ message: 'Interests Updated Successfully!' }, { status: 201 })
-            
-        } else {
-            return NextResponse.json({ message: 'You Must Be an Auth User to Update Interests!' }, { status: 403 })
-        }
-
-    } catch (error) {
-        console.log(error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    if (!resume) {
+      return NextResponse.json({ message: 'Resume not found' }, { status: 404 });
     }
+
+    // Update the data
+    const updatedResume = await prisma.resume.update({
+      where: {
+        id: resumeId
+      },
+      data: {
+        interests: interests
+      },
+    });
+
+    // Revalidate the path 
+    revalidatePath('/user/resume/regular');
+
+    return NextResponse.json({ message: 'Interests Updated Successfully!', interests: updatedResume.interests }, { status: 200 });
+  } catch (error) {
+    console.error('Error updating language proficiency:', error);
+    return NextResponse.json({ error: 'Failed to update Interests' }, { status: 500 });
+  }
 
 }
 

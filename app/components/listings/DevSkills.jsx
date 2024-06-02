@@ -2,7 +2,13 @@ import { useState } from "react";
 
 const DevSkills = ({devSkills, setting}) => {
 
-const { programmingLanguages, frameworks, tools, platforms, softSkills } = devSkills[0];
+  const {
+    programmingLanguages = [],
+    frameworks = [],
+    tools = [],
+    platforms = [],
+    softSkills = [],
+  } = devSkills && devSkills.length > 0 ? devSkills[0] : {};
 
 const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
 const [isHovered, setIsHovered] = useState(false);

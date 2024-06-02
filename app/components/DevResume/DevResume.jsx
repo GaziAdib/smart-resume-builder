@@ -21,7 +21,7 @@ const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, devSki
     { id: 'project', title: 'Project', content: <Projects projects={projects} setting={setting} />},
     { id: 'devSkill', title: 'Dev Skill', content: <DevSkills devSkills={devSkills} setting={setting} />},
     { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
-    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies resumeId={resumeInfo.id} languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
+    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies resumeId={resumeInfo?.id} languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'certificate', title: 'Certificate', content: <Certificates certificates={certificates} setting={setting} />},
     { id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />},
    

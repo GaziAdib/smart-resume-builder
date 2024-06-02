@@ -1,21 +1,15 @@
 "use client";
-
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FiGrid, FiList } from 'react-icons/fi'; // Importing icons from React Icons
-import { toast } from 'react-toastify'; // Import toast for notifications
+import { toast } from 'react-toastify';
 
 const Interests = ({ interests, resumeId }) => {
-
-  const router = useRouter();
-
-
   const [view, setView] = useState('card');
   const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
   const [isHovered, setIsHovered] = useState(false);
-  const [editedInterestIndex, setEditedInterestIndex] = useState(null); // Track the index of the interest being edited
-  const [editedOldInterestName, setEditedOldInterestName] = useState('');
-  const [editedNewInterestName, setEditedNewInterestName] = useState('');
+  const [editableIndex, setEditableIndex] = useState(null);
+  const [editableValue, setEditableValue] = useState("");
+  let   [myInterests, setMyInterests] = useState(interests);
 
   const toggleView = () => {
     setView(prevView => (prevView === 'card' ? 'list' : 'card'));
@@ -25,123 +19,104 @@ const Interests = ({ interests, resumeId }) => {
     setHeaderBgColor(event.target.value);
   };
 
-  const handleInterestClick = (index, interest) => {
-    setEditedInterestIndex(index);
-    setEditedOldInterestName(interest);
+  const handleDoubleClick = (index, value) => {
+    setEditableIndex(index);
+    setEditableValue(value);
   };
 
-  const handleInterestChange = (event) => {
-    setEditedNewInterestName(event.target.value);
+  const handleInputChange = (event) => {
+    setEditableValue(event.target.value);
   };
 
-  const handleInterestEdit = async (index) => {
-   
-    const updatedInterests = [...interests];
-    updatedInterests[index] = editedNewInterestName;
-    // Reset the edited interest state
-    //setEditedInterestIndex(null);
-    //setEditedInterestName('');
+ const handleUpdateInterests = async (index) => {
 
-    try {
-      const res = await fetch(`/api/user/resume/update-resume/interests/${resumeId}`, {
-          method: 'PUT',
-          headers: {
-              "Content-Type": "application/json"
-          },
-          cache: 'no-cache',
-          body: JSON.stringify({newInterestName: editedNewInterestName, oldInterestName: editedOldInterestName})
-      })
-
-      if (!res.ok) {
-          console.log('There is some problem in getting response');
-      }
-
-      if (res.ok) {
-          toast.success('Interests updated!', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-          });
-
-          setTimeout(() => {
-            window.location.reload();
-          }, 500);
-
-          // Reset the edited interest state
-      setEditedInterestIndex(null);
-      setEditedOldInterestName('');
-      setEditedNewInterestName('');
+  if (editableValue === '') {
+        toast.error('You Must Add Some Data To Update!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+      });
+      setEditableIndex(null);
+      setEditableValue("");
+      return;
       
-    }
-  
-    } catch (error) {
-        console.log('error Updating Interests', error)
+  }
+
+  try {
+    const updatedInterests = [...interests];
+    updatedInterests[index] = editableValue;
+
+    const response = await fetch(`/api/user/resume/update-resume/interests/${resumeId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ interests: updatedInterests }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update Interests');
     }
 
+    const res = await response.json();
    
-  };
+    setMyInterests(res.interests);
+    setEditableIndex(null);
 
+  } catch (error) {
+    console.error('Failed to update interests:', error);
+  }
+ };
 
   const handleKeyPress = async (event, index) => {
     if (event.key === 'Enter') {
-      await handleInterestEdit(index);
+      event.preventDefault();  // Prevents new line creation on Enter
+     await handleUpdateInterests(index);
     }
   };
 
-  return (
-    
-<>
-    <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
-    <div className="container rounded-md my-4 mx-auto bg-white dark:bg-gray-900">
-    <div className={`bg-blue-300 text-gray-900 py-2 px-4 border-b border-l-gray-900 flex justify-between items-center`} style={{ backgroundColor: headerBgColor }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-      <p className="text-lg font-semibold">My Interests</p>
-      <div className={isHovered ? 'block' : 'hidden'}>
-        <input type="color" value={headerBgColor} onChange={handleColorChange} className="px-2 py-1 cursor-pointer bg-blue-500 text-white rounded-md mr-2" />
-        <button onClick={toggleView} className="px-2 py-1 bg-blue-500 text-white rounded-md">
-          {view === 'card' ? <FiList /> : <FiGrid />}
-        </button>
-      </div>
-    </div>
 
-    <div className="p-4">
-      {view === 'card' ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {interests?.map((interest, index) => (
-            <div key={index} className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center" onDoubleClick={() => handleInterestClick(index, interest)}>
-              {editedInterestIndex === index ? (
-                <input
-                  type="text"
-                  defaultValue={editedOldInterestName}
-                  onChange={handleInterestChange}
-                  onKeyPress={(event) => handleKeyPress(event, index)}
-                  onBlur={() => handleInterestEdit(index)}
-                  className="text-gray-600 dark:text-gray-200 dark:bg-gray-800 font-semibold outline-none"
-                  autoFocus
-                />
-              ) : (
-                <p className="text-gray-700 font-semibold dark:text-gray-200">{interest}</p>
-              )}
-            </div>
-          ))}
+  return (
+    <div
+      style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }}
+      className="container rounded-md py-2 my-2 mx-auto justify-center items-center"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className={`bg-blue-300 text-gray-900 my-4 py-2 px-2 shadow-sm border-2 border-l-gray-900 flex justify-between items-center`}
+        style={{ backgroundColor: headerBgColor }}
+      >
+        <p className="text-xl font-semibold">My Interests</p>
+        <div className={isHovered ? 'block' : 'hidden'}>
+          <input
+            type="color"
+            value={headerBgColor}
+            onChange={handleColorChange}
+            className="cursor-pointer mr-2 px-2 py-1 bg-blue-500 text-white rounded-md"
+          />
+          <button onClick={toggleView} className="px-2 py-1 bg-blue-500 text-white rounded-md">
+            {view === 'card' ? <FiList /> : <FiGrid />}
+          </button>
         </div>
-      ) : (
-        <ul className="list-disc ml-4">
-          {interests?.map((interest, index) => (
-            <li key={index} className="text-gray-600 py-2 dark:text-gray-200" onDoubleClick={() => handleInterestClick(index, interest)}>
-              {editedInterestIndex === index ? (
+      </div>
+
+      {view === 'card' ? (
+        <ul className="list-disc ml-8">
+          {myInterests?.map((interest, index) => (
+            <li key={index} className="text-gray-600 dark:text-gray-200 py-0.5" onDoubleClick={() => handleDoubleClick(index, interest)}>
+              {editableIndex === index ? (
                 <input
                   type="text"
-                  defaultValue={editedOldInterestName}
-                  onChange={handleInterestChange}
-                  onKeyPress={(event) => handleKeyPress(event, index)}
-                  onBlur={() => handleInterestEdit(index)}
-                  className="text-gray-700 font-semibold outline-none"
-                  autoFocus
+                  value={editableValue}
+                  onChange={handleInputChange}
+                  onKeyDown={(event) => handleKeyPress(event,index)}
+                  className="border rounded px-2 py-1"
                 />
               ) : (
                 interest
@@ -149,15 +124,197 @@ const Interests = ({ interests, resumeId }) => {
             </li>
           ))}
         </ul>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {myInterests?.map((interest, index) => (
+            <div
+              key={index}
+              className="rounded-lg bg-gray-100 dark:bg-gray-800 p-4 text-center"
+              onDoubleClick={() => handleDoubleClick(index, interest)}
+            >
+              {editableIndex === index ? (
+                <input
+                  type="text"
+                  value={editableValue}
+                  onChange={handleInputChange}
+                  onKeyDown={(event) => handleKeyPress(event, index)}
+                  className="border rounded px-2 py-1"
+                />
+              ) : (
+                <p className="text-gray-700 font-semibold dark:text-gray-200">{interest}</p>
+              )}
+            </div>
+          ))}
+        </div>
       )}
     </div>
-  </div>
-    </>
-   
   );
 };
 
 export default Interests;
+
+
+// "use client";
+
+// import { useRouter } from 'next/navigation';
+// import { useState } from 'react';
+// import { FiGrid, FiList } from 'react-icons/fi'; // Importing icons from React Icons
+// import { toast } from 'react-toastify'; // Import toast for notifications
+
+// const Interests = ({ interests, resumeId }) => {
+
+//   const router = useRouter();
+
+
+//   const [view, setView] = useState('card');
+//   const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+//   const [isHovered, setIsHovered] = useState(false);
+//   const [editedInterestIndex, setEditedInterestIndex] = useState(null); // Track the index of the interest being edited
+//   const [editedOldInterestName, setEditedOldInterestName] = useState('');
+//   const [editedNewInterestName, setEditedNewInterestName] = useState('');
+
+//   const toggleView = () => {
+//     setView(prevView => (prevView === 'card' ? 'list' : 'card'));
+//   };
+
+//   const handleColorChange = (event) => {
+//     setHeaderBgColor(event.target.value);
+//   };
+
+//   const handleInterestClick = (index, interest) => {
+//     setEditedInterestIndex(index);
+//     setEditedOldInterestName(interest);
+//   };
+
+//   const handleInterestChange = (event) => {
+//     setEditedNewInterestName(event.target.value);
+//   };
+
+//   const handleInterestEdit = async (index) => {
+   
+//     const updatedInterests = [...interests];
+//     updatedInterests[index] = editedNewInterestName;
+//     // Reset the edited interest state
+//     //setEditedInterestIndex(null);
+//     //setEditedInterestName('');
+
+//     try {
+//       const res = await fetch(`/api/user/resume/update-resume/interests/${resumeId}`, {
+//           method: 'PUT',
+//           headers: {
+//               "Content-Type": "application/json"
+//           },
+//           cache: 'no-cache',
+//           body: JSON.stringify({newInterestName: editedNewInterestName, oldInterestName: editedOldInterestName})
+//       })
+
+//       if (!res.ok) {
+//           console.log('There is some problem in getting response');
+//       }
+
+//       if (res.ok) {
+//           toast.success('Interests updated!', {
+//               position: "top-right",
+//               autoClose: 3000,
+//               hideProgressBar: false,
+//               closeOnClick: true,
+//               pauseOnHover: true,
+//               draggable: true,
+//               progress: undefined,
+//               theme: "light",
+//           });
+
+//           setTimeout(() => {
+//             window.location.reload();
+//           }, 500);
+
+//           // Reset the edited interest state
+//       setEditedInterestIndex(null);
+//       setEditedOldInterestName('');
+//       setEditedNewInterestName('');
+      
+//     }
+  
+//     } catch (error) {
+//         console.log('error Updating Interests', error)
+//     }
+
+   
+//   };
+
+
+
+//   const handleKeyPress = async (event, index) => {
+//     if (event.key === 'Enter') {
+//       await handleInterestEdit(index);
+//     }
+//   };
+
+//   return (
+    
+// <>
+//     <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
+//     <div className="container rounded-md my-4 mx-auto bg-white dark:bg-gray-900">
+//     <div className={`bg-blue-300 text-gray-900 py-2 px-4 border-b border-l-gray-900 flex justify-between items-center`} style={{ backgroundColor: headerBgColor }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+//       <p className="text-lg font-semibold">My Interests</p>
+//       <div className={isHovered ? 'block' : 'hidden'}>
+//         <input type="color" value={headerBgColor} onChange={handleColorChange} className="px-2 py-1 cursor-pointer bg-blue-500 text-white rounded-md mr-2" />
+//         <button onClick={toggleView} className="px-2 py-1 bg-blue-500 text-white rounded-md">
+//           {view === 'card' ? <FiList /> : <FiGrid />}
+//         </button>
+//       </div>
+//     </div>
+
+//     <div className="p-4">
+//       {view === 'card' ? (
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+//           {interests?.map((interest, index) => (
+//             <div key={index} className="rounded-lg bg-gray-50 dark:bg-gray-800 p-4 text-center" onDoubleClick={() => handleInterestClick(index, interest)}>
+//               {editedInterestIndex === index ? (
+//                 <input
+//                   type="text"
+//                   defaultValue={editedOldInterestName}
+//                   onChange={handleInterestChange}
+//                   onKeyPress={(event) => handleKeyPress(event, index)}
+//                   onBlur={() => handleInterestEdit(index)}
+//                   className="text-gray-600 dark:text-gray-200 dark:bg-gray-800 font-semibold outline-none"
+//                   autoFocus
+//                 />
+//               ) : (
+//                 <p className="text-gray-700 font-semibold dark:text-gray-200">{interest}</p>
+//               )}
+//             </div>
+//           ))}
+//         </div>
+//       ) : (
+//         <ul className="list-disc ml-4">
+//           {interests?.map((interest, index) => (
+//             <li key={index} className="text-gray-600 py-2 dark:text-gray-200" onDoubleClick={() => handleInterestClick(index, interest)}>
+//               {editedInterestIndex === index ? (
+//                 <input
+//                   type="text"
+//                   defaultValue={editedOldInterestName}
+//                   onChange={handleInterestChange}
+//                   onKeyPress={(event) => handleKeyPress(event, index)}
+//                   onBlur={() => handleInterestEdit(index)}
+//                   className="text-gray-700 font-semibold outline-none"
+//                   autoFocus
+//                 />
+//               ) : (
+//                 interest
+//               )}
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   </div>
+//     </>
+   
+//   );
+// };
+
+// export default Interests;
 
 
 // "use client";

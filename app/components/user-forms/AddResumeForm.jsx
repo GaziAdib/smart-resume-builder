@@ -63,7 +63,6 @@ const AddResumeForm = () => {
           if (res.ok) {
               let rawData = await res.json();
 
-              console.log('raw data', rawData)
               setResumeId(rawData.resumeId);
               toast.success('New Resume Added succesfully', {
                   position: "top-right",

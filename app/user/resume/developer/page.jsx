@@ -1,5 +1,8 @@
 import { fetchCurrentUser, fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkills, fetchMyProjects, fetchMyReferences, fetchResume, fetchSetting, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import MyDeveloperResume from "@/app/components/resume-detail/MyDeveloperResume";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 const MyDeveloperResumePage = async () => {
 
@@ -14,7 +17,12 @@ const MyDeveloperResumePage = async () => {
   const currentUserInfo = await fetchCurrentUser()
   const setting = await fetchSetting();
 
-  
+  const session = await getServerSession(authOptions);
+
+  if(!session) {
+    return redirect('/auth/login');
+  }
+
 
   return (
     <>
