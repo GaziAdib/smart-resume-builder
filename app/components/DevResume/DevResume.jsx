@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import Skills from '../listings/Skills';
 import Experiences from '../listings/Experiences';
 import Educations from '../listings/Educations';
-import PersonalDetailCard from '../cards/PersonalDetailCard';
-import Interests from '../listings/Interests';
 import LanguageProficiencies from '../listings/LanguageProficiencies';
 import CareerObjectiveCard from '../cards/CareerObjectiveCard';
 import HeroSection from '../cards/HeroSection';
@@ -24,7 +21,7 @@ const DevResume = ({currentUserInfo, resumeInfo, educations, experiences, devSki
     { id: 'project', title: 'Project', content: <Projects projects={projects} setting={setting} />},
     { id: 'devSkill', title: 'Dev Skill', content: <DevSkills devSkills={devSkills} setting={setting} />},
     { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },
-    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
+    { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies resumeId={resumeInfo.id} languageProficiencies={resumeInfo?.languageProficiencies} />, prev: 'interests', next: 'personalDetail' },
     { id: 'certificate', title: 'Certificate', content: <Certificates certificates={certificates} setting={setting} />},
     { id: 'reference', title: 'Reference', content: <References references={references} setting={setting} />},
    
