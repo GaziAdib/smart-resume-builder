@@ -26,6 +26,8 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     };
 
     const handleGeneratePDF = async () => {
+
+      //window.print();
       const input = resumeContentRef?.current;
 
       //Ensure the image is fully loaded before capturing the canvas
@@ -141,7 +143,7 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     
     <div className="bg-gray-50 dark:bg-gray-900 my-10 py-5" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
     <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
-      <div className="main-wrapper  mx-2 px-2 py-3 my-3 custom-font">
+      <div className="main-wrapper mx-2 px-2 py-3 my-3 custom-font">
       <div className="avoid-break">
             <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} setting={setting} profileImage={resumeInfo?.profileImage} />
         </div>

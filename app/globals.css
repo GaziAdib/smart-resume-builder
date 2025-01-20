@@ -34,19 +34,35 @@
 }
 
 
-.avoid-break {
+/* .avoid-break {
   break-inside: avoid;
   page-break-inside: avoid;
-}
+} */
 
 .page-break {
   page-break-before: always;
-  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .test {
   background-color: aquamarine;
 }
+
+/* Prevent content breaking in the middle */
+.avoid-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 25px; /* Add consistent spacing between sections */
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+
 
 /* :root {
 
@@ -82,3 +98,4 @@ body {
 .poppins{
   font-family: var(--font-poppins);
 }
+

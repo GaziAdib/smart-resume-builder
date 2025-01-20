@@ -25,7 +25,7 @@ const HeroSection = ({profileImage,currentUserInfo}) => {
             {/* User Information */}
             <div className="md:order-1 w-1/2 lg:order-1 shadow-sm rounded-lg p-4">
               <p className="text-lg font-semibold mt-2 mb-4 mx-2 flex items-center">
-                <span className="mr-2">{username.toUpperCase()}</span>
+                <span className="mr-2">{username?.toUpperCase()}</span>
               </p>
               <p className="text-md mx-2 my-2 flex items-center">
                 <FaMapMarkerAlt className="text-gray-600 mr-2" />
