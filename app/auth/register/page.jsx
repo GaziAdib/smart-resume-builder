@@ -1,10 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 
 import { useRef, useState } from "react";
 
 const RegisterPage = () => {
+
+     const session = useSession();
+    
+    // if(session) {
+    //     return redirect('/')
+    // }
 
     const ref = useRef();
 
@@ -67,14 +74,16 @@ const RegisterPage = () => {
 
 
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <form ref={ref} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 px-4">
+           <div className="p-8 w-full max-w-md">
+            <h2 className="mx-o auto py-5 my-5 text-center font-semibold dark:text-white text-2xl lg:text-4xl md:text-3xl">Register To Our Platform!</h2>
+           <form ref={ref} className="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                    <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2" htmlFor="username">
                         Username
                     </label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-white  leading-tight focus:outline-none focus:shadow-outline"
                         id="username"
                         type="text"
                         placeholder="Username"
@@ -85,11 +94,9 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Email
-                    </label>
+                <label className="block text-gray-700 dark:text-white font-medium mb-1" htmlFor="email">Email</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 border text-slate-900 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         id="email"
                         type="email"
                         placeholder="Email"
@@ -100,11 +107,9 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                        Password
-                    </label>
+                <label className="block text-gray-700 dark:text-white font-medium mb-1" htmlFor="password">Password</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 border text-slate-900 dark:text-white  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         id="password"
                         type="password"
                         placeholder="********"
@@ -125,6 +130,9 @@ const RegisterPage = () => {
                     </button>
                 </div>
             </form>
+           </div>
+           
+          
         </div>
     )
 }
