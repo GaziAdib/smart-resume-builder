@@ -6,8 +6,9 @@ import ToastComponent from "./components/ToastComponent";
 import DndProviders from "./components/DndProvider";
 import MyThemeProvider from "./MyThemeProvider";
 import ThemeSwitch from "./components/ThemeSwitch";
-//import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import HideableNavbar from "./components/HideableNavbar";
+import TopLoaderProgressBar from "./components/TopLoaderProgressBar";
 
 
 const poppins = Poppins({
@@ -36,10 +37,11 @@ export default function RootLayout({ children }) {
       <body className="bg-gray-50 dark:bg-slate-900">
         
         <Providers>
+        <TopLoaderProgressBar/>
           <MyThemeProvider>
             <ThemeSwitch />
             <DndProviders>
-              {/* <Navbar /> */}
+              <Navbar />
               <HideableNavbar hiddenRoutes={hiddenRoutes} />
               {children}
             <ToastComponent />

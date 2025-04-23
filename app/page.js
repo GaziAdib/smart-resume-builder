@@ -55,11 +55,20 @@ export default async function Home() {
   ];
 
   // Pexels placeholder image URLs
+  //https://pbs.twimg.com/media/GpO7x1yakAAtrYU?format=png&name=small
+  // https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
+  //https://pbs.twimg.com/media/GpPL9xJbYAAYfxo?format=png&name=900x900
+  //https://pbs.twimg.com/media/GpPSikvaoAABxf3?format=png&name=small
+  //https://pbs.twimg.com/media/GpPT9HQbsAAZnTI?format=png&name=900x900
+  //https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
+  //https://pbs.twimg.com/media/GpPPbSQasAETDWP?format=png&name=900x900
+  //https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
+  //https://pbs.twimg.com/media/GpPPbSQasAETDWP?format=png&name=900x900
   const images = {
-    dashboard: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    resumeEditor: "https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    bioGenerator: "https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    atsAnalysis: "https://images.pexels.com/photos/590041/pexels-photo-590041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    dashboard: "https://pbs.twimg.com/media/GpPPbSQasAETDWP?format=png&name=900x900",
+    resumeEditor: "https://pbs.twimg.com/media/GpPPbSQasAETDWP?format=png&name=900x900",
+    bioGenerator: "https://pbs.twimg.com/media/GpPSikvaoAABxf3?format=png&name=900x900",
+    atsAnalysis: "https://pbs.twimg.com/media/GpPT9HQbsAAZnTI?format=png&name=small"
   };
 
   return (
@@ -106,12 +115,12 @@ export default async function Home() {
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-32">
             <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
               <div className="-m-2 rounded-xl bg-gray-900/5 dark:bg-white/5 p-2 ring-1 ring-inset ring-gray-900/10 dark:ring-white/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                <Image
+                <img
                   src={images.dashboard}
                   alt="App screenshot"
                   width={2432}
                   height={1442}
-                  className="w-[76rem] rounded-md shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10"
+                  className="w-[64rem] rounded-md shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10"
                   priority
                 />
               </div>
@@ -159,51 +168,51 @@ export default async function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Transform your job search
+              Top Smart Features
             </h2>
             <div className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl sm:grid-cols-2 lg:grid-cols-3">
               <div className="bg-indigo-50 dark:bg-gray-800 p-8 sm:p-10">
-                <h3 className="text-lg font-semibold leading-6 text-indigo-600 dark:text-indigo-400">Resume Builder</h3>
+                <h3 className="text-lg font-semibold leading-6 text-indigo-600 dark:text-indigo-400">Smart Resume Builder</h3>
                 <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
-                  Our intuitive editor makes it easy to create a professional resume in minutes.
+                  Our Smart Resume builder can build your desired in nice modern dark & light mode that enhances your resume awesomely. 
                 </p>
                 <div className="mt-6">
-                  <Image
+                  <img
                     src={images.resumeEditor}
                     alt="Resume editor"
                     width={500}
                     height={300}
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg"
                   />
                 </div>
               </div>
               <div className="bg-purple-50 dark:bg-gray-800 p-8 sm:p-10">
-                <h3 className="text-lg font-semibold leading-6 text-purple-600 dark:text-purple-400">Smart Bio Generator</h3>
+                <h3 className="text-lg font-semibold leading-6 text-purple-600 dark:text-purple-400">Smart Settings Control</h3>
                 <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
-                  AI-powered bio creation tailored to your profession and personality.
+                  Personalized Setting Control for your Work, Educational, Personal Info So you can hide or unhide the sections.
                 </p>
                 <div className="mt-6">
-                  <Image
+                  <img
                     src={images.bioGenerator}
                     alt="Bio generator"
                     width={500}
                     height={300}
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg"
                   />
                 </div>
               </div>
               <div className="bg-teal-50 dark:bg-gray-800 p-8 sm:p-10">
-                <h3 className="text-lg font-semibold leading-6 text-teal-600 dark:text-teal-400">ATS Optimization</h3>
+                <h3 className="text-lg font-semibold leading-6 text-teal-600 dark:text-teal-400">Complete Sections Data Management</h3>
                 <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
-                  Get real-time feedback to ensure your resume passes through applicant tracking systems.
+                  Manage you Personal Data and Sections with your own customized Admin Panel.
                 </p>
                 <div className="mt-6">
-                  <Image
+                  <img
                     src={images.atsAnalysis}
                     alt="ATS analysis"
                     width={500}
                     height={300}
-                    className="rounded-lg shadow-lg"
+                    className="rounded-lg"
                   />
                 </div>
               </div>
