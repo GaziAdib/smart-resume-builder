@@ -1,20 +1,20 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const LoginPage = () => {
 
-    const session = useSession();
-
-    // if(session) {
-    //     return redirect('/')
-    // }
-
+    const { data: session, status } = useSession();
     const ref = useRef();
-
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(true);
+
+   
+
+
+   
 
     const [userInfo, setUserInfo] = useState({
         email: '',
@@ -31,11 +31,22 @@ const LoginPage = () => {
         })
     }
 
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.push("/");
+        } else if(status === "unauthenticated") {
+            setIsLoading(false);
+        }
+    }, [status, router]);
+
+    if (isLoading || status === "loading") {
+        return <p className="text-center text-gray-700">Checking authentication...</p>;
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(userInfo)
         if (!userInfo.email || !userInfo.password) {
             setError("Must provide all the Credentials!");
         }

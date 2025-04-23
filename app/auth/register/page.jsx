@@ -1,21 +1,19 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const RegisterPage = () => {
 
-     const session = useSession();
-    
-    // if(session) {
-    //     return redirect('/')
-    // }
+ 
+    const { data: session, status } = useSession();
+    const router = useRouter();
+   
 
     const ref = useRef();
 
-    const router = useRouter();;
 
     const [userInfo, setUserInfo] = useState({
         username: '',
@@ -31,6 +29,16 @@ const RegisterPage = () => {
             ...userInfo,
             [e.target.name]: e.target.value
         })
+    }
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.push("/");
+        }
+    }, [status, router]);
+
+    if (status === "loading") {
+        return <p className="text-center text-gray-700">Checking authentication...</p>;
     }
 
 

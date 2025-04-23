@@ -1,6 +1,5 @@
 "use client";
 
-
 import AddCertificateForm from "@/app/components/user-forms/AddCertificateForm";
 import AddEducationForm from "@/app/components/user-forms/AddEducationForm"
 import AddExperienceForm from "@/app/components/user-forms/AddExperienceForm"
@@ -9,9 +8,17 @@ import AddReferenceForm from "@/app/components/user-forms/AddReferenceForm"
 import AddResumeForm from "@/app/components/user-forms/AddResumeForm"
 import AddRootSkillForm from "@/app/components/user-forms/AddRootSkillForm";
 import AddSkillForm from "@/app/components/user-forms/AddSkillForm"
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 const AddResumePage = () => {
+
+  const session = useSession();
+
+  if(!session) {
+    return redirect('/auth/login')
+  }
 
 
   const [step, setStep] = useState(1);

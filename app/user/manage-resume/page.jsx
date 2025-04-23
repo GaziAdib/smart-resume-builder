@@ -1,4 +1,5 @@
 import { fetchEducationalQualifications, fetchMyCertificates, fetchMyDevSkills, fetchMyProjects, fetchMyReferences, fetchSkills, fetchWorkExperiences } from "@/app/actions/user-actions"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import CertificateManageTable from "@/app/components/tables/CertificateManageTable";
 import DevSkillManageTable from "@/app/components/tables/DevSkillManageTable";
 import EducationManageTable from "@/app/components/tables/EducationManageTable";
@@ -6,8 +7,16 @@ import ProjectManageTable from "@/app/components/tables/ProjectManageTable";
 import ReferenceManageTable from "@/app/components/tables/ReferenceManageTable";
 import SkillsManageTable from "@/app/components/tables/SkillsManageTable";
 import WorkExperienceManageTable from "@/app/components/tables/WorkExperienceManageTable";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 const ManageResumeContent = async () => {
+
+    const session = await getServerSession(authOptions);
+
+    if(!session) {
+        return redirect('/auth/login')
+    }
 
 const projects = await fetchMyProjects();
 

@@ -1,9 +1,15 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const UserDashboard = async () => {
+
   const session = await getServerSession(authOptions);
+
+    if(!session) {
+        return redirect('/auth/login')
+    }
 
   return (
     <div className="min-h-screen px-4 my-12 py-14 bg-gradient-to-br from-gray-100 to-blue-200 dark:from-gray-900 dark:to-gray-800">
