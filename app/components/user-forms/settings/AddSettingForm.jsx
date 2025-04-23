@@ -64,7 +64,7 @@ const handleToggleEducationSection = () => {
   }
   };
   return (
-    <div className="max-w-md mx-auto my-14 p-8">
+    <div className="max-w-md dark:bg-gray-900 mx-auto my-14 p-8">
       <h1 className="text-xl font-semibold mb-4 mt-4">Add Settings</h1>
       <hr className=""/>     
       <div className="flex items-center justify-between mt-8 mb-4">

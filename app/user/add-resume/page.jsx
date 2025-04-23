@@ -86,10 +86,10 @@ const AddResumePage = () => {
             <div className="relative w-3/4 flex justify-between items-center">
               {[1, 2, 3, 4, 5, 6, 7].map((index) => (
                 <div key={index}>
-                  <div className={`w-6 h-6 flex  justify-center items-center rounded-full bg-gray-200 border-gray-200 ${index === step ? 'bg-green-500 border-green-500' : index < step ? 'bg-blue-500 border-blue-500' : ''}`}>
+                  <div className={`w-6 h-6 flex dark:bg-gray-900 dark:border-2 justify-center items-center rounded-full bg-gray-200 border-gray-200 ${index === step ? 'bg-green-500 border-green-500' : index < step ? 'bg-blue-500 border-blue-500' : ''}`}>
                     {index}
                   </div>
-                  {index < 7 && <div className={`w-10 bg-gray-300 ${index < step ? 'bg-blue-500' : ''}`}></div>}
+                  {index < 7 && <div className={`w-10 bg-gray-300  ${index < step ? 'bg-blue-500' : ''}`}></div>}
                 </div>
               ))}
             </div>

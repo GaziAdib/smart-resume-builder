@@ -66,14 +66,14 @@ const LoginPage = () => {
 
     }
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <form ref={ref} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 px-4">
+
+            <div className="p-8 w-full max-w-md">
+            <form ref={ref} className="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                        Email
-                    </label>
+                <label className="block text-gray-700 dark:text-white font-medium mb-1" htmlFor="email">Email</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 border text-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         id="email"
                         type="email"
                         placeholder="Email"
@@ -84,11 +84,9 @@ const LoginPage = () => {
                     />
                 </div>
                 <div className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                        Password
-                    </label>
+                <label className="block text-gray-700 dark:text-white font-medium mb-1" htmlFor="password">Password</label>
                     <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        className="w-full px-4 py-2 border text-slate-900 dark:text-white  rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         id="password"
                         type="password"
                         placeholder="********"
@@ -101,16 +99,22 @@ const LoginPage = () => {
                 <div className="flex items-center justify-between">
                     {error && <span className="text-red-600 mx-2 px-2">{error}</span>}
                     <button
-                        disabled={pending === true}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        disabled={pending}
+                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
                         type="submit"
                     >
-                        {pending ? 'Loggin in...' : 'Log In'}
+                        {pending ? "Logging in..." : "Log In"}
                     </button>
 
-                    <Link href={'/auth/register'}><span className="bg-green-600 mx-2 px-2 py-1 rounded-lg">Register</span></Link>
+                    
+                        <Link href="/auth/register">
+                            <span className="text-blue-600 hover:underline cursor-pointer mx-5 px-2">Register</span>
+                        </Link>
+                    
                 </div>
             </form>
+            </div>    
+            
         </div>
     )
 }

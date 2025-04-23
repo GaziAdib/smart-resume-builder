@@ -63,14 +63,14 @@ const AddDevSkillForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg dark:bg-gray-900 mx-auto p-6 bg-white shadow-md rounded-lg">
     <h2 className="text-xl font-semibold mb-6">Add Developer Skills 👨‍💻</h2>
 
    
 
     
     <div className="mb-4">
-      <label htmlFor="programmingLanguages" className="block text-xl mt-2 p-1 font-medium text-gray-600">
+      <label htmlFor="programmingLanguages" className="block text-xl mt-2 p-1 font-medium text-gray-600 dark:text-white">
         Programming Languages *
       </label>
 
@@ -82,7 +82,7 @@ const AddDevSkillForm = () => {
             <div className="my-3 py-2">
               <ul className="list-disc list-inside">
                 {field?.value?.map((language, index) => (
-                  <li key={index} className="bg-gray-200 text-gray-600 mb-1 px-2 py-1 rounded-md">
+                  <li key={index} className="bg-gray-200 font-semibold text-gray-600 dark:bg-gray-800 dark:text-gray-200 mb-1 px-2 py-1 rounded-md">
                     {language}
                   </li>
                 ))}
@@ -100,7 +100,7 @@ const AddDevSkillForm = () => {
     </div>
 
     <div className="mb-4">
-      <label htmlFor="frameworks" className="block text-lg mt-2 p-1 font-medium text-gray-600">
+      <label htmlFor="frameworks" className="block dark:text-white text-lg mt-2 p-1 font-medium text-gray-600">
         Frameworks *
       </label>
 
@@ -133,7 +133,7 @@ const AddDevSkillForm = () => {
 
 
     <div className="mb-4">
-      <label htmlFor="tools" className="block text-lg mt-2 p-1 font-medium text-gray-600">
+      <label htmlFor="tools" className="block text-lg mt-2 p-1 dark:text-white font-medium text-gray-600">
         Add Tools *
       </label>
 
@@ -165,7 +165,7 @@ const AddDevSkillForm = () => {
 
 
     <div className="mb-4">
-      <label htmlFor="platforms" className="block text-lg mt-2 p-1 font-medium text-gray-600">
+      <label htmlFor="platforms" className="block text-lg mt-2 p-1 dark:text-white font-medium text-gray-600">
         Platforms *
       </label>
 
@@ -196,7 +196,7 @@ const AddDevSkillForm = () => {
 
 
     <div className="mb-4">
-      <label htmlFor="softSkills" className="block text-lg mt-2 p-1 font-medium text-gray-600">
+      <label htmlFor="softSkills" className="block text-lg mt-2 dark:text-white p-1 font-medium text-gray-600">
         Soft Skills *
       </label>
 

@@ -28,7 +28,7 @@ const skills = await fetchSkills();
 
 
   return (
-    <div>
+    <div className="dark:bg-gray-900">
         <h1 className="text-center font-extrabold mt-14 mb-2 py-6">Manage Resume</h1>
 
         <div className="container mx-auto py-4 my-4">
@@ -52,7 +52,7 @@ const skills = await fetchSkills();
         </div>
 
         <div className="container mx-auto py-4 my-4">
-            {devSkills.length > 0 && <DevSkillManageTable devSkills={devSkills}   />} 
+            {devSkills?.length > 0 && <DevSkillManageTable devSkills={devSkills}   />} 
         </div>
 
         <div className="container mx-auto py-4 my-4">

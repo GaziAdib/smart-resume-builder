@@ -85,23 +85,23 @@ const AddResumeForm = () => {
   };
 
   return (
-    <form data-step="1" onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+    <form data-step="1" onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white dark:bg-gray-900 shadow-md rounded-lg">
       <h2 className="text-xl font-semibold mb-6">Add Resume & Personal Info</h2>
 
       <div className="mb-4">
-        <label htmlFor="profileImage" className="block text-gray-700 font-semibold mb-2">Profile Image Link</label>
+        <label htmlFor="profileImage" className="block text-gray-700 font-semibold mb-2 dark:text-white">Profile Image Link</label>
         <input type="text" id="profileImage" name="profileImage" {...register('profileImage')} placeholder="Add Profile Image..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.profileImage && <p className="text-red-500">{errors.profileImage.message}</p>}
       </div>
 
       <div className="mb-4">
-        <label htmlFor="careerObjective" className="block text-gray-700 font-semibold mb-2">Career Objective*</label>
+        <label htmlFor="careerObjective" className="block text-gray-700 dark:text-white font-semibold mb-2">Career Objective*</label>
         <textarea type="text" id="careerObjective" name="careerObjective" {...register('careerObjective', {required: true})} placeholder="Your Objective..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.careerObjective && <p className="text-red-500">{errors.careerObjective.message}</p>}
       </div>
 
       <div className="mb-4">
-        <label htmlFor="interests" className="block text-sm mt-2 p-1 font-medium text-gray-600">
+        <label htmlFor="interests" className="block text-sm mt-2 p-1 font-medium text-gray-600 dark:text-white">
           Hobby | Interests (Photography, Traveling) *
         </label>
         <Controller
@@ -124,7 +124,7 @@ const AddResumeForm = () => {
 
 
       <div className="mb-2">
-        <label htmlFor="languageProficiencies" className="block text-sm mt-2 p-1 font-medium text-gray-600">
+        <label htmlFor="languageProficiencies" className="block text-sm mt-2 p-1 font-medium text-gray-600 dark:text-white">
           Language Proficiencies (English, bangla etc.) *
         </label>
 
@@ -162,25 +162,25 @@ const AddResumeForm = () => {
     <h2 className="font-semibold text-lg mt-3 mb-3 py-2">+ Add Personal Details</h2>
 
     <div className="mb-4">
-        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Father's Name*</label>
+        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Father's Name*</label>
         <input type="text" id="personalDetail" name="personalDetail" {...register('personalDetail.fatherName')} placeholder="Your Father's Name..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.personalDetail?.fatherName && <p className="text-red-500">{errors?.personalDetail?.fatherName.message}</p>}
     </div>        
 
     <div className="mb-4">
-        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Mother's Name*</label>
+        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Mother's Name*</label>
         <input type="text" id="personalDetail" name="personalDetail" {...register('personalDetail.motherName')} placeholder="Your Mother's Name..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.personalDetail?.motherName && <p className="text-red-500">{errors.personalDetail?.motherName.message}</p>}
     </div>
 
     <div className="mb-4">
-        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Date Of Birth*</label>
+        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Date Of Birth*</label>
         <input type="date" id="personalDetail" name="personalDetail" {...register('personalDetail.dob')} placeholder="Your Date of Birth (3/3/2013)..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.personalDetail?.dob && <p className="text-red-500">{errors.personalDetail?.dob?.message}</p>}
     </div>
 
     <div className="mb-4">
-    <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Your Religion*</label>
+    <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Your Religion*</label>
       <select id="personalDetail" name="personalDetail" {...register('personalDetail.religion')} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
           <option value="">Select your religion...</option>
           <option value="Christianity">Christianity</option>
@@ -193,13 +193,13 @@ const AddResumeForm = () => {
     </div>
 
     <div className="mb-4">
-        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Nationality*</label>
+        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Nationality*</label>
         <input type="text" id="personalDetail" name="personalDetail" {...register('personalDetail.nationality')} placeholder="ie. Bangladeshi, Indian..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.personalDetail?.nationality && <p className="text-red-500">{errors.personalDetail?.nationality.message}</p>}
     </div>
 
     <div className="mb-4">
-    <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Marital Status*</label>
+    <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Marital Status*</label>
         <select id="personalDetail" name="personalDetail" {...register('personalDetail.maritalStatus')} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
             <option value="">Select marital status...</option>
             <option value="Single">Single</option>
@@ -211,7 +211,7 @@ const AddResumeForm = () => {
     </div>
 
     <div className="mb-4">
-      <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Blood Group*</label>
+      <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Blood Group*</label>
       <select id="personalDetail" name="personalDetail" {...register('personalDetail.bloodGroup')} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
           <option value="">Select blood group...</option>
           <option value="A+">A+</option>
@@ -227,21 +227,21 @@ const AddResumeForm = () => {
   </div>
 
     <div className="mb-4">
-        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2">Your Height*</label>
+        <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Your Height*</label>
         <input type="text" id="personalDetail" name="personalDetail" {...register('personalDetail.height')} placeholder="Your Height ie 5 Feet 11 Inch.." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
         {errors?.personalDetail?.height && <p className="text-red-500">{errors.personalDetail?.height?.message}</p>}
     </div>
 
 
     <div className="mb-4">
-      <label htmlFor="mySignature" className="block text-gray-700 font-semibold mb-2">Your Signature*</label>
+      <label htmlFor="mySignature" className="block text-gray-700 font-semibold mb-2 dark:text-white">Your Signature*</label>
       <input type="text" id="mySignature" name="mySignature" {...register('mySignature')} placeholder="Your Unique Signature..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
       {errors?.mySignature && <p className="text-red-500">{errors?.mySignature?.message}</p>}
     </div>
 
 
     <div className="mb-4">
-      <label htmlFor="declaration" className="block text-gray-700 font-semibold mb-2">Declarations*</label>
+      <label htmlFor="declaration" className="block text-gray-700 font-semibold mb-2 dark:text-white">Declarations*</label>
       <input type="text" id="declaration" name="GPA" {...register('declaration')} placeholder="add declarations..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
     </div>
 

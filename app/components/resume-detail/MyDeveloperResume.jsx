@@ -100,8 +100,8 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
     <>
     
     
-    <div className="bg-gray-50 dark:bg-gray-900 my-10 py-5" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
-    <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
+    <div className="bg-gray-50 dark:bg-gray-900  py-5" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
+    <h1 className="font-extrabold text-center text-2xl my-2 py-2">{currentUserInfo?.username}'s Resume</h1>
       <div className="main-wrapper  mx-2 px-2 py-3 my-3 custom-font">
       <div className="avoid-break">
             <DevResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} devSkills={devSkills} references={references} projects={projects} certificates={certificates} setting={setting} profileImage={resumeInfo?.profileImage} />
@@ -109,18 +109,17 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
       </div>
     </div>
 
-    <div className=" my-4 py-4 justify-center px-4">
+    <div className="my-4 dark:bg-gray-900 py-4 justify-center px-4">
       <div className="flex flex-col space-y-4">
-      <label htmlFor="font-selector" className="text-gray-700">Select Font Family:</label>
+      <label htmlFor="font-selector" className="text-gray-700 dark:text-white">Select Font Family:</label>
       <select id="font-selector" value={selectedFont} onChange={handleFontChange} className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300">
         <option value="Poppins">Poppins</option>
         <option value="Serif">Serif</option>
         <option value="Roboto">Roboto</option>
-        {/* Add more options as needed */}
       </select>
     </div>
-    <div className="flex flex-col space-y-4">
-      <label htmlFor="formatSelect" className="text-gray-700">Select PDF Format:</label>
+    <div className="flex flex-col space-y-4 ">
+      <label htmlFor="formatSelect" className="text-gray-700 dark:text-white">Select PDF Format:</label>
       <select id="formatSelect" value={selectedFormat} onChange={handleFormatChange} className="w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300">
         <option value="A4">A4</option>
         <option value="A5">A5</option>
@@ -128,7 +127,7 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
     </div>
     </div>
 
-    <button className="bg-green-200 mx-0 auto text-black font-bold text-center px-2 py-1 text-xl rounded-sm shadow-md border-2" onClick={handleGeneratePDF}>Generate PDF</button>
+    <button className="bg-green-200 my-6 text-black font-bold text-center px-2 py-1 text-xl rounded-sm shadow-md border-2" onClick={handleGeneratePDF}>Generate PDF</button>
 </>
   )
 }

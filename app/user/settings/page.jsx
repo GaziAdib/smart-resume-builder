@@ -7,7 +7,10 @@ const SettingsPage = async () => {
   const setting = await fetchSetting();
 
   return (
-    setting ?  <UpdateSettingForm setting={setting}  /> : <AddSettingForm />
+    <div className="">
+      {setting ?  <UpdateSettingForm setting={setting}  /> : <AddSettingForm /> }
+    </div>
+    
   );
 }
 

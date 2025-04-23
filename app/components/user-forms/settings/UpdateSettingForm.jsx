@@ -26,8 +26,9 @@ const handleToggleEducationSection = () => {
     setShowPersonalDetailSection(prevState => !prevState);
   }
 
+
+  // Update settings if exists
   const handleUpdateSettings = async () => {
-    // Handle saving settings here
 
     try {
 
@@ -50,6 +51,7 @@ const handleToggleEducationSection = () => {
         }
 
         if (res.ok) {
+            router.refresh()
             toast.success('Settings Updated succesfully', {
                 position: "top-right",
                 autoClose: 3000,
@@ -60,8 +62,7 @@ const handleToggleEducationSection = () => {
                 progress: undefined,
                 theme: "light",
             });
-
-            router.push('/user/resume')
+            // router.push('/user/dashboard')
         }
     
   } catch (error) {
@@ -70,7 +71,7 @@ const handleToggleEducationSection = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto my-14 p-8">
+    <div className="max-w-md dark:bg-gray-900 mx-auto my-20 p-8">
       <h1 className="text-xl font-semibold mb-4 mt-4">Update Settings</h1>
       <hr className=""/>
       <div className="flex items-center justify-between mt-8 mb-4">
