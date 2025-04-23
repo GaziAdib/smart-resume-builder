@@ -75,11 +75,9 @@ const MyDeveloperResume = ({currentUserInfo, resumeInfo, educations, experiences
             input.appendChild(div);
           }
   
-          // pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
 
           pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
 
-          // Add new page if there's remaining content
           if (heightLeft > 0) {
             pdf.addPage();
           }

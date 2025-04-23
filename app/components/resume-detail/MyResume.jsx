@@ -5,6 +5,9 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import TestResume from "../TestResume/TestResume";
 
+import { PDFDocument as PDFLib } from 'pdf-lib';
+import { saveAs } from 'file-saver';
+
 const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, setting}) => {
 
   const [selectedFont, setSelectedFont] = useState('');
@@ -91,6 +94,7 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
   
        
     };
+
 
 
   return (
