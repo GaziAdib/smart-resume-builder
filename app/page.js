@@ -16,6 +16,7 @@ import {
   FiMoon
 } from "react-icons/fi";
 import { Button } from "./ui/button";
+import VideoPlayerFeatureSection from "./components/VideoPlayerFeatureSection";
 
 
 export default async function Home() {
@@ -223,43 +224,9 @@ export default async function Home() {
 
       {/* Testimonials */}
       <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-40 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Trusted by professionals</h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Join thousands of users who've transformed their job search with our tools.
-          </p>
-        </div>
-        <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {[1, 2, 3].map((testimonial) => (
-            <div key={testimonial} className="flex flex-col rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 sm:p-10">
-              <div className="flex items-center gap-x-4">
-                <Image
-                  src={`https://images.pexels.com/photos/${testimonial === 1 ? '774909' : testimonial === 2 ? '1181519' : '3763188'}/pexels-photo-${testimonial === 1 ? '774909' : testimonial === 2 ? '1181519' : '3763188'}.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2`}
-                  alt="User testimonial"
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full"
-                />
-                <div>
-                  <h3 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">
-                    {testimonial === 1 ? 'Sarah Johnson' : testimonial === 2 ? 'Michael Chen' : 'David Rodriguez'}
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {testimonial === 1 ? 'Marketing Director' : testimonial === 2 ? 'Software Engineer' : 'Financial Analyst'}
-                  </p>
-                </div>
-              </div>
-              <p className="mt-6 flex-1 text-base leading-7 text-gray-600 dark:text-gray-400">
-                {testimonial === 1 
-                  ? '"The resume builder helped me land interviews at three Fortune 500 companies. The ATS optimization feature was a game-changer."'
-                  : testimonial === 2
-                  ? '"I received multiple compliments on my resume format during interviews. The tech-specific templates are perfect."'
-                  : '"The smart bio generator helped me craft the perfect LinkedIn summary that led to multiple recruiter contacts."'}
-              </p>
-              <FiAward className="mt-6 h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-            </div>
-          ))}
-        </div>
+       
+       <VideoPlayerFeatureSection />
+        
       </div>
 
       {/* CTA Section */}

@@ -41,9 +41,11 @@ export default function RootLayout({ children }) {
           <MyThemeProvider>
             <ThemeSwitch />
             <DndProviders>
-              <Navbar />
+              {/* <Navbar /> */}
               <HideableNavbar hiddenRoutes={hiddenRoutes} />
+              
               {children}
+              
             <ToastComponent />
             </DndProviders>
           </MyThemeProvider>
