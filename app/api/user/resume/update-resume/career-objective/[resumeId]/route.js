@@ -48,7 +48,7 @@ export async function PUT(req, {params}) {
             //revalidatePath('/user/resume/regular');
             
       
-            return NextResponse.json({ message: 'Career Objective Updated Successfully!', careerObjective: updatedResume.careerObjective  }, { status: 201 })
+            return NextResponse.json({ message: 'Career Objective Updated Successfully!', careerObjective: updatedResume?.careerObjective  }, { status: 201 })
             
         } else {
             return NextResponse.json({ message: 'You Must Be an Auth User to Update Career Objective!' }, { status: 403 })
