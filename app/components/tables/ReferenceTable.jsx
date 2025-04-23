@@ -1,37 +1,39 @@
 "use client";
 
-const ReferenceTable = ({references}) => {
+const ReferenceTable = ({ references }) => {
   return (
-   
-    <div className="overflow-x-auto">
-    <table className="w-full  dark:bg-gray-800 border-collapse border rounded-lg">
-      <thead className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 text-gray-800">
-        <tr>
-          <th className="px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">NAME</th>
-          <th className="px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Position</th>
-          <th className="px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Company</th>
-          <th className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Relationship</th>
-          <th className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Phone</th>
-          <th className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold uppercase tracking-wider border-b">Email</th>
-        </tr>
-      </thead>
-      <tbody className="text-gray-700 dark:text-gray-200">
-        {references?.map((reference, index) => (
-          <tr key={index} className="border-b">
-            <td className="px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference?.name?.toUpperCase()}</td>
-            <td className="px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference.position}</td>
-            <td className="px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference?.company}</td>
-            <td className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference?.relationship}</td>
-            <td className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference.phone}</td>
-            <td className="hidden md:table-cell px-2 py-3 sm:px-6 sm:py-4 whitespace-nowrap border-r">{reference.email}</td>
+    <div className="w-full">
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="text-left border-b">
+            <th className="p-2 font-medium">Name</th>
+            <th className="p-2 font-medium">Position</th>
+            <th className="p-2 font-medium">Company</th>
+            <th className="p-2 font-medium hidden md:table-cell">Relationship</th>
+            <th className="p-2 font-medium hidden lg:table-cell">Phone</th>
+            <th className="p-2 font-medium hidden lg:table-cell">Email</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-    
-  
-  )
-}
+        </thead>
+        <tbody>
+          {references?.map((reference, index) => (
+            <tr key={index} className="border-b">
+              <td className="p-2 whitespace-nowrap">{reference?.name}</td>
+              <td className="p-2 whitespace-nowrap">{reference.position}</td>
+              <td className="p-2 whitespace-nowrap">{reference?.company}</td>
+              <td className="p-2 whitespace-nowrap hidden md:table-cell">{reference?.relationship}</td>
+              <td className="p-2 whitespace-nowrap hidden lg:table-cell">{reference.phone}</td>
+              <td className="p-2 whitespace-nowrap hidden lg:table-cell">{reference.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {!references?.length && (
+        <div className="w-full p-4 text-center">
+          No references available
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default ReferenceTable
+export default ReferenceTable;

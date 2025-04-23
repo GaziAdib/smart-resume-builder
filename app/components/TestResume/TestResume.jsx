@@ -29,32 +29,7 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
 
   const [sections, setSections] = useState(initialSections);
   
-  //   const storedSections = localStorage.getItem('sections');
-  //   console.log('Stored Sections:', storedSections);
-  
-  //   return storedSections ? JSON.parse(storedSections) : [
-  //     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />},
-  //     { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard careerObjective={resumeInfo?.careerObjective} />},
-  //     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} /> },
-  //     { id: 'skill', title: 'Skill', content: <Skills skills={skills} /> },
-  //     { id: 'education', title: 'Education', content: <Educations educations={educations} /> },
-  //     { id: 'interests', title: 'Interests', content: <Interests interests={resumeInfo?.interests} /> },
-  //     { id: 'languageProficiencies', title: 'Language Proficiencies', content: <LanguageProficiencies languageProficiencies={resumeInfo?.languageProficiencies} /> },
-  //     { id: 'personalDetail', title: 'Personal Detail', content: <PersonalDetailCard personalDetail={resumeInfo?.personalDetail} />}
-  //   ]
-  // });
-  
-  // useEffect(() => {
-  //   // Extract data from each section object
-  //   const sectionsData = sections?.map(section => ({
-  //     id: section?.id,
-  //     title: section?.title
-  //   }));
-    
-  //   // Store the extracted data in localStorage
-  //   localStorage.setItem('sections', JSON.stringify(sectionsData));
-  // }, [sections]);
-  
+
   const handleDragStart = (event, section) => {
     event.dataTransfer.setData('sectionId', section.id);
   };
@@ -86,7 +61,7 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
     setSections(updatedSections);
   };
 
-  // const handleDrop = (event, targetSection) => {
+  
   //   const sectionId = event.dataTransfer.getData('sectionId');
   //   const draggedSectionIndex = sections.findIndex(section => section.id === sectionId);
   //   const targetSectionIndex = sections.findIndex(section => section.id === targetSection.id);
@@ -121,7 +96,6 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
   
   //     setSections(updatedSections);
   //   };
-
 
     return (
         <div>

@@ -9,8 +9,6 @@ import { usePathname } from 'next/navigation';
 
 const Educations = ({ educations, setting }) => {
 
-  
-  // get path name developer as for developer the view might be little different
 
   let fullpath = usePathname();
 
@@ -29,7 +27,6 @@ const Educations = ({ educations, setting }) => {
   }, [educations]);
 
   const toggleView = () => {
-    // Toggles between 'card' and 'table' views
     setView(prevView => (prevView === 'card' ? 'table' : 'card'));
   };
 

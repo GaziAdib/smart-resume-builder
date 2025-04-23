@@ -56,7 +56,7 @@ const EducationCard = ({ education }) => {
 
   const handleKeyDown = async (e) => {
     if (e.key === 'Enter') {
-      await handleSave(); // Trigger save action when Enter key is pressed
+      await handleSave();
     }
   };
 
@@ -87,7 +87,7 @@ const EducationCard = ({ education }) => {
           <input
             type="text"
             name="institution"
-            className="mx-auto text-start rounded-sm px-2 my-2"
+            className="mx-auto text-start dark:text-white rounded-sm px-2 my-2"
             value={editedEducation.institution}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -102,7 +102,7 @@ const EducationCard = ({ education }) => {
           <input
             type="text"
             name="degree"
-            className="mx-auto text-start rounded-sm px-2"
+            className="mx-auto text-start dark:text-white rounded-sm px-2"
             value={editedEducation.degree}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -118,7 +118,7 @@ const EducationCard = ({ education }) => {
           <input
             type="text"
             name="GPA"
-            className="mx-auto text-start rounded-sm px-2"
+            className="mx-auto text-start dark:text-white rounded-sm px-2"
             value={editedEducation.GPA}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -136,6 +136,7 @@ const EducationCard = ({ education }) => {
             <input
               type="date"
               name="startDate"
+              className="dark:text-white"
               value={moment(editedEducation.startDate).format("YYYY-MM-DD")}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
