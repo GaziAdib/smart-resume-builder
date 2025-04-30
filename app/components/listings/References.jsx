@@ -52,7 +52,9 @@ const References = ({ references, setting }) => {
               <ReferenceCard key={reference.id} index={index} reference={reference} />
             ))
           ) : (
+            <div className="col-span-1 md:col-span-2 lg:col-span-3 w-full">
             <ReferenceTable references={references} />
+          </div>
           )}
 
       </div>

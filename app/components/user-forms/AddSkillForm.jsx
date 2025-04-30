@@ -62,17 +62,17 @@ const AddSkillForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg dark:bg-gray-900 mx-auto p-6 bg-white shadow-md rounded-lg">
-    <h2 className="text-xl font-semibold mb-6">Add Basic Skills</h2>
+    <h2 className="text-xl font-semibold mb-6 dark:text-white">Add Basic Skills</h2>
 
     <div className="mb-4">
       <label htmlFor="name" className="block text-gray-700 dark:text-white font-semibold mb-2">Skill Name *</label>
-      <input type="text" id="name" name="name" {...register('name', {required: true})} placeholder="ie. Nextjs, Nodejs, PHP" className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      <input type="text" id="name" name="name" {...register('name', {required: true})} placeholder="ie. Nextjs, Nodejs, PHP" className="w-full px-4 py-2 border rounded-md dark:bg-gray-800 dark:text-white focus:outline-none focus:border-blue-500" />
       {errors?.name && <p className="text-red-500">{errors?.name.message}</p>}
     </div>
 
     <div className="mb-4">
       <label htmlFor="proficiency" className="block text-gray-700 dark:text-white font-semibold mb-2">Proficiency*</label>
-      <select id="proficiency" name="proficiency" {...register('proficiency')} className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500">
+      <select id="proficiency" name="proficiency" {...register('proficiency')} className="w-full px-4 py-2 border rounded-md dark:bg-gray-800 dark:text-white focus:outline-none focus:border-blue-500">
         <option value="Beginner">Beginner</option>
         <option value="Intermediate">Intermediate</option>
         <option value="Expert">Expert</option>
@@ -82,7 +82,7 @@ const AddSkillForm = () => {
 
     <div className="mb-4">
       <label htmlFor="experience" className="block text-gray-700 dark:text-white font-semibold mb-2">Experience in Years *</label>
-      <input type="text" id="experience" name="experience" {...register('experience')} placeholder="examaple 5 years etc.." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+      <input type="text" id="experience" name="experience" {...register('experience')} placeholder="examaple 5 years etc.." className="w-full px-4 py-2 border rounded-md dark:bg-gray-800 dark:text-white focus:outline-none focus:border-blue-500" />
       {errors?.experience && <p className="text-red-500">{errors?.experience.message}</p>}
     </div>
 

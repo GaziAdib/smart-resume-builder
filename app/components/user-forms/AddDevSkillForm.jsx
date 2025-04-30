@@ -63,8 +63,8 @@ const AddDevSkillForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg dark:bg-gray-900 mx-auto p-6 bg-white shadow-md rounded-lg">
-    <h2 className="text-xl font-semibold mb-6">Add Developer Skills 👨‍💻</h2>
+    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg dark:bg-gray-800 mx-auto p-6 bg-white shadow-md rounded-lg">
+    <h2 className="text-xl font-semibold mb-6 dark:text-white">Add Developer Skills 👨‍💻</h2>
 
    
 

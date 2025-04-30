@@ -37,7 +37,7 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  if (hiddenRoutes.includes(pathname)) return null;
+  // if (hiddenRoutes.includes(pathname)) return null;
 
   // Navigation items
   const navItems = [

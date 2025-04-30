@@ -83,15 +83,15 @@ const AddResumePage = () => {
       <div className="flex flex-col my-14 justify-center items-center">
             {/* Progress Bar */}
             <div className="w-3/4 h-3 bg-gray-200 rounded-full mb-4 mt-8 relative">
-              <div className="h-full rounded-2xl bg-green-500" style={{ width: `${progress}%` }}></div>
+              <div className="h-full rounded-2xl bg-green-500 dark:bg-green-600" style={{ width: `${progress}%` }}></div>
               <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center text-white font-bold">
               </div>
             </div>
             {/* Timeline View */}
-            <div className="relative w-3/4 flex justify-between items-center">
+            <div className="relative w-3/4 flex justify-between items-center ">
               {[1, 2, 3, 4, 5, 6, 7].map((index) => (
                 <div key={index}>
-                  <div className={`w-6 h-6 flex dark:bg-gray-900 dark:border-2 justify-center items-center rounded-full bg-gray-200 border-gray-200 ${index === step ? 'bg-green-500 border-green-500' : index < step ? 'bg-blue-500 border-blue-500' : ''}`}>
+                  <div className={`w-6 h-6 flex dark:bg-gray-900 dark:text-white dark:border-2 justify-center items-center rounded-full bg-gray-200  border-gray-200 ${index === step ? 'bg-green-500 border-green-500' : index < step ? 'bg-blue-500 border-blue-500' : ''}`}>
                     {index}
                   </div>
                   {index < 7 && <div className={`w-10 bg-gray-300  ${index < step ? 'bg-blue-500' : ''}`}></div>}
@@ -99,11 +99,11 @@ const AddResumePage = () => {
               ))}
             </div>
             {/* Step Title */}
-            <div className="text-center text-xl mt-4 py-4 font-semibold">
+            <div className="text-center text-xl mt-4 py-4 font-semibold dark:text-white">
               Step {step}: {renderStepTitle(step)}
             </div>
             {/* Step Content */}
-            <section className="container py-3 my-3 justify-center">
+            <section className="container  py-3 my-3 justify-center">
               {renderStep()}
             </section>
             {/* Navigation Buttons */}

@@ -23,7 +23,7 @@ const ShareResume = async ({ params }) => {
    // If the user doesn't exist, show a message or handle it accordingly
   if (!user || !user.id) {
     return (
-      <div className="mt-14 py-10 items-center">
+      <div className="my-14 py-10 items-center">
         <h1 className="text-3xl mt-5 p-5 text-red-600 font-extrabold text-center">User not found</h1>
       </div>
     );
@@ -32,7 +32,6 @@ const ShareResume = async ({ params }) => {
   return (
    
     <>
-
     <MyDeveloperResume
         currentUserInfo={user}
         resumeInfo={resumeInfo}
@@ -45,6 +44,7 @@ const ShareResume = async ({ params }) => {
         devSkills={devSkills}
         setting={setting}
       />
+
 
   </>
   );

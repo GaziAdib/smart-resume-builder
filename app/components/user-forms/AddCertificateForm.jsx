@@ -75,7 +75,7 @@ const AddCertificateForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mx-auto p-6 shadow-md rounded-lg bg-white dark:bg-gray-800">
-  <h2 className="text-xl font-semibold mb-6">Add Certificate 🎓</h2>
+  <h2 className="text-xl font-semibold mb-6 dark:text-white">Add Certificate 🎓</h2>
   
   <div className="mb-4">
     <label htmlFor="certificateTitle" className="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Certificate Title *</label>

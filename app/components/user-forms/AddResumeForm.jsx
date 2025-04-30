@@ -85,17 +85,17 @@ const AddResumeForm = () => {
 
   return (
     <form data-step="1" onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto p-6 bg-white dark:bg-gray-900 shadow-md rounded-lg">
-      <h2 className="text-xl font-semibold mb-6">Add Resume & Personal Info</h2>
+      <h2 className="text-xl font-semibold mb-6 dark:text-white">Add Resume & Personal Info</h2>
 
       <div className="mb-4">
         <label htmlFor="profileImage" className="block text-gray-700 font-semibold mb-2 dark:text-white">Profile Image Link</label>
-        <input type="text" id="profileImage" name="profileImage" {...register('profileImage')} placeholder="Add Profile Image..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+        <input type="text" id="profileImage" name="profileImage" {...register('profileImage')} placeholder="Add Profile Image..." className="w-full px-4 py-2 border rounded-md dark:bg-gray-800 dark:text-white focus:outline-none focus:border-blue-500" />
         {errors?.profileImage && <p className="text-red-500">{errors.profileImage.message}</p>}
       </div>
 
       <div className="mb-4">
-        <label htmlFor="careerObjective" className="block text-gray-700 dark:text-white font-semibold mb-2">Career Objective*</label>
-        <textarea type="text" id="careerObjective" name="careerObjective" {...register('careerObjective', {required: true})} placeholder="Your Objective..." className="w-full px-4 py-2 border rounded-md focus:outline-none focus:border-blue-500" />
+        <label htmlFor="careerObjective" className="block text-gray-700 dark:text-white font-semibold mb-2 ">Career Objective*</label>
+        <textarea type="text" id="careerObjective" name="careerObjective" {...register('careerObjective', {required: true})} placeholder="Your Objective..." className="w-full px-4 py-2 border rounded-md dark:bg-gray-800 dark:text-white focus:outline-none focus:border-blue-500" />
         {errors?.careerObjective && <p className="text-red-500">{errors.careerObjective.message}</p>}
       </div>
 
@@ -158,7 +158,7 @@ const AddResumeForm = () => {
 
     
 
-    <h2 className="font-semibold text-lg mt-3 mb-3 py-2">+ Add Personal Details</h2>
+    <h2 className="font-semibold text-lg mt-3 mb-3 py-2 dark:text-white">+ Add Personal Details</h2>
 
     <div className="mb-4">
         <label htmlFor="personalDetail" className="block text-gray-700 font-semibold mb-2 dark:text-white">Father's Name*</label>
