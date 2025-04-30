@@ -29,17 +29,10 @@ const ShareResume = async ({ params }) => {
     );
   }
 
-  // http://localhost:3000/user/share-resume/verify/6624ecda67980fbba06ce637
-  // If the user exists, render the specific UI for the user
   return (
    
     <>
 
-    {/* <div className="mt-14 py-10 items-center">
-      <h1 className="text-2xl text-center">Share Resume</h1>
-      <p className="text-center">Welcome, {user?.username}!</p>
-    </div> */}
-      
     <MyDeveloperResume
         currentUserInfo={user}
         resumeInfo={resumeInfo}

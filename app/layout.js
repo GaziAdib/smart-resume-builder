@@ -3,11 +3,8 @@ import "./globals.css";
 import { Poppins } from 'next/font/google';
 import { Providers } from "./providers";
 import ToastComponent from "./components/ToastComponent";
-import DndProviders from "./components/DndProvider";
 import MyThemeProvider from "./MyThemeProvider";
-import ThemeSwitch from "./components/ThemeSwitch";
 import Navbar from "./components/navbar/Navbar";
-import HideableNavbar from "./components/HideableNavbar";
 import TopLoaderProgressBar from "./components/TopLoaderProgressBar";
 
 
@@ -29,9 +26,6 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
-  const hiddenRoutes = [
-    '/user/share-resume/verify/6624ecda67980fbba06ce637'
-  ];
   return (
     <html lang="en" className={`${poppins.variable}`} suppressHydrationWarning>
       <body className="bg-gray-50 dark:bg-slate-900">
@@ -39,15 +33,9 @@ export default function RootLayout({ children }) {
         <Providers>
         <TopLoaderProgressBar/>
           <MyThemeProvider>
-            <ThemeSwitch />
-            <DndProviders>
-              {/* <Navbar /> */}
-              <HideableNavbar hiddenRoutes={hiddenRoutes} />
-              
+              <Navbar />
               {children}
-              
             <ToastComponent />
-            </DndProviders>
           </MyThemeProvider>
         </Providers>
         

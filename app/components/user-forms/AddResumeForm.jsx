@@ -46,7 +46,6 @@ const AddResumeForm = () => {
   
   const onSubmit = async (data) => {
     console.log(data);
-    // nextStep();
     try {
           const res = await fetch('/api/user/resume/add-resume', {
               method: 'POST',
@@ -61,9 +60,9 @@ const AddResumeForm = () => {
           }
 
           if (res.ok) {
-              let rawData = await res.json();
+              //let rawData = await res.json();
 
-              setResumeId(rawData.resumeId);
+              // setResumeId(rawData.resumeId);
               toast.success('New Resume Added succesfully', {
                   position: "top-right",
                   autoClose: 3000,

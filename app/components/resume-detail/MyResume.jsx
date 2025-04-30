@@ -5,9 +5,6 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import TestResume from "../TestResume/TestResume";
 
-import { PDFDocument as PDFLib } from 'pdf-lib';
-import { saveAs } from 'file-saver';
-
 const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills, references, setting}) => {
 
   const [selectedFont, setSelectedFont] = useState('');
@@ -101,8 +98,8 @@ const MyResume = ({currentUserInfo, resumeInfo, educations, experiences, skills,
     <>
     
     
-    <div className="bg-gray-50 dark:bg-gray-900 my-10 py-5" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
-    <h1 className="font-extrabold text-center text-2xl my-2 py-2">My Resume</h1>
+    <div className="bg-gray-50 dark:bg-gray-900 my-14 py-5" style={{ fontFamily: `var(${selectedFont})` }} id="resume-content"  ref={resumeContentRef}>
+    <h1 className="font-extrabold text-center text-2xl my-2 py-2 dark:text-white">{currentUserInfo?.username}'s Resume</h1>
       <div className="main-wrapper mx-2 px-2 py-3 my-3 custom-font">
       <div className="avoid-break">
             <TestResume currentUserInfo={currentUserInfo} resumeInfo={resumeInfo} educations={educations} experiences={experiences} skills={skills} references={references} setting={setting} profileImage={resumeInfo?.profileImage} />

@@ -18,7 +18,7 @@ export const authOptions = {
                 password: { label: "password", type: "password" }
             },
             async authorize(credentials, req) {
-                // Add logic here to look up the user from the credentials supplied
+                
 
                 if (!credentials.email || !credentials.password) {
                     return null;
@@ -32,8 +32,6 @@ export const authOptions = {
                     }
                 })
 
-
-                console.log('user found', user);
 
                 if (!user) {
                     return null;

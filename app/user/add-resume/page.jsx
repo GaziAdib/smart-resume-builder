@@ -7,7 +7,6 @@ import AddProjectForm from "@/app/components/user-forms/AddProjectForm";
 import AddReferenceForm from "@/app/components/user-forms/AddReferenceForm"
 import AddResumeForm from "@/app/components/user-forms/AddResumeForm"
 import AddRootSkillForm from "@/app/components/user-forms/AddRootSkillForm";
-import AddSkillForm from "@/app/components/user-forms/AddSkillForm"
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useState } from "react";
@@ -77,7 +76,7 @@ const AddResumePage = () => {
     }
   };
 
-  const progress = ((step - 1) / 6) * 100; // Calculate progress percentage
+  const progress = ((step - 1) / 6) * 100; 
   return (
     
    
@@ -86,7 +85,6 @@ const AddResumePage = () => {
             <div className="w-3/4 h-3 bg-gray-200 rounded-full mb-4 mt-8 relative">
               <div className="h-full rounded-2xl bg-green-500" style={{ width: `${progress}%` }}></div>
               <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center text-white font-bold">
-                {/* {Math.floor(progress)}% Completed */}
               </div>
             </div>
             {/* Timeline View */}
