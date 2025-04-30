@@ -47,7 +47,7 @@ const CareerObjectiveCard = ({ careerObjective, resumeId }) => {
   return (
     <div className="container rounded-md py-4 my-2 mx-auto justify-center items-center">
       <div className="bg-gray-50 text-gray-900 my-4 py-2 px-2 shadow-sm border-2 border-l-gray-900">
-        <p className="text-xl font-semibold">Career Objective</p>
+        <p className="text-xl text-gray-900 font-semibold">Career Objective</p>
       </div>
       <div onDoubleClick={handleDoubleClick}>
         {isEditing ? (
@@ -61,7 +61,7 @@ const CareerObjectiveCard = ({ careerObjective, resumeId }) => {
             />
           </div>
         ) : (
-          <p className="text-lg text-justify dark:text-white">{currentObjective}</p>
+          <p className="text-lg text-justify text-gray-900 dark:text-white">{currentObjective}</p>
         )}
       </div>
     </div>

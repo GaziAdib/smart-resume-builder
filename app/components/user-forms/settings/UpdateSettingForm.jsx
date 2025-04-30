@@ -72,10 +72,10 @@ const handleToggleEducationSection = () => {
 
   return (
     <div className="max-w-md dark:bg-gray-900 mx-auto my-20 p-8">
-      <h1 className="text-xl font-semibold mb-4 mt-4 dark:text-white">Update Settings</h1>
+      <h1 className="text-xl font-semibold text-gray-900 mb-4 mt-4 dark:text-white">Update Settings</h1>
       <hr className=""/>
       <div className="flex items-center justify-between mt-8 mb-4">
-        <p className="text-base  dark:text-white">Show Education Section</p>
+        <p className="text-base text-gray-900  dark:text-white">Show Education Section</p>
         <div className="relative inline-block w-10 align-middle select-none">
           <input
             type="checkbox"
@@ -90,7 +90,7 @@ const handleToggleEducationSection = () => {
         </div>
       </div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-base  dark:text-white">Show Personal Detail Section</p>
+        <p className="text-base text-gray-900  dark:text-white">Show Personal Detail Section</p>
         <div className="relative inline-block w-10 align-middle select-none">
           <input
             type="checkbox"
@@ -105,7 +105,7 @@ const handleToggleEducationSection = () => {
         </div>
       </div>
       <div className="flex items-center justify-between mb-4">
-        <p className="text-base dark:text-white">Show Work Experience Section</p>
+        <p className="text-base text-gray-900 dark:text-white">Show Work Experience Section</p>
         <div className="relative inline-block w-10 align-middle select-none">
           <input
             type="checkbox"
