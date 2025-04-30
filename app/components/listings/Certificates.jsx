@@ -4,7 +4,7 @@ import { useState } from 'react';
 import CertificateCard from '../cards/CertificateCard';
 
 const Certificates = ({ certificates, setting }) => {
-  const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+  const [headerBgColor, setHeaderBgColor] = useState('#ffffff'); // Initial color
   const [isHovered, setIsHovered] = useState(false);
 
   const handleColorChange = (event) => {

@@ -24,13 +24,13 @@ export const fetchCurrentUser = async () => {
 }
 
 
-export const fetchAllResumes = async () => {
+export const fetchAllResumes = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
-        if(session?.user?.role ==='USER') {
+        if(session?.user?.role === 'USER') {
             const resumes = await prisma.resume.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return resumes
@@ -41,13 +41,13 @@ export const fetchAllResumes = async () => {
     
 }
 
-export const fetchResume = async () => {
+export const fetchResume = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role ==='USER') {
             const resume = await prisma.resume.findFirst({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return resume
@@ -58,13 +58,13 @@ export const fetchResume = async () => {
     
 }
 
-export const fetchSkills = async () => {
+export const fetchSkills = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role ==='USER') {
             const skills = await prisma.skill.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return skills
@@ -75,13 +75,13 @@ export const fetchSkills = async () => {
     
 }
 
-export const fetchWorkExperiences = async () => {
+export const fetchWorkExperiences = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
-        if(session?.user?.role ==='USER') {
+        if(session?.user?.role === 'USER') {
             const experiences = await prisma.experience.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return experiences
@@ -93,13 +93,13 @@ export const fetchWorkExperiences = async () => {
 }
 
 
-export const fetchEducationalQualifications = async () => {
+export const fetchEducationalQualifications = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role ==='USER') {
             const educations = await prisma.educationalQualification.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return educations
@@ -111,13 +111,13 @@ export const fetchEducationalQualifications = async () => {
 }
 
 
-export const fetchMyReferences = async () => {
+export const fetchMyReferences = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role ==='USER') {
             const references = await prisma.reference.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return references
@@ -128,13 +128,13 @@ export const fetchMyReferences = async () => {
     
 }
 
-export const fetchMyProjects = async () => {
+export const fetchMyProjects = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
-        if(session?.user?.role ==='USER') {
+        if(session?.user?.role === 'USER') {
             const projects = await prisma.project.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return projects
@@ -145,13 +145,13 @@ export const fetchMyProjects = async () => {
     
 }
 
-export const fetchMyCertificates = async () => {
+export const fetchMyCertificates = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role ==='USER') {
             const certificates = await prisma.certificate.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return certificates
@@ -162,13 +162,13 @@ export const fetchMyCertificates = async () => {
     
 }
 
-export const fetchMyDevSkills = async () => {
+export const fetchMyDevSkills = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
         if(session?.user?.role === 'USER') {
             const devSkills = await prisma.developerSkill.findMany({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return devSkills
@@ -179,13 +179,13 @@ export const fetchMyDevSkills = async () => {
     
 }
 
-export const fetchSetting = async () => {
+export const fetchSetting = async (userId) => {
     const session = await getServerSession(authOptions);
     try {
-        if(session?.user?.role ==='USER') {
+        if(session?.user?.role === 'USER') {
             const setting = await prisma.setting.findFirst({
                 where: {
-                    userId: session?.user?.id
+                    userId: userId
                 }
             })
             return setting
@@ -260,7 +260,7 @@ export const deleteEducation = async (educationId) => {
 export const deleteWorkExperience = async (experienceId) => {
     const session = await getServerSession(authOptions);
     try {
-        if(session?.user?.role ==='USER') {
+        if(session?.user?.role === 'USER') {
 
             const myExperience = await prisma.experience.findFirst({
                 where: {

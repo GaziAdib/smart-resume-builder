@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 const LanguageProficiencies = ({ languageProficiencies, resumeId }) => {
   const [view, setView] = useState('card');
-  const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+  const [headerBgColor, setHeaderBgColor] = useState('#ffffff');
   const [isHovered, setIsHovered] = useState(false);
   const [editableIndex, setEditableIndex] = useState(null);
   const [editableValue, setEditableValue] = useState("");

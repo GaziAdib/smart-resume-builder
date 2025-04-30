@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 
 const AddSettingForm = () => {
 
-const [showEducationSection, setShowEducationSection] = useState(false);
-const [showWorkExperienceSection, setShowWorkExperienceSection] = useState(false);
+const [showEducationSection, setShowEducationSection] = useState(true);
+const [showWorkExperienceSection, setShowWorkExperienceSection] = useState(true);
 const [showPersonalDetailSection, setShowPersonalDetailSection] = useState(false);
 
 
@@ -24,8 +24,7 @@ const handleToggleEducationSection = () => {
   }
 
   const handleAddSettings = async () => {
-    // Handle saving settings here
-
+  
     try {
 
         const data = {

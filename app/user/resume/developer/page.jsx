@@ -6,19 +6,22 @@ import { redirect } from "next/navigation";
 
 const MyDeveloperResumePage = async () => {
 
-  const resumeInfo = await fetchResume();
-  const educations = await fetchEducationalQualifications();
-  const experiences = await fetchWorkExperiences()
-  const skills = await fetchSkills();
-  const references = await fetchMyReferences();
-  const projects = await fetchMyProjects();
-  const certificates = await fetchMyCertificates();
-  const devSkills = await fetchMyDevSkills();
-  const currentUserInfo = await fetchCurrentUser()
-  const setting = await fetchSetting();
-
   const session = await getServerSession(authOptions);
 
+  const currentUserId = session?.user?.id;
+
+  const resumeInfo = await fetchResume(currentUserId);
+  const educations = await fetchEducationalQualifications(currentUserId);
+  const experiences = await fetchWorkExperiences(currentUserId)
+  const skills = await fetchSkills(currentUserId);
+  const references = await fetchMyReferences(currentUserId);
+  const projects = await fetchMyProjects(currentUserId);
+  const certificates = await fetchMyCertificates(currentUserId);
+  const devSkills = await fetchMyDevSkills(currentUserId)
+  const currentUserInfo = await fetchCurrentUser(currentUserId)
+  const setting = await fetchSetting(currentUserId);
+
+ 
   if(!session) {
     return redirect('/auth/login');
   }

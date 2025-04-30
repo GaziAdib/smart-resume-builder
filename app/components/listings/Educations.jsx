@@ -14,12 +14,17 @@ const Educations = ({ educations, setting }) => {
 
   fullpath = fullpath.split('/')[3];
 
-
-
   const [view, setView] = useState('card');
-  const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+  const [headerBgColor, setHeaderBgColor] = useState('#ffffff');
   const [isHovered, setIsHovered] = useState(false);
   const [sortedEducations, setSortedEducations] = useState([]);
+
+  const defaultSettings = {
+    showPersonalDetail: false,
+    showEducation: true,
+    showWorkExperience: true,
+    ...setting 
+  };
  
 
   useEffect(() => {
@@ -45,7 +50,7 @@ const Educations = ({ educations, setting }) => {
     setHeaderBgColor(event.target.value);
   };
 
-  if (!setting?.showEducation) return null;
+  if (!defaultSettings?.showEducation) return null;
 
   return (
     <>
@@ -55,7 +60,7 @@ const Educations = ({ educations, setting }) => {
       ></div>
       <div
         style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }}
-        className="container rounded-md py-2 my-2 mx-auto justify-center items-center relative group"
+        className="container  rounded-md py-2 my-2 mx-auto justify-center items-center relative group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

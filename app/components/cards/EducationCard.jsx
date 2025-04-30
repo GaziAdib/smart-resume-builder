@@ -60,7 +60,7 @@ const EducationCard = ({ education }) => {
 
   return (
     <div
-      className="w-full bg-white dark:bg-gray-800 border-l-2 border-l-gray-200 dark:border-l-gray-600 rounded-md py-4 px-3 my-2"
+      className="w-full bg-white dark:bg-gray-900 border-l-2 border-l-gray-200 dark:border-l-gray-600 rounded-md py-4 px-3 my-2"
       onDoubleClick={handleDoubleClick}
     >
       <div className="flex flex-col space-y-1">

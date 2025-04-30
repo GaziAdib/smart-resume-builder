@@ -6,16 +6,21 @@ import { usePathname } from 'next/navigation';
 
 const Experiences = ({ experiences, setting }) => {
 
-    // get path name developer as for developer the view might be little different
-
-    let fullpath = usePathname();
-
-    fullpath = fullpath.split('/')[3];
   
+  let fullpath = usePathname();
 
-  const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+  fullpath = fullpath.split('/')[3];
+  
+  const [headerBgColor, setHeaderBgColor] = useState('#ffffff');
   const [isHovered, setIsHovered] = useState(false);
   const [pageBgColor, setPageBgColor] = useState('#ffffff');
+
+  const defaultSettings = {
+    showPersonalDetail: false,
+    showEducation: true,
+    showWorkExperience: true,
+    ...setting 
+  };
 
   const handleColorChange = (event) => {
     setHeaderBgColor(event.target.value);
@@ -29,6 +34,9 @@ const Experiences = ({ experiences, setting }) => {
    useEffect(() => {
     document.body.style.backgroundColor = pageBgColor;
   }, [pageBgColor]);
+
+
+  if (!defaultSettings?.showWorkExperience) return null;
 
   return (
 <>
@@ -44,7 +52,7 @@ const Experiences = ({ experiences, setting }) => {
 
         <hr className='w-1/2 mx-auto' />
 
-        {setting?.showWorkExperience && (
+        {defaultSettings?.showWorkExperience && (
           <div>
             {experiences?.map((experience) => (
               <ExperienceCard key={experience?.id} experience={experience} />

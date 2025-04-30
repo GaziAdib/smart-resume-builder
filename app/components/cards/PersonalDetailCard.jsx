@@ -9,16 +9,24 @@ const PersonalDetailCard = ({ personalDetail, setting }) => {
 
   const { fatherName, motherName, dob, religion, nationality, maritalStatus, bloodGroup, height } = personalDetail || {};
 
+  const defaultSettings = {
+    showPersonalDetail: false,
+    showEducation: true,
+    showWorkExperience: true,
+    ...setting 
+  };
+
+
   const handleColorChange = (event) => {
     setHeaderBgColor(event.target.value);
   };
 
-  if(setting?.showPersonalDetail) {
+  if(defaultSettings?.showPersonalDetail) {
     return (
       <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} className="container rounded-md py-2 my-2 mx-auto justify-center items-center relative" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div className={`bg-blue-300 text-gray-900 my-2 py-2 px-2 shadow-sm border-2 border-l-gray-900`} style={{ backgroundColor: headerBgColor }}>
           <p className="text-xl font-semibold">Personal Details</p>
-          {/* Conditionally render color input when hovered */}
+          
           {isHovered && (
           <input 
             type="color" 

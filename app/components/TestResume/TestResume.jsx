@@ -16,7 +16,7 @@ const TestResume = ({currentUserInfo, resumeInfo, educations, experiences, skill
 
   const initialSections = [
     { id: 'hero', title: 'Hero', content: <HeroSection profileImage={resumeInfo?.profileImage} currentUserInfo={currentUserInfo} />, prev: null, next: 'careerObjective' },
-    { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard resumeId={resumeInfo.id} careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
+    { id: 'careerObjective', title: 'Career Objective', content: <CareerObjectiveCard resumeId={resumeInfo?.id} careerObjective={resumeInfo?.careerObjective} />, prev: 'hero', next: 'experience' },
     { id: 'experience', title: 'Experience', content: <Experiences experiences={experiences} setting={setting} />, prev: 'careerObjective', next: 'skill' },
     { id: 'skill', title: 'Skill', content: <Skills skills={skills} />, prev: 'experience', next: 'education' },
     { id: 'education', title: 'Education', content: <Educations educations={educations} setting={setting} />, prev: 'skill', next: 'interests' },

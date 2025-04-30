@@ -19,9 +19,9 @@ export async function POST(req, {params}) {
 
             const setting = await prisma.setting.create({
                 data: {
-                    showEducation: showEducationSection,
-                    showWorkExperience: showWorkExperienceSection,
-                    showPersonalDetail: showPersonalDetailSection,
+                    showEducation: showEducationSection ? showEducationSection : true,
+                    showWorkExperience: showWorkExperienceSection ? showWorkExperienceSection : true,
+                    showPersonalDetail: showPersonalDetailSection ? showPersonalDetailSection : false,
                     user: {connect: {id: session?.user?.id}}
                 }
             })

@@ -12,28 +12,27 @@ import { redirect } from "next/navigation";
 
 const ManageResumeContent = async () => {
 
-    const session = await getServerSession(authOptions);
+const session = await getServerSession(authOptions);
 
-    if(!session) {
-        return redirect('/auth/login')
-    }
+const currentUserId = session?.user?.id
 
-const projects = await fetchMyProjects();
+if(!session) {
+    return redirect('/auth/login')
+}
 
-const certificates = await fetchMyCertificates();
+const projects = await fetchMyProjects(currentUserId);
 
-const experiences = await fetchWorkExperiences();
+const certificates = await fetchMyCertificates(currentUserId);
 
-const educations = await fetchEducationalQualifications();
+const experiences = await fetchWorkExperiences(currentUserId);
 
-const references = await fetchMyReferences();
+const educations = await fetchEducationalQualifications(currentUserId);
 
-// single dev skill only
-const devSkills = await fetchMyDevSkills()
+const references = await fetchMyReferences(currentUserId);
 
-// skills 
+const devSkills = await fetchMyDevSkills(currentUserId)
 
-const skills = await fetchSkills();
+const skills = await fetchSkills(currentUserId);
 
 
   return (

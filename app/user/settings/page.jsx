@@ -13,7 +13,7 @@ const SettingsPage = async () => {
           return redirect('/auth/login')
       }
 
-  const setting = await fetchSetting();
+  const setting = await fetchSetting(session?.user?.id);
 
   return (
     <div className="">

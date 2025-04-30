@@ -29,7 +29,7 @@ export async function POST(req) {
             })
             revalidatePath('/user/manage-resume');
             
-            //revalidatePath('/user/add-resume');
+            // revalidatePath('/user/add-resume');
             return NextResponse.json({ message: 'Work Experience Added Successfully!' }, { status: 201 })
             
         } else {

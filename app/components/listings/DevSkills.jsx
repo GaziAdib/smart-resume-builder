@@ -10,7 +10,7 @@ const DevSkills = ({devSkills, setting}) => {
     softSkills = [],
   } = devSkills && devSkills.length > 0 ? devSkills[0] : {};
 
-const [headerBgColor, setHeaderBgColor] = useState('#9bedff'); // Initial color
+const [headerBgColor, setHeaderBgColor] = useState('#ffffff');
 const [isHovered, setIsHovered] = useState(false);
 
 const handleColorChange = (event) => {
