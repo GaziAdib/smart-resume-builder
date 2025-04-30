@@ -22,13 +22,11 @@ const Projects = ({ projects, setting }) => {
         )}
       </div>
       <hr className='w-1/2 mx-auto' />
-      {setting?.showWorkExperience && (
         <div>
           {projects?.map((project) => (
             <ProjectCard key={project?.id} project={project} />
           ))}
         </div>
-      )}
     </div>
 
     <div style={{ pageBreakAfter: 'always', pageBreakInside: 'avoid' }} ></div>
