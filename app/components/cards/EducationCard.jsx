@@ -84,7 +84,7 @@ const EducationCard = ({ education }) => {
 
         {/* Institution */}
         <p className="text-gray-600 dark:text-gray-300">
-          <span className="font-semibold">Institution/College:</span>{" "}
+          <span className="font-semibold"></span>{" "}
           {isEditing ? (
             <input
               type="text"
@@ -95,7 +95,7 @@ const EducationCard = ({ education }) => {
               onKeyDown={handleKeyDown}
             />
           ) : (
-            <span className="text-lg italic">{editedEducation.institution}</span>
+            <span className="text-lg italic">{editedEducation?.institution}</span>
           )}
         </p>
 

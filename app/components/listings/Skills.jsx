@@ -31,10 +31,9 @@ const Skills = ({ skills }) => {
   };
 
   const handleSkillEdit = async (index) => {
-    // Update the skill name in the skills array
     const updatedSkills = [...skills];
     updatedSkills[index].name = editedSkillName;
-    // Reset the edited skill state
+    
     setEditedSkillIndex(null);
     setEditedSkillName('');
 
@@ -71,7 +70,6 @@ const Skills = ({ skills }) => {
         console.log('error Updating Skill', error)
     }
 
-     // Reset the edited skill state
      setEditedSkillIndex(null);
      setEditedSkillName('');
   };

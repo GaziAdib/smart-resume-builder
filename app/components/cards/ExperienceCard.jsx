@@ -6,7 +6,7 @@ const ExperienceCard = ({experience}) => {
 
   return (
     <div className="bg-white border-l-2 border-l-gray-200 dark:bg-gray-900 dark:border-l-gray-700 rounded-md py-2 px-3 mt-2">
-      <h2 className="text-xl  font-semibold mb-2 dark:text-white">{jobTitle.toUpperCase()}</h2>
+      <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{jobTitle?.toUpperCase()}</h2>
       <p className="text-gray-700 mb-1">
         <span className="font-semibold dark:text-gray-300">({companyName})</span> 
       </p>
