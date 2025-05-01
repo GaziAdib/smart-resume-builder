@@ -8,38 +8,36 @@ const prisma = new PrismaClient();
 
 export async function PUT(req, {params}) {
 
-    const educationId = params?.educationId || '';
+    const experienceId = params?.experienceId || '';
 
     const session = await getServerSession(authOptions);
 
-    const { subject, institution, degree, GPA, startDate, endDate }  =  await req.json();
+    const { jobTitle, companyName, jobResposibilities, startDate, endDate }  =  await req.json();
+        
 
-
-    
     try {
         if (session?.user?.role === 'USER') {
-
-            const updateEducation = await prisma.educationalQualification.update({
+            const updateExperience = await prisma.experience.update({
                 where: {
-                    id: educationId,
+                    id: experienceId,
+                    userId: session?.user?.id
                 },
                 data: {
-                    subject: subject,
-                    institution: institution,
-                    degree: degree && degree,
-                    GPA: GPA && parseFloat(GPA),
+                    jobTitle: jobTitle,
+                    companyName: companyName,
+                    jobResposibilities: jobResposibilities,
                     startDate: startDate && new Date(startDate).toISOString(),
                     endDate:  endDate && new Date(endDate).toISOString(),
                     user: {connect: {id: session?.user?.id}},
                 }
             })
 
-            revalidatePath('/user/resume');
+            revalidatePath('/user/resume/regular');
 
-            return NextResponse.json({ message: 'Education Section Updated Successfully!' }, { status: 201 })
+            return NextResponse.json({ message: 'Work Experience Section Updated Successfully!', data: updateExperience }, { status: 201 })
             
         } else {
-            return NextResponse.json({ message: 'You Must Be an Auth User to Update Education Section!' }, { status: 403 })
+            return NextResponse.json({ message: 'You Must Be an Auth User to Update Experience Section!' }, { status: 403 })
         }
 
     } catch (error) {

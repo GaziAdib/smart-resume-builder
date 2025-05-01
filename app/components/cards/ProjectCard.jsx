@@ -11,7 +11,7 @@ const ProjectCard = ({ project }) => {
   } = project || {};
 
   return (
-    <div className="bg-white dark:bg-gray-900 border-l-2 border-l-gray-300 dark:border-l-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 py-4 px-4 mb-4 w-full mx-auto">
+    <div className="bg-white dark:bg-gray-900 border-l-2 border-l-gray-300 dark:border-l-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 py-2 px-4 mb-4 w-full mx-auto">
       <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3">
         <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 flex-wrap">
           <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100">

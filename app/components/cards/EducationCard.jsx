@@ -192,6 +192,17 @@ export default EducationCard;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 // "use client";
 
 // import moment from "moment";
