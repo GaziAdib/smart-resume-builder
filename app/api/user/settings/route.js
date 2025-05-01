@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function POST(req, {params}) {
+export async function POST(req) {
 
     const session = await getServerSession(authOptions);
 
@@ -15,8 +15,6 @@ export async function POST(req, {params}) {
     
     try {
         if (session?.user?.role === 'USER') {
-            console.log(showEducationSection, showPersonalDetailSection, showWorkExperienceSection)
-
             const setting = await prisma.setting.create({
                 data: {
                     showEducation: showEducationSection ? showEducationSection : true,

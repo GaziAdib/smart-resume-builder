@@ -45,7 +45,6 @@ const Navbar = () => {
 
   // Navigation items
   const navItems = [
-    { href: "/", name: "Home", icon: <FiHome className="mr-2" /> },
     { href: "/user/add-resume", name: "Add Resume", icon: <FiFileText className="mr-2" /> },
     { href: "/user/manage-resume", name: "Manage", icon: <FiBriefcase className="mr-2" /> },
     { href: "/user/dashboard", name: "Dashboard", icon: <FiUser className="mr-2" /> },

@@ -12,6 +12,7 @@ model User {
   username    String    @unique
   email       String    @unique
   password    String
+  profileImageUrl String? 
   dob         String?
   phone       String?
   website     String?
@@ -29,7 +30,6 @@ model User {
   references    Reference[]
   settings      Setting[]
   devSkills      DeveloperSkill[]
- 
 }
 
 model Setting {
